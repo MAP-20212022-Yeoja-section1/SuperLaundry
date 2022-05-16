@@ -1,10 +1,11 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:superlaundry/app/service_locator.dart';
 
 import 'app/routes.dart';
 
-void main() {
+Future main() async{
   initializeServiceLocator();
   final widgetBinding = WidgetsFlutterBinding.ensureInitialized();
 
@@ -13,7 +14,9 @@ void main() {
   initializeApp();
   // whenever your initialization is completed, remove the splash screen
   FlutterNativeSplash.remove();
-
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  
   runApp(const SuperLaundryApp());
 }
 
@@ -27,7 +30,7 @@ class SuperLaundryApp extends StatelessWidget {
     return MaterialApp(
       title: 'Super Laundry',
       debugShowCheckedModeBanner: false,
-      initialRoute: Routes.homeRoute,
+      initialRoute: Routes.registrationRoute,
       onGenerateRoute: Routes.createRoute,
     );
   }

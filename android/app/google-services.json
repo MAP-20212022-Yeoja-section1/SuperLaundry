@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "384041569766",
+    "project_id": "superlaundry-61db0",
+    "storage_bucket": "superlaundry-61db0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:384041569766:android:76fe07814076f95c779a27",
+        "android_client_info": {
+          "package_name": "com.example.superlaundry"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "384041569766-iigkth49co5p38ca5fsge0crkfg5rgkd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrMOVAdbXw3_5yqyoQ5OanhA9k1tZpvkc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "384041569766-iigkth49co5p38ca5fsge0crkfg5rgkd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

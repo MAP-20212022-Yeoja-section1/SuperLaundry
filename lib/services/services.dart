@@ -1,1 +1,1 @@
-
+export 'registration/registration_service.dart';
