@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import '../ui/screens/home/home_screen.dart';
 import '../ui/screens/registration/registration_screen.dart';
+import '../ui/screens/login/login_screen.dart';
 
 class Routes {
   static const String homeRoute = '/home';
   static const String registrationRoute = '/registration';
+  static const String loginRoute = '/login';
 
   static Route<dynamic>? createRoute(settings) {
     switch (settings.name) {
@@ -12,6 +14,8 @@ class Routes {
         return HomeScreen.route();
       case registrationRoute:
         return RegistrationScreen.route();
+      case loginRoute:
+        return LoginScreen.route();
     }
     return null;
   }

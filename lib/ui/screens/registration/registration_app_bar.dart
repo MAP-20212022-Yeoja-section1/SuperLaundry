@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-class RegistrationAppBar extends StatelessWidget implements PreferredSizeWidget {
+class RegistrationAppBar extends StatelessWidget
+    implements PreferredSizeWidget {
   const RegistrationAppBar({
     Key? key,
   }) : super(key: key);
@@ -12,15 +13,15 @@ class RegistrationAppBar extends StatelessWidget implements PreferredSizeWidget 
   Widget build(BuildContext context) {
     return AppBar(
       title: Text('REGISTRATION'),
-      leading: IconButton (
-          onPressed: () {
-            //Navigator.push(context, MaterialPageRoute(builder: (context)=>ManagerMenu()));
-          },
-          icon: Icon(Icons.chevron_left_sharp),
-          iconSize: 40.0,
-        ),
+      leading: IconButton(
+        onPressed: () {
+          //Navigator.push(context, MaterialPageRoute(builder: (context)=>ManagerMenu()));
+        },
+        icon: Icon(Icons.chevron_left_sharp),
+        iconSize: 40.0,
+      ),
       centerTitle: true,
-      backgroundColor: Color.fromARGB(255,31, 215, 169),
+      backgroundColor: Color.fromARGB(255, 31, 215, 169),
       foregroundColor: Colors.white,
     );
   }
