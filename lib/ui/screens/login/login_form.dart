@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:map_mvvm/view.dart';
 import 'package:superlaundry/ui/screens/registration/registration_screen.dart';
 import 'package:superlaundry/ui/screens/login/login_viewmodel.dart';
@@ -18,6 +19,7 @@ class LoginForm_ extends State<LoginForm> {
 
   final TextEditingController emailController = new TextEditingController();
   final TextEditingController passwordController = new TextEditingController();
+  var msg;
 
   @override
   Widget build(BuildContext context) {
@@ -107,12 +109,31 @@ class LoginForm_ extends State<LoginForm> {
                               borderRadius: BorderRadius.circular(15),
                               color: Color.fromARGB(255, 29, 233, 182)),
                           child: MaterialButton(
-                            onPressed: () {
-                              if (_formKey.currentState!.validate()) {
-                                viewmodel.logIn(
-                                    email: emailController.text,
-                                    password: passwordController.text);
-                              }
+                          
+                            onPressed: ()async {
+                            if (_formKey.currentState!.validate()){
+                              
+                              msg = await viewmodel.logIn(
+                                            email: emailController.text,
+                                            password: passwordController.text);
+                              
+                              if(msg != "Login successful!"){
+                                Fluttertoast.showToast(
+                                msg: msg,
+                                toastLength: Toast.LENGTH_LONG,
+                                gravity: ToastGravity.BOTTOM,
+                                fontSize: 16,
+                                backgroundColor: Color.fromARGB(255, 235, 79, 68),
+                              );}
+                              else{
+                              Fluttertoast.showToast(msg: msg,
+                                  toastLength: Toast.LENGTH_LONG,
+                                      gravity: ToastGravity.BOTTOM,
+                                      fontSize: 16,
+                                      backgroundColor: Color.fromARGB(255, 69, 161, 76),
+                                  );
+                              }                                  
+                            }                   
                             },
                             child: const Text(
                               "LOGIN",
@@ -159,7 +180,7 @@ class LoginForm_ extends State<LoginForm> {
                                 style: TextButton.styleFrom(
                                   primary: Color.fromARGB(255, 38, 201, 161),
                                 ),
-                                child: const Text("Sign up here."))
+                                child: const Text("Sign up here!"))
                           ],
                         ),
                       ],

@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import '../../models/user.dart';
 
 class RegistrationService {
@@ -14,14 +12,11 @@ class RegistrationService {
     .then((value) => {
       postDetailsToFirestore(name, phonenum, homeaddress, email, password, role)
     });
+
+    return "Your account has been created successfully!";
+    
     } catch (e){
-      Fluttertoast.showToast(
-        msg: e.toString(),
-        toastLength: Toast.LENGTH_LONG,
-        gravity: ToastGravity.BOTTOM,
-        fontSize: 16,
-        backgroundColor: Color.fromARGB(255, 179, 15, 3),
-        );
+        return "This email address is already being used";
     }
   }
 
@@ -43,12 +38,6 @@ class RegistrationService {
       .collection("users")
       .doc(user.uid)
       .set(userModel.toMap());
-    Fluttertoast.showToast(msg: "Your account has been created successfully!",
-    toastLength: Toast.LENGTH_LONG,
-        gravity: ToastGravity.BOTTOM,
-        fontSize: 16,
-        backgroundColor: Color.fromARGB(255, 0, 121, 10),
-    );
   }
 
 }

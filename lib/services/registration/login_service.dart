@@ -1,20 +1,17 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 class LoginService {
   final _auth = FirebaseAuth.instance;
 
-  String? errorMessage;
+  String errorMessage="";
 
   Future logIn(String email, String password) async {
     try {
       await _auth
           .signInWithEmailAndPassword(email: email, password: password)
-          .then((uid) => {
-                Fluttertoast.showToast(msg: "Login Successful"),
-                // Navigator.of(context).pushReplacement(MaterialPageRoute(
-                //     builder: (context) => RegistrationScreen())),
-              });
+          .then((uid) => {});
+          return "Login successful!";   
+
     } on FirebaseAuthException catch (error) {
       switch (error.code) {
         case "invalid-email":
@@ -33,8 +30,7 @@ class LoginService {
         default:
           errorMessage = "Undefined error.";
       }
-      Fluttertoast.showToast(msg: errorMessage!);
-      print(error.code);
+      return errorMessage;
     }
   }
 }

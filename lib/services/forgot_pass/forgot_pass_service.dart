@@ -10,20 +10,10 @@ class ForgotPasswordService {
   Future resetPassword(String email) async {
     try {
       await FirebaseAuth.instance.sendPasswordResetEmail(email: email.trim());
-
-      Fluttertoast.showToast(
-        msg: "Password reset email sent!",
-        backgroundColor: Color.fromARGB(255, 29, 233, 182),
-      );
+      return "Password reset email sent!";
     } on FirebaseAuthException catch (e) {
-      print(e);
 
-      Fluttertoast.showToast(
-          msg: e.toString(),
-          toastLength: Toast.LENGTH_LONG,
-          gravity: ToastGravity.BOTTOM,
-          fontSize: 16,
-          backgroundColor: Color.fromARGB(255, 179, 15, 3));
+      return e.toString();
     }
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:map_mvvm/view.dart';
 import 'package:superlaundry/ui/screens/registration/registration_viewmodel.dart';
 
@@ -12,7 +13,7 @@ class RegistrationForm extends StatefulWidget {
 class _RegistrationForm extends State<RegistrationForm> {
   
   final _formKey = GlobalKey<FormState>();
-  late String txtname, txtemail, txtpassword, txtphonenum, txtaddress, txtcpassword, txtrole="";
+  var msg="";
 
   final nameController = TextEditingController();
   final phonenumController = TextEditingController();
@@ -56,57 +57,64 @@ class _RegistrationForm extends State<RegistrationForm> {
                   TextFormField(
                     controller: nameController,
                     decoration: const InputDecoration(labelText: 'Name'),
-                    onSaved: (value){
-                            txtname = value!;
-                          },
                     validator: (value){
                       if (nameController.text.isEmpty){
                         return "Enter your name!";
                       }
                       return null;
-                    }
+                    },
+                    onSaved: (value){
+                            nameController.text = value!;
+                          },
+                    
                   ),
                   //phone number
                   TextFormField(
                     controller: phonenumController,
                     decoration: const InputDecoration(labelText: 'Phone Number'),
-                    onSaved: (value){
-                            txtphonenum = value!;
-                          },
                     validator: (value){
                       if (phonenumController.text.isEmpty){
                         return "Enter your phone number!";
                       }
                       return null;
-                    }
+                    },
+                    onSaved: (value){
+                            phonenumController.text = value!;
+                          },
+                    
                   ),
                   //home address
                   TextFormField(
                     controller: homeaddressController,
                     decoration: const InputDecoration(labelText: 'Home Address'),
-                    onSaved: (value){
-                            txtaddress = value!;
-                          },
                     validator: (value){
                       if (homeaddressController.text.isEmpty){
                         return "Enter your home address!";
                       }
                       return null;
-                    }
+                    },
+                    onSaved: (value){
+                            homeaddressController.text = value!;
+                          },                  
                   ),
                   //email
                   TextFormField(
                     controller: emailController,
                     decoration: const InputDecoration(labelText: 'Email'),
-                    onSaved: (value){
-                            txtemail = value!;
-                          },
                     validator: (value){
-                      if (emailController.text.isEmpty){
-                        return "Enter your email!";
-                      }
-                      return null;
-                    }
+                            if (value!.isEmpty) {
+                              return ("Please enter your registered email address.");
+                            }
+                            if (!RegExp(
+                                    "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
+                                .hasMatch(value)) {
+                              return ("Please enter a valid email address.");
+                            }
+                            return null;
+                          },
+                    onSaved: (value){
+                            emailController.text = value!;
+                          },                 
                   ),
                   //password
                   TextFormField(
@@ -126,23 +134,24 @@ class _RegistrationForm extends State<RegistrationForm> {
                           : Icons.visibility_off
                           )
                       ),),
-                      onSaved: (value){
-                            txtpassword = value!;
+                      validator: (value){
+                            RegExp regex = RegExp(r'^.{6,}$');
+                            if (value!.isEmpty) {
+                              return ("Please enter your password.");
+                            }
+                            if (!regex.hasMatch(value)) {
+                              return ("Please enter valid password. (Min 6 Char)");
+                            }
                           },
-                    validator: (value){
-                      if (passwordController.text.isEmpty){
-                        return "Enter your password!";
-                      }
-                      return null;
-                    }
+                      onSaved: (value){
+                            passwordController.text = value!;
+                          },
+                    
                   ),
                   TextFormField(
                     controller: cpasswordController,
                     decoration: const InputDecoration(labelText: 'Confirm Password'),
                     obscureText: true,
-                    onSaved: (value){
-                            txtcpassword = value!;
-                          },
                     validator: (value){
                       if(cpasswordController.text.isNotEmpty)
                       {
@@ -151,7 +160,11 @@ class _RegistrationForm extends State<RegistrationForm> {
                         else {return null;}
                       } 
                       else{return "Enter confirm password!";}                     
-                    }
+                    },
+                    onSaved: (value){
+                            cpasswordController.text = value!;
+                          },
+                    
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 8.0),
@@ -177,7 +190,10 @@ class _RegistrationForm extends State<RegistrationForm> {
                         return null;
                       }
                       return "Must be Customer, Manager or Deliveryman only";
-                    }
+                    },
+                      onSaved: (value){
+                            roleController.text = value!;
+                          },
                     ),
                   )                                   
                 ]),
@@ -185,11 +201,34 @@ class _RegistrationForm extends State<RegistrationForm> {
                 Padding(
                   padding: EdgeInsets.only(top:20),
                   child: FloatingActionButton.extended(
-                  onPressed: () {
+                  onPressed: ()async {
                     if (_formKey.currentState!.validate()){
-                      viewmodel.registerUser(name: nameController.text, phonenum: phonenumController.text, homeaddress: homeaddressController.text, email: emailController.text,password: passwordController.text,role: roleController.text);
-                    }
-                  }, 
+                      
+                      msg = await viewmodel.registerUser(name: nameController.text, 
+                      phonenum: phonenumController.text, 
+                      homeaddress: homeaddressController.text, 
+                      email: emailController.text,
+                      password: passwordController.text,
+                      role: roleController.text);
+                      
+                      if(msg!="Your account has been created successfully!"){
+                      Fluttertoast.showToast(
+                        msg: msg,
+                        toastLength: Toast.LENGTH_LONG,
+                        gravity: ToastGravity.BOTTOM,
+                        fontSize: 16,
+                        backgroundColor: Color.fromARGB(255, 209, 68, 58),
+                      );}
+                      else{
+                      Fluttertoast.showToast(msg: msg,
+                          toastLength: Toast.LENGTH_LONG,
+                              gravity: ToastGravity.BOTTOM,
+                              fontSize: 16,
+                              backgroundColor: Color.fromARGB(255, 69, 161, 76),
+                          );
+                      }                                  
+                    }                   
+                    },
                   label: Text(
                   'Register',
                   style: TextStyle(

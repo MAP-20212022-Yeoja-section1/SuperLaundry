@@ -7,11 +7,13 @@ import '../../../services/registration/login_service.dart';
 class LoginViewModel extends Viewmodel {
   LoginService get _loginService => locator<LoginService>();
   UserModel _user = UserModel();
+  String msg="";
 
-  Future<void> logIn({
+  Future<String> logIn({
     @required email,
     @required password,
   }) async {
-    await _loginService.logIn(email, password);
+    msg = await _loginService.logIn(email, password);
+    return msg;
   }
 }

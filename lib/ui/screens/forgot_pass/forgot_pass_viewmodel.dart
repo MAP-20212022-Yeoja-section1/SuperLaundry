@@ -7,11 +7,13 @@ import '../../../services/forgot_pass/forgot_pass_service.dart';
 class ForgotPassViewmodel extends Viewmodel {
   ForgotPasswordService get _forgotPasswordService =>
       locator<ForgotPasswordService>();
-  UserModel _user = UserModel();
 
-  Future<void> resetPassword({
+  String msg = "";
+
+  Future<String> resetPassword({
     @required email,
   }) async {
-    await _forgotPasswordService.resetPassword(email);
+    msg = await _forgotPasswordService.resetPassword(email);
+    return msg;
   }
 }
