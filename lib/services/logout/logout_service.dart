@@ -4,7 +4,13 @@ class LogoutService {
 
   final _auth = FirebaseAuth.instance;
 
-  Future logoutUser() async {   
+  Future logoutUser() async { 
+    try{
       await _auth.signOut();
+      return "Logout successful!";
+    }catch(e){
+      return "Logout unsucessful!";
+    }  
+      
   }
 }

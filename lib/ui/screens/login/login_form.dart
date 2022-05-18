@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:map_mvvm/view.dart';
+import 'package:superlaundry/ui/screens/home_deliveryman/mainmenuD_screen.dart';
 import 'package:superlaundry/ui/screens/registration/registration_screen.dart';
 import 'package:superlaundry/ui/screens/login/login_viewmodel.dart';
 
@@ -126,6 +127,8 @@ class LoginForm_ extends State<LoginForm> {
                                 backgroundColor: Color.fromARGB(255, 235, 79, 68),
                               );}
                               else{
+                              Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(builder: (context) => mainMenuDScreen()));
                               Fluttertoast.showToast(msg: msg,
                                   toastLength: Toast.LENGTH_LONG,
                                       gravity: ToastGravity.BOTTOM,

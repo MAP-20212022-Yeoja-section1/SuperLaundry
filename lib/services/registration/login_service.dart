@@ -1,15 +1,26 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:superlaundry/ui/screens/home_deliveryman/mainmenuD_screen.dart';
 
 class LoginService {
   final _auth = FirebaseAuth.instance;
 
+
   String errorMessage="";
+  
 
   Future logIn(String email, String password) async {
+
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+    User? user = _auth.currentUser;
+
+
     try {
       await _auth
           .signInWithEmailAndPassword(email: email, password: password)
-          .then((uid) => {});
+          .then((uid) => {
+                        
+          });
           return "Login successful!";   
 
     } on FirebaseAuthException catch (error) {
