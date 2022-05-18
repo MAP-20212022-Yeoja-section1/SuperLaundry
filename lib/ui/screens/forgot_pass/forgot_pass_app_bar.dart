@@ -18,11 +18,7 @@ class ForgotPassAppBar extends StatelessWidget implements PreferredSizeWidget {
 
     return AppBar(
       title: Text('RESET PASSWORD'),
-      leading: IconButton(
-        onPressed: () {},
-        icon: Icon(Icons.chevron_left_sharp),
-        iconSize: 40.0,
-      ),
+      automaticallyImplyLeading: false,
       centerTitle: true,
       backgroundColor: Color.fromARGB(255, 31, 215, 169),
       foregroundColor: Colors.white,

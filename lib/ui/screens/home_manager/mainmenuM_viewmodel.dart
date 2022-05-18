@@ -1,5 +1,5 @@
-import 'package:map_mvvm/viewmodel.dart';
+// import 'package:map_mvvm/viewmodel.dart';
 
-import '../../../app/service_locator.dart';
+// import '../../../app/service_locator.dart';
 
-class MenuMViewmodel extends Viewmodel {}
+// class MenuMViewmodel extends Viewmodel {}

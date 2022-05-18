@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:superlaundry/ui/screens/login/login_screen.dart';
 
 class RegistrationAppBar extends StatelessWidget
     implements PreferredSizeWidget {
@@ -15,7 +16,7 @@ class RegistrationAppBar extends StatelessWidget
       title: Text('REGISTRATION'),
       leading: IconButton(
         onPressed: () {
-          //Navigator.push(context, MaterialPageRoute(builder: (context)=>ManagerMenu()));
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
         },
         icon: Icon(Icons.chevron_left_sharp),
         iconSize: 40.0,

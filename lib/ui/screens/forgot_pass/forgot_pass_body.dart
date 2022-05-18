@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 // import '../../screens/home/home_viewmodel.dart';
 import 'package:map_mvvm/view.dart';
 import '../../screens/forgot_pass/forgot_pass_viewmodel.dart';
+import '../login/login_screen.dart';
 
 class ForgotPassBody extends StatefulWidget {
   // const ForgotPassBody({
@@ -163,8 +164,7 @@ class _ForgotPassBody extends State<ForgotPassBody> {
                               ),
                               child: FlatButton(
                                 onPressed: () {
-                                  // Navigator.push(context,MaterialPageRoute(builder: (context)=> Login()));
-                                  // Navigator.of(context).pop();
+                                  Navigator.push(context,MaterialPageRoute(builder: (context)=> LoginScreen()));
                                 },
                                 child: Text('Back To Login'),
                                 textColor: Colors.blue[600],

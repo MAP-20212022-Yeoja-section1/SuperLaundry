@@ -4,6 +4,7 @@ import 'package:superlaundry/ui/screens/registration/registration_screen.dart';
 import 'package:superlaundry/ui/screens/login/login_viewmodel.dart';
 
 import '../forgot_pass/forgot_pass_screen.dart';
+import 'login_screen.dart';
 
 class LoginForm extends StatefulWidget {
   static Route route() => MaterialPageRoute(builder: (_) => LoginForm());
@@ -131,9 +132,7 @@ class LoginForm_ extends State<LoginForm> {
                             TextButton(
                                 onPressed: () {
                                   Navigator.of(context).pushReplacement(
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              ForgotPassScreen()));
+                                    MaterialPageRoute(builder: (context) => ForgotPassScreen()));
                                 },
                                 style: TextButton.styleFrom(
                                   primary: Color.fromARGB(255, 38, 201, 161),
