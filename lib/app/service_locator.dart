@@ -4,6 +4,8 @@ import '../ui/screens/home/home_viewmodel.dart';
 import '../ui/screens/registration/registration_viewmodel.dart';
 import 'package:superlaundry/ui/screens/login/login_viewmodel.dart';
 import 'package:superlaundry/services/registration/login_service.dart';
+import 'package:superlaundry/services/forgot_pass/forgot_pass_service.dart';
+import '../ui/screens/forgot_pass/forgot_pass_viewmodel.dart';
 
 //import '../services/services.dart';
 
@@ -21,4 +23,8 @@ void initializeServiceLocator() => ServiceLocator.init((locator) {
           () => RegistrationService());
       locator.registerLazySingleton<LoginViewModel>(() => LoginViewModel());
       locator.registerLazySingleton<LoginService>(() => LoginService());
+      locator.registerLazySingleton<ForgotPassViewmodel>(
+          () => ForgotPassViewmodel());
+      locator.registerLazySingleton<ForgotPasswordService>(
+          () => ForgotPasswordService());
     });

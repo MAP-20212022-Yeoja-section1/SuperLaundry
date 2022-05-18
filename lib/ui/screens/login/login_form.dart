@@ -3,6 +3,8 @@ import 'package:map_mvvm/view.dart';
 import 'package:superlaundry/ui/screens/registration/registration_screen.dart';
 import 'package:superlaundry/ui/screens/login/login_viewmodel.dart';
 
+import '../forgot_pass/forgot_pass_screen.dart';
+
 class LoginForm extends StatefulWidget {
   static Route route() => MaterialPageRoute(builder: (_) => LoginForm());
 
@@ -127,7 +129,12 @@ class LoginForm_ extends State<LoginForm> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.of(context).pushReplacement(
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              ForgotPassScreen()));
+                                },
                                 style: TextButton.styleFrom(
                                   primary: Color.fromARGB(255, 38, 201, 161),
                                 ),
