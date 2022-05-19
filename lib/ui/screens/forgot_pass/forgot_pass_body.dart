@@ -20,7 +20,7 @@ class ForgotPassBody extends StatefulWidget {
 class _ForgotPassBody extends State<ForgotPassBody> {
   final _formKey = GlobalKey<FormState>();
   late String txtemail;
-  String msg="";
+  String msg = "";
 
   final emailController = TextEditingController();
 
@@ -134,23 +134,27 @@ class _ForgotPassBody extends State<ForgotPassBody> {
                               padding: const EdgeInsets.only(
                                   top: 30, right: 30, left: 30),
                               child: RaisedButton(
-                                onPressed: ()async {
+                                onPressed: () async {
                                   if (_formKey.currentState!.validate()) {
                                     msg = await viewmodel.resetPassword(
                                         email: emailController.text);
-                                  if(msg != "Password reset email sent!"){
-                                     Fluttertoast.showToast(
-                                    msg: msg,
-                                     toastLength: Toast.LENGTH_LONG,
-                                    gravity: ToastGravity.BOTTOM,
-                                    fontSize: 16,
-                                    backgroundColor: Color.fromARGB(255, 179, 15, 3),
-                                  );}
-                                    else{
-                                      Fluttertoast.showToast(msg: msg,
-                                      backgroundColor: Color.fromARGB(255, 29, 233, 182),
-                                  );
-                              }
+                                    if (msg != "Password reset email sent!") {
+                                      //integer (const value) variable name
+                                      Fluttertoast.showToast(
+                                        msg: msg,
+                                        toastLength: Toast.LENGTH_LONG,
+                                        gravity: ToastGravity.BOTTOM,
+                                        fontSize: 16,
+                                        backgroundColor:
+                                            Color.fromARGB(255, 179, 15, 3),
+                                      );
+                                    } else {
+                                      Fluttertoast.showToast(
+                                        msg: msg,
+                                        backgroundColor:
+                                            Color.fromARGB(255, 29, 233, 182),
+                                      );
+                                    }
                                   }
                                 },
                                 child: Text(
@@ -177,7 +181,10 @@ class _ForgotPassBody extends State<ForgotPassBody> {
                               ),
                               child: FlatButton(
                                 onPressed: () {
-                                  Navigator.push(context,MaterialPageRoute(builder: (context)=> LoginScreen()));
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => LoginScreen()));
                                 },
                                 child: Text('Back To Login'),
                                 textColor: Colors.blue[600],

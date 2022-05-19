@@ -34,3 +34,7 @@ dependencies:
   map_mvvm:
     path: packages/map_mvvm
 ```
+
+APK File in Google Drive
+
+https://drive.google.com/drive/folders/14IiGb8B3cM4SD-GA24IYakCkOVMYl9jn?usp=sharing
