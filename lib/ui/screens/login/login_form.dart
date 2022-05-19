@@ -4,9 +4,7 @@ import 'package:map_mvvm/view.dart';
 import 'package:superlaundry/ui/screens/home_deliveryman/mainmenuD_screen.dart';
 import 'package:superlaundry/ui/screens/registration/registration_screen.dart';
 import 'package:superlaundry/ui/screens/login/login_viewmodel.dart';
-
 import '../forgot_pass/forgot_pass_screen.dart';
-import 'login_screen.dart';
 
 class LoginForm extends StatefulWidget {
   static Route route() => MaterialPageRoute(builder: (_) => LoginForm());
@@ -18,9 +16,9 @@ class LoginForm extends StatefulWidget {
 class LoginForm_ extends State<LoginForm> {
   final _formKey = GlobalKey<FormState>();
 
-  final TextEditingController emailController = new TextEditingController();
-  final TextEditingController passwordController = new TextEditingController();
-  var msg;
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  var msg = "";
 
   @override
   Widget build(BuildContext context) {
@@ -37,11 +35,11 @@ class LoginForm_ extends State<LoginForm> {
                         Container(
                           height: 110,
                           width: 200,
-                          decoration: new BoxDecoration(
+                          decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(40),
-                            image: new DecorationImage(
-                              image: new AssetImage(
-                                  'assets/images/Super_Laundry.png'),
+                            image: DecorationImage(
+                              image:
+                                  AssetImage('assets/images/Super_Laundry.png'),
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -80,7 +78,7 @@ class LoginForm_ extends State<LoginForm> {
                           obscureText: true,
                           controller: passwordController,
                           validator: (value) {
-                            RegExp regex = new RegExp(r'^.{6,}$');
+                            RegExp regex = RegExp(r'^.{6,}$');
                             if (value!.isEmpty) {
                               return ("Please enter your password.");
                             }
@@ -110,33 +108,36 @@ class LoginForm_ extends State<LoginForm> {
                               borderRadius: BorderRadius.circular(15),
                               color: Color.fromARGB(255, 29, 233, 182)),
                           child: MaterialButton(
-                          
-                            onPressed: ()async {
-                            if (_formKey.currentState!.validate()){
-                              
-                              msg = await viewmodel.logIn(
-                                            email: emailController.text,
-                                            password: passwordController.text);
-                              
-                              if(msg != "Login successful!"){
-                                Fluttertoast.showToast(
-                                msg: msg,
-                                toastLength: Toast.LENGTH_LONG,
-                                gravity: ToastGravity.BOTTOM,
-                                fontSize: 16,
-                                backgroundColor: Color.fromARGB(255, 235, 79, 68),
-                              );}
-                              else{
-                              Navigator.of(context).pushReplacement(
-                                    MaterialPageRoute(builder: (context) => mainMenuDScreen()));
-                              Fluttertoast.showToast(msg: msg,
-                                  toastLength: Toast.LENGTH_LONG,
-                                      gravity: ToastGravity.BOTTOM,
-                                      fontSize: 16,
-                                      backgroundColor: Color.fromARGB(255, 69, 161, 76),
+                            onPressed: () async {
+                              if (_formKey.currentState!.validate()) {
+                                msg = await viewmodel.logIn(
+                                    email: emailController.text,
+                                    password: passwordController.text);
+
+                                if (msg != "Login successful!") {
+                                  Fluttertoast.showToast(
+                                    msg: msg,
+                                    toastLength: Toast.LENGTH_LONG,
+                                    gravity: ToastGravity.BOTTOM,
+                                    fontSize: 16,
+                                    backgroundColor:
+                                        Color.fromARGB(255, 235, 79, 68),
                                   );
-                              }                                  
-                            }                   
+                                } else {
+                                  Navigator.of(context).pushReplacement(
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              mainMenuDScreen()));
+                                  Fluttertoast.showToast(
+                                    msg: msg,
+                                    toastLength: Toast.LENGTH_LONG,
+                                    gravity: ToastGravity.BOTTOM,
+                                    fontSize: 16,
+                                    backgroundColor:
+                                        Color.fromARGB(255, 69, 161, 76),
+                                  );
+                                }
+                              }
                             },
                             child: const Text(
                               "LOGIN",
@@ -156,7 +157,9 @@ class LoginForm_ extends State<LoginForm> {
                             TextButton(
                                 onPressed: () {
                                   Navigator.of(context).pushReplacement(
-                                    MaterialPageRoute(builder: (context) => ForgotPassScreen()));
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              ForgotPassScreen()));
                                 },
                                 style: TextButton.styleFrom(
                                   primary: Color.fromARGB(255, 38, 201, 161),
