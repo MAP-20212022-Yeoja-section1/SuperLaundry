@@ -13,7 +13,7 @@ class RegistrationForm extends StatefulWidget {
 class _RegistrationForm extends State<RegistrationForm> {
   
   final _formKey = GlobalKey<FormState>();
-  var msg="";
+  var msg=100;
 
   final nameController = TextEditingController();
   final phonenumController = TextEditingController();
@@ -211,16 +211,16 @@ class _RegistrationForm extends State<RegistrationForm> {
                       password: passwordController.text,
                       role: roleController.text);
                       
-                      if(msg!="Your account has been created successfully!"){
+                      if(msg==100){
                       Fluttertoast.showToast(
-                        msg: msg,
+                        msg: "Email entered has been registered!",
                         toastLength: Toast.LENGTH_LONG,
                         gravity: ToastGravity.BOTTOM,
                         fontSize: 16,
                         backgroundColor: Color.fromARGB(255, 209, 68, 58),
                       );}
                       else{
-                      Fluttertoast.showToast(msg: msg,
+                      Fluttertoast.showToast(msg: "Registered Successfully!",
                           toastLength: Toast.LENGTH_LONG,
                               gravity: ToastGravity.BOTTOM,
                               fontSize: 16,

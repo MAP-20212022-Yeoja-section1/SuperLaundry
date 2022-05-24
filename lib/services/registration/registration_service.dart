@@ -1,22 +1,23 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:superlaundry/app/failures.dart';
+import 'package:superlaundry/services/registration/registrationService.dart';
 import '../../models/user.dart';
 
-class RegistrationService {
+class RegistrationServiceWithFireBase extends RegisterationService {
 
   final _auth = FirebaseAuth.instance;
 
+  @override
   Future registerUser(String name, String phonenum, String homeaddress, String email, String password, String role) async{
     try{
     await _auth.createUserWithEmailAndPassword(email: email, password: password)
     .then((value) => {
       postDetailsToFirestore(name, phonenum, homeaddress, email, password, role)
-    });
+    }); return 0;
+    } on FirebaseAuthException catch (e){
 
-    return "Your account has been created successfully!";
-    
-    } catch (e){
-        return "This email address is already being used";
+        return 100;
     }
   }
 

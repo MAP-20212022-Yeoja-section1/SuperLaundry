@@ -1,5 +1,6 @@
 import 'package:map_mvvm/service_locator.dart';
 import 'package:superlaundry/services/logout/logout_service.dart';
+import 'package:superlaundry/services/registration/registrationService.dart';
 import 'package:superlaundry/services/registration/registration_service.dart';
 import 'package:superlaundry/ui/screens/home_customer/mainmenu_app_bar.dart';
 import 'package:superlaundry/ui/screens/home_customer/mainmenu_viewmodel.dart';
@@ -22,8 +23,8 @@ void initializeServiceLocator() => ServiceLocator.init((locator) {
       locator.registerLazySingleton<HomeViewmodel>(() => HomeViewmodel());
       locator.registerLazySingleton<RegistrationViewmodel>(
           () => RegistrationViewmodel());
-      locator.registerLazySingleton<RegistrationService>(
-          () => RegistrationService());
+      locator.registerLazySingleton<RegisterationService>(
+          () => RegistrationServiceWithFireBase());
       locator.registerLazySingleton<LoginViewModel>(() => LoginViewModel());
       locator.registerLazySingleton<LoginService>(() => LoginService());
       locator.registerLazySingleton<ForgotPassViewmodel>(
