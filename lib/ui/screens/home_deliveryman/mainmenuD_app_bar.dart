@@ -34,25 +34,25 @@ class mainMenuDAppBar extends StatelessWidget implements PreferredSizeWidget {
             style: TextStyle(color: Colors.white, fontSize: 18),
             ),
           onPressed: ()async{
-            String msg = await viewmodel.logoutUser();
-            if(msg!="Logout successful!"){
-              Fluttertoast.showToast(
-                msg: msg,
-                toastLength: Toast.LENGTH_LONG,
-                gravity: ToastGravity.BOTTOM,
-                fontSize: 16,
-                backgroundColor: Color.fromARGB(255, 235, 79, 68)
-              );
-            }else{
+            bool msg = await viewmodel.logoutUser();
+            if(msg){
               Navigator.of(context).pushReplacement(
                                       MaterialPageRoute(
                                           builder: (context) =>
                                               LoginScreen()));
-              Fluttertoast.showToast(msg: msg,
+              Fluttertoast.showToast(msg: "Logout successful!",
                 toastLength: Toast.LENGTH_LONG,
                 gravity: ToastGravity.BOTTOM,
                 fontSize: 16,
                 backgroundColor: Color.fromARGB(255, 69, 161, 76),
+              );
+            }else{
+              Fluttertoast.showToast(
+                msg: "Logout unsuccessful!",
+                toastLength: Toast.LENGTH_LONG,
+                gravity: ToastGravity.BOTTOM,
+                fontSize: 16,
+                backgroundColor: Color.fromARGB(255, 235, 79, 68)
               );
             }
           },

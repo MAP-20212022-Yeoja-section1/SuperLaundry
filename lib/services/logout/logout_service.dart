@@ -1,16 +1,23 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
-class LogoutService {
+abstract class LogoutService {
+
+  Future logoutUser();
+}
+
+class LogoutServiceFirebase extends LogoutService{
 
   final _auth = FirebaseAuth.instance;
 
+  @override
   Future logoutUser() async { 
     try{
       await _auth.signOut();
-      return "Logout successful!";
+      return true;
     }catch(e){
-      return "Logout unsucessful!";
+      return false;
     }  
       
   }
+
 }

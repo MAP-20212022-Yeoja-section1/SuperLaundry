@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:superlaundry/app/failures.dart';
 import 'package:superlaundry/services/registration/registrationService.dart';
 import '../../models/user.dart';
 

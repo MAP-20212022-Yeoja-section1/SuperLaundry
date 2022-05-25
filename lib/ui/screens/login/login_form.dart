@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:map_mvvm/view.dart';
+import 'package:superlaundry/ui/screens/home_customer/mainmenu_screen.dart';
 import 'package:superlaundry/ui/screens/home_deliveryman/mainmenuD_screen.dart';
+import 'package:superlaundry/ui/screens/home_manager/mainmenuM_screen.dart';
 import 'package:superlaundry/ui/screens/registration/registration_screen.dart';
 import 'package:superlaundry/ui/screens/login/login_viewmodel.dart';
 import '../forgot_pass/forgot_pass_screen.dart';
@@ -113,17 +115,36 @@ class LoginForm_ extends State<LoginForm> {
                                 msg = await viewmodel.logIn(
                                     email: emailController.text,
                                     password: passwordController.text);
-
-                                if (msg != "Login successful!") {
+                                
+                                if(msg=="Customer"){
+                                  Navigator.of(context).pushReplacement(
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              mainMenuScreen()));
                                   Fluttertoast.showToast(
                                     msg: msg,
                                     toastLength: Toast.LENGTH_LONG,
                                     gravity: ToastGravity.BOTTOM,
                                     fontSize: 16,
                                     backgroundColor:
-                                        Color.fromARGB(255, 235, 79, 68),
+                                        Color.fromARGB(255, 69, 161, 76),
                                   );
-                                } else {
+                                }
+                                else if(msg=="Manager"){
+                                  Navigator.of(context).pushReplacement(
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              mainMenuMScreen()));
+                                  Fluttertoast.showToast(
+                                    msg: msg,
+                                    toastLength: Toast.LENGTH_LONG,
+                                    gravity: ToastGravity.BOTTOM,
+                                    fontSize: 16,
+                                    backgroundColor:
+                                        Color.fromARGB(255, 69, 161, 76),
+                                  );
+                                }
+                                else if(msg=="Deliveryman"){
                                   Navigator.of(context).pushReplacement(
                                       MaterialPageRoute(
                                           builder: (context) =>
@@ -136,6 +157,38 @@ class LoginForm_ extends State<LoginForm> {
                                     backgroundColor:
                                         Color.fromARGB(255, 69, 161, 76),
                                   );
+                                }else{
+                                  Fluttertoast.showToast(
+                                    msg: msg,
+                                    toastLength: Toast.LENGTH_LONG,
+                                    gravity: ToastGravity.BOTTOM,
+                                    fontSize: 16,
+                                    backgroundColor:
+                                        Color.fromARGB(255, 235, 79, 68),
+                                  );
+
+                                // if (msg != "Login successful!") {
+                                //   Fluttertoast.showToast(
+                                //     msg: msg,
+                                //     toastLength: Toast.LENGTH_LONG,
+                                //     gravity: ToastGravity.BOTTOM,
+                                //     fontSize: 16,
+                                //     backgroundColor:
+                                //         Color.fromARGB(255, 235, 79, 68),
+                                //   );
+                                // } else {
+                                //   Navigator.of(context).pushReplacement(
+                                //       MaterialPageRoute(
+                                //           builder: (context) =>
+                                //               mainMenuDScreen()));
+                                //   Fluttertoast.showToast(
+                                //     msg: msg,
+                                //     toastLength: Toast.LENGTH_LONG,
+                                //     gravity: ToastGravity.BOTTOM,
+                                //     fontSize: 16,
+                                //     backgroundColor:
+                                //         Color.fromARGB(255, 69, 161, 76),
+                                //   );
                                 }
                               }
                             },
