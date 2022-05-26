@@ -1,5 +1,13 @@
-// import 'package:map_mvvm/viewmodel.dart';
+import 'package:map_mvvm/viewmodel.dart';
+import '../../../app/service_locator.dart';
+import '../../../services/logout/logout_service.dart';
 
-// import '../../../app/service_locator.dart';
+class MenumViewmodel extends Viewmodel {
+  LogoutService get _logoutService => locator<LogoutService>();
+  String msg = '';
 
-// class MenuMViewmodel extends Viewmodel {}
+  Future<String> logoutUser() async {
+    msg = await _logoutService.logoutUser();
+    return msg;
+  }
+}

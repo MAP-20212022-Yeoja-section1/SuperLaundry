@@ -41,6 +41,8 @@ dependencies:
   map_mvvm:
     path: packages/map_mvvm
   meta: ^1.4.0
+  provider: ^6.0.2
+  shared_preferences: ^2.0.13
 
 # Run commands at terminal to generate splash screen
 # 1) flutter clean
