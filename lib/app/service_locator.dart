@@ -1,7 +1,7 @@
 import 'package:map_mvvm/service_locator.dart';
 import 'package:superlaundry/services/logout/logout_service.dart';
 import 'package:superlaundry/services/registration/registrationService.dart';
-import 'package:superlaundry/services/registration/registration_service.dart';
+import 'package:superlaundry/services/registration/registration_serviceFB.dart';
 import 'package:superlaundry/ui/screens/home_customer/mainmenu_app_bar.dart';
 import 'package:superlaundry/ui/screens/home_customer/mainmenu_viewmodel.dart';
 import 'package:superlaundry/ui/screens/home_deliveryman/mainmenuD_viewmodel.dart';

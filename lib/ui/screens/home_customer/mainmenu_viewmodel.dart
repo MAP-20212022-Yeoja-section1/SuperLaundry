@@ -6,7 +6,7 @@ class MenuViewmodel extends Viewmodel {
   LogoutService get _logoutService => locator<LogoutService>();
   String msg = '';
 
-  Future<String> logoutUser() async {
+  Future logoutUser() async {
     msg = await _logoutService.logoutUser();
     return msg;
   }
