@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:superlaundry/models/user.dart';
 
@@ -42,22 +41,14 @@ class LoginService {
   }
 
   Future logIn(String email, String password) async {
-  User? user = _auth.currentUser;
-  var id;
-  var role;
-  DocumentSnapshot dataPath;
-  Map<String,dynamic>? fetchRole;
+    // FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+    // User? user = _auth.currentUser;
 
     try {
       await _auth
           .signInWithEmailAndPassword(email: email, password: password)
-          .then((uid) async => {
-            id = user!.uid
-          });
-            dataPath = await FirebaseFirestore.instance.collection("users").doc(id).get();
-            fetchRole = dataPath.data() as Map<String, dynamic>?;
-            role = fetchRole!['role'];
-            return role as String;
+          .then((uid) => {});
+      return "Login successful!";
     } on FirebaseAuthException catch (error) {
       switch (error.code) {
         case "invalid-email":

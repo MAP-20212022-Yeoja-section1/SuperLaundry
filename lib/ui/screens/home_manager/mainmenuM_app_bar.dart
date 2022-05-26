@@ -16,7 +16,6 @@ class mainMenuMAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
     return View<MenumViewmodel>(
         shouldRebuild: false,
         builder: (_, viewmodel) => AppBar(
@@ -61,54 +60,5 @@ class mainMenuMAppBar extends StatelessWidget implements PreferredSizeWidget {
               backgroundColor: Color.fromARGB(255, 31, 215, 169),
               foregroundColor: Colors.white,
             ));
-=======
-    return View<MenuViewmodel>(
-      shouldRebuild: false,
-      builder: (_, viewmodel) => AppBar(
-      title: Text('MAIN MENU'),
-      leading: IconButton(
-        onPressed: () {
-          //Navigator.push(context, MaterialPageRoute(builder: (context)=>ManagerMenu()));
-        },
-        icon: Icon(Icons.person),
-        iconSize: 30.0,
-      ),
-      actions: <Widget>[
-        FlatButton(
-          child: Text(
-            'Logout',
-            style: TextStyle(color: Colors.white, fontSize: 18),
-            ),
-          onPressed: ()async{
-            bool msg = await viewmodel.logoutUser();
-            if(msg){
-              Navigator.of(context).pushReplacement(
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              LoginScreen()));
-              Fluttertoast.showToast(msg: "Logout successful!",
-                toastLength: Toast.LENGTH_LONG,
-                gravity: ToastGravity.BOTTOM,
-                fontSize: 16,
-                backgroundColor: Color.fromARGB(255, 69, 161, 76),
-              );
-            }else{
-              Fluttertoast.showToast(
-                msg: "Logout unsuccessful!",
-                toastLength: Toast.LENGTH_LONG,
-                gravity: ToastGravity.BOTTOM,
-                fontSize: 16,
-                backgroundColor: Color.fromARGB(255, 235, 79, 68)
-              );
-            }
-          },
-        )        
-      ],
-      centerTitle: true,
-      backgroundColor: Color.fromARGB(255, 31, 215, 169),
-      foregroundColor: Colors.white,
-    )
-    );
->>>>>>> 1f7a156be0e9453e50ad79b52fbb9255ea675524
   }
 }
