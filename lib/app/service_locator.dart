@@ -1,11 +1,16 @@
 import 'package:map_mvvm/service_locator.dart';
+import 'package:superlaundry/services/laundryservice/clean_service.dart';
+import 'package:superlaundry/services/laundryservice/washingmachine_service.dart';
 import 'package:superlaundry/services/logout/logout_service.dart';
 import 'package:superlaundry/services/registration/registrationService.dart';
-import 'package:superlaundry/services/registration/registration_serviceFB.dart';
-import 'package:superlaundry/ui/screens/home_customer/mainmenu_app_bar.dart';
+import 'package:superlaundry/services/registration/registration_serviceFirestore.dart';
 import 'package:superlaundry/ui/screens/home_customer/mainmenu_viewmodel.dart';
 import 'package:superlaundry/ui/screens/home_deliveryman/mainmenuD_viewmodel.dart';
 import 'package:superlaundry/ui/screens/home_manager/mainmenuM_viewmodel.dart';
+import 'package:superlaundry/ui/screens/laundry_service/cleanmethod/viewCleanMethod/cleanser_viewmodel.dart';
+import 'package:superlaundry/ui/screens/laundry_service/deliverymethod/viewDeliveryMethod/deliveryser_viewmodel.dart';
+import 'package:superlaundry/ui/screens/laundry_service/washingmachine/viewWashingMachine/washingmachine_viewmodel.dart';
+import '../services/laundryservice/delivery_service.dart';
 import '../ui/screens/home/home_viewmodel.dart';
 import '../ui/screens/registration/registration_viewmodel.dart';
 import 'package:superlaundry/ui/screens/login/login_viewmodel.dart';
@@ -26,15 +31,27 @@ void initializeServiceLocator() => ServiceLocator.init((locator) {
       locator.registerLazySingleton<RegistrationViewmodel>(
           () => RegistrationViewmodel());
       locator.registerLazySingleton<RegisterationService>(
-          () => RegistrationServiceWithFireBase());
+          () => RegistrationServiceWithFirestore());
       locator.registerLazySingleton<LoginViewModel>(() => LoginViewModel());
       locator.registerLazySingleton<LoginService>(() => LoginService());
       locator.registerLazySingleton<ForgotPassViewmodel>(
           () => ForgotPassViewmodel());
       locator.registerLazySingleton<ForgotPasswordService>(
           () => ForgotPasswordService());
-      locator.registerLazySingleton<LogoutService>(() => LogoutService());
+      locator.registerLazySingleton<LogoutService>(() => LogoutServiceMock());
       locator.registerLazySingleton<MenuViewmodel>(() => MenuViewmodel());
       locator.registerLazySingleton<MenudViewmodel>(() => MenudViewmodel());
       locator.registerLazySingleton<MenumViewmodel>(() => MenumViewmodel());
-    });
+      locator.registerLazySingleton<CleanViewmodel>(
+          () => CleanViewmodel());
+      locator.registerLazySingleton<CleanManagementService>(
+          () => CleanManagementServiceMock());
+      locator.registerLazySingleton<DeliveryViewmodel>(
+          () => DeliveryViewmodel());
+      locator.registerLazySingleton<DeliveryManagementService>(
+          () => DeliveryManagementServiceMock());
+      locator.registerLazySingleton<WashingMachineViewmodel>(
+          () => WashingMachineViewmodel());
+      locator.registerLazySingleton<WashingMachineManagementService>(
+          () => WashingMachineManagementServiceMock());
+});

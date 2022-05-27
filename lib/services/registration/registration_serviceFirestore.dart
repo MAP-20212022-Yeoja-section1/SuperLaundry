@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:superlaundry/services/registration/registrationService.dart';
 import '../../models/user.dart';
 
-class RegistrationServiceWithFireBase extends RegisterationService {
+class RegistrationServiceWithFirestore extends RegisterationService {
 
   final _auth = FirebaseAuth.instance;
 

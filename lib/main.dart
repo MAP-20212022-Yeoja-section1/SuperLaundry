@@ -34,6 +34,7 @@ class SuperLaundryApp extends StatelessWidget {
       initialData: null,
       value: LoginService().user,
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: Wrapper(),
       ),
     );

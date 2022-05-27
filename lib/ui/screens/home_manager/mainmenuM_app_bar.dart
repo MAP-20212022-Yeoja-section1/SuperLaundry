@@ -34,10 +34,10 @@ class mainMenuMAppBar extends StatelessWidget implements PreferredSizeWidget {
                     style: TextStyle(color: Colors.white, fontSize: 18),
                   ),
                   onPressed: () async {
-                    String msg = await viewmodel.logoutUser();
-                    if (msg != "Logout successful!") {
+                    dynamic msg = await viewmodel.logoutUser();
+                    if (msg == 100) {
                       Fluttertoast.showToast(
-                          msg: msg,
+                          msg: "Unable to logout",
                           toastLength: Toast.LENGTH_LONG,
                           gravity: ToastGravity.BOTTOM,
                           fontSize: 16,
@@ -46,7 +46,7 @@ class mainMenuMAppBar extends StatelessWidget implements PreferredSizeWidget {
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
                           builder: (context) => LoginScreen()));
                       Fluttertoast.showToast(
-                        msg: msg,
+                        msg: "Logout successfully!",
                         toastLength: Toast.LENGTH_LONG,
                         gravity: ToastGravity.BOTTOM,
                         fontSize: 16,

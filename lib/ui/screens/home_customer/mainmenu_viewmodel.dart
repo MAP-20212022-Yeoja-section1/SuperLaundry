@@ -4,7 +4,7 @@ import '../../../services/logout/logout_service.dart';
 
 class MenuViewmodel extends Viewmodel {
   LogoutService get _logoutService => locator<LogoutService>();
-  String msg = '';
+  dynamic msg = '';
 
   Future logoutUser() async {
     msg = await _logoutService.logoutUser();
