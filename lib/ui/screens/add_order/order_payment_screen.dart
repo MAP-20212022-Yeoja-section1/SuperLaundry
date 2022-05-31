@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:map_mvvm/map_mvvm.dart';
-import 'package:stripe_payment/stripe_payment.dart';
+// import 'package:stripe_payment/stripe_payment.dart';
 // import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:http/http.dart' as http;
 import 'package:superlaundry/services/add_order/order_payment_service.dart';
@@ -54,7 +54,7 @@ class OrderPaymentScreen extends StatefulWidget {
   // const OrderPaymentScreen({Key? key, @required this.deliveryMethod})
   //     : super(key: key);
 
-  PaymentMethod? paymentMethod;
+  // PaymentMethod? paymentMethod;
 }
 
 class _orderPaymentScreenState extends State<OrderPaymentScreen> {
@@ -70,7 +70,7 @@ class _orderPaymentScreenState extends State<OrderPaymentScreen> {
   String date;
   String time;
   String address;
-  PaymentMethod? paymentMethod;
+  // PaymentMethod? paymentMethod;
 
   _orderPaymentScreenState(
       this.date,
@@ -85,11 +85,11 @@ class _orderPaymentScreenState extends State<OrderPaymentScreen> {
       this.washingMachinePrice,
       this.totalPrice);
 
-  @override
-  void initState() {
-    super.initState();
-    OrderPaymentService.init();
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   OrderPaymentService.init();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -142,8 +142,8 @@ class _orderPaymentScreenState extends State<OrderPaymentScreen> {
                   Container(
                     padding: EdgeInsets.only(top: 180.0),
                     child: GridView.count(crossAxisCount: 2, children: <Widget>[
-                      Card(
-                        margin: EdgeInsets.all(30.0),
+                      Padding(
+                        padding: EdgeInsets.all(30.0),
                         child: InkWell(
                             onTap: () async {
                               await viewmodel.createOrder(
@@ -173,8 +173,8 @@ class _orderPaymentScreenState extends State<OrderPaymentScreen> {
                               ],
                             ))),
                       ),
-                      Card(
-                        margin: EdgeInsets.all(30.0),
+                      Padding(
+                        padding: EdgeInsets.all(30.0),
                         child: InkWell(
                             onTap: () async {
                               var msg = await viewmodel.createOrder(
@@ -186,9 +186,10 @@ class _orderPaymentScreenState extends State<OrderPaymentScreen> {
                                   waterTemperature: waterTemperature,
                                   address: address,
                                   totalPrice: totalPrice);
-                              paymentMethod = await OrderPaymentService()
-                                  .createPaymentMethod();
-                              print(paymentMethod!.id);
+                              userSubmit();
+                              // paymentMethod = await OrderPaymentService()
+                              //     .createPaymentMethod();
+                              // print(paymentMethod!.id);
                               if (msg == 101) {
                                 Fluttertoast.showToast(
                                   msg:
@@ -235,8 +236,7 @@ class _orderPaymentScreenState extends State<OrderPaymentScreen> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: new Text(
-                'Order submitted! Please pay the exact amount of your total price.'),
+            title: new Text('Order submitted! '),
             actions: <Widget>[
               TextButton(
                 child: new Text("OK"),
