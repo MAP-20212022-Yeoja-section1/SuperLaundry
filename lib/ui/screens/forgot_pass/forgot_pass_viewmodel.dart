@@ -8,9 +8,9 @@ class ForgotPassViewmodel extends Viewmodel {
   ForgotPasswordService get _forgotPasswordService =>
       locator<ForgotPasswordService>();
 
-  String msg = "";
+  var msg = 101;
 
-  Future<String> resetPassword({
+  Future resetPassword({
     @required email,
   }) async {
     msg = await _forgotPasswordService.resetPassword(email);

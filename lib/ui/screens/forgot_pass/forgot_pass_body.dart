@@ -20,7 +20,7 @@ class ForgotPassBody extends StatefulWidget {
 class _ForgotPassBody extends State<ForgotPassBody> {
   final _formKey = GlobalKey<FormState>();
   late String txtemail;
-  String msg = "";
+  var msg = 101;
 
   final emailController = TextEditingController();
 
@@ -138,10 +138,11 @@ class _ForgotPassBody extends State<ForgotPassBody> {
                                   if (_formKey.currentState!.validate()) {
                                     msg = await viewmodel.resetPassword(
                                         email: emailController.text);
-                                    if (msg != "Password reset email sent!") {
+                                    if (msg != 101) {
                                       //integer (const value) variable name
                                       Fluttertoast.showToast(
-                                        msg: msg,
+                                        msg:
+                                            ("Invalid email, please insert your registered email!"),
                                         toastLength: Toast.LENGTH_LONG,
                                         gravity: ToastGravity.BOTTOM,
                                         fontSize: 16,
@@ -150,7 +151,8 @@ class _ForgotPassBody extends State<ForgotPassBody> {
                                       );
                                     } else {
                                       Fluttertoast.showToast(
-                                        msg: msg,
+                                        msg:
+                                            ("Your reset password email has been sent!"),
                                         backgroundColor:
                                             Color.fromARGB(255, 29, 233, 182),
                                       );
