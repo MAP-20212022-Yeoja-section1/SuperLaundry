@@ -19,6 +19,9 @@ import 'package:superlaundry/ui/screens/login/login_viewmodel.dart';
 import 'package:superlaundry/services/registration/login_service.dart';
 import 'package:superlaundry/services/forgot_pass/forgot_pass_service.dart';
 import '../ui/screens/forgot_pass/forgot_pass_viewmodel.dart';
+import '../ui/screens/add_order/add_order_viewmodel.dart';
+import 'package:superlaundry/services/add_order/add_order_service.dart';
+import 'package:superlaundry/services/add_order/add_order_serviceFB.dart';
 
 //import '../services/services.dart';
 
@@ -55,4 +58,8 @@ void initializeServiceLocator() => ServiceLocator.init((locator) {
           () => WashingMachineViewmodel());
       locator.registerLazySingleton<WashingMachineManagementService>(
           () => WashingMachineManagementServiceMock());
+      locator
+          .registerLazySingleton<AddOrderViewmodel>(() => AddOrderViewmodel());
+      locator.registerLazySingleton<AddOrderService>(
+          () => AddOrderServiceWithFireBase());
     });
