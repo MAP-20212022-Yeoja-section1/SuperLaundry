@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:map_mvvm/viewmodel.dart';
 import 'package:meta/meta.dart';
 import 'package:superlaundry/models/cleanMethodModel.dart';
@@ -28,6 +29,12 @@ class AddOrderViewmodel extends Viewmodel {
     return totalPrice;
   }
 
+  Future getAddress() async {
+    var address;
+    address = await _addOrderService.getAddress().toString();
+    return address;
+  }
+
   Future createOrder(
       {@required deliveryMethod,
       @required date,
@@ -37,26 +44,8 @@ class AddOrderViewmodel extends Viewmodel {
       @required waterTemperature,
       @required address,
       @required totalPrice}) async {
-    try {
-      final docOrders = FirebaseFirestore.instance.collection('orders').doc();
-      final ordersModel = OrdersModel(
-        orderId: docOrders.id,
-        deliveryMethod: deliveryMethod,
-        date: date,
-        time: time,
-        cleanMethod: cleanMethod,
-        weight: weight,
-        waterTemperature: waterTemperature,
-        address: address,
-        totalPrice: totalPrice,
-      );
-
-      final map = ordersModel.toJson();
-      await docOrders.set(map);
-      return 200;
-    } on Exception catch (e) {
-      return 101;
-    }
+    await _addOrderService.createOrder(deliveryMethod, date, time, cleanMethod,
+        weight, waterTemperature, address, totalPrice);
   }
 
   Stream<List<CleanMethodModel>> readCleanMethods() {

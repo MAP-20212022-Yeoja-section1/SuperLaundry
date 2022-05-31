@@ -6,6 +6,8 @@ import '../../models/orders.dart';
 
 class AddOrderServiceWithFireBase extends AddOrderService {
   final _auth = FirebaseAuth.instance;
+  final CollectionReference _userCollection =
+      FirebaseFirestore.instance.collection('users');
 
   @override
   Future getWashingMachinePrice(String weight, String waterTemperature) async {
@@ -70,6 +72,22 @@ class AddOrderServiceWithFireBase extends AddOrderService {
   }
 
   @override
+  Future<Map> getAddress() async {
+    final FirebaseAuth auth = FirebaseAuth.instance;
+    final User? user = auth.currentUser;
+    final uid = user!.uid;
+    var data;
+    var res = await _userCollection.doc(uid).get().then((value) {
+      data = {
+        'address': value['homeaddress'],
+      };
+      print(data);
+      return data;
+    });
+    return res;
+  }
+
+  @override
   Future createOrder(
       String deliveryMethod,
       String date,
@@ -79,9 +97,6 @@ class AddOrderServiceWithFireBase extends AddOrderService {
       String waterTemperature,
       String address,
       double totalPrice) async {
-    // await postDetailsToFirestore(deliveryMethod, date, time, cleanMethod,
-    //     weight, waterTemperature, address, totalPrice);
-
     try {
       final docOrders = FirebaseFirestore.instance.collection('orders').doc();
       final ordersModel = OrdersModel(
@@ -98,10 +113,48 @@ class AddOrderServiceWithFireBase extends AddOrderService {
 
       final map = ordersModel.toJson();
       await docOrders.set(map);
+
+      final FirebaseAuth auth = FirebaseAuth.instance;
+      final User? user = auth.currentUser;
+      final uid = user!.uid;
+
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(uid)
+          .collection('order')
+          .add(map);
+
+      // await addOrderToUser(docOrders.id, deliveryMethod, date, time,
+      //     cleanMethod, weight, waterTemperature, address, totalPrice);
+
       return 200;
     } on Exception catch (e) {
       return 101;
     }
+  }
+
+  @override
+  addOrderToUser(
+      String? id,
+      String deliveryMethod,
+      String date,
+      String time,
+      String cleanMethod,
+      String weight,
+      String waterTemperature,
+      String address,
+      double totalPrice) async {
+    _userCollection.doc(id).collection('order').add({
+      'orderId': id,
+      'deliveryMethod': deliveryMethod,
+      'date': date,
+      'time': time,
+      'cleanMethod': cleanMethod,
+      'weight': weight,
+      'waterTemperature': waterTemperature,
+      'address': address,
+      'totalPrice': totalPrice
+    });
   }
 
   // postDetailsToFirestore(

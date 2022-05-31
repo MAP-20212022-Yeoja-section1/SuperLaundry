@@ -9,6 +9,7 @@ import 'package:superlaundry/models/orders.dart';
 import 'package:superlaundry/models/cleanMethodModel.dart';
 import 'package:superlaundry/ui/screens/add_order/order_payment_screen.dart';
 import '../../screens/add_order/add_order_viewmodel.dart';
+import 'package:intl/intl.dart';
 
 class AddOrderBody extends StatefulWidget {
   static Route route() => MaterialPageRoute(builder: (_) => AddOrderBody());
@@ -38,8 +39,6 @@ class _AddOrderBody extends State<AddOrderBody> {
   String time = "";
   double deliveryMethodPrice = 0.0;
   double cleanMethodPrice = 0.0;
-  // double weightPrice = 0.0;
-  // double waterTemperaturePrice = 0.0;
   double washingMachinePrice = 0.0;
   double totalPrice = 0.0;
 
@@ -48,23 +47,6 @@ class _AddOrderBody extends State<AddOrderBody> {
     return View<AddOrderViewmodel>(
         shouldRebuild: false,
         builder: (_, viewmodel) => Stack(children: <Widget>[
-              // StreamBuilder<List<CleanMethodModel>>(
-              //   stream: viewmodel.readCleanMethods(),
-              //   builder: (context, snapshot) {
-              //     if (snapshot.hasError) {
-              //       return Text('Something went wrong!');
-              //     } else if (snapshot.hasData) {
-              //       final cleanMethodModel = snapshot.data!;
-
-              //       return ListView(
-              //         scrollDirection: Axis.horizontal,
-              //         children: cleanMethodModel.map(buildCleanMethod).toList(),
-              //       );
-              //     } else {
-              //       return Center(child: CircularProgressIndicator());
-              //     }
-              //   },
-              // ),
               Container(
                 child: SingleChildScrollView(
                   padding: const EdgeInsets.fromLTRB(20.0, 1.0, 20.0, 1.0),
@@ -364,10 +346,14 @@ class _AddOrderBody extends State<AddOrderBody> {
                                     activeColor:
                                         Color.fromARGB(255, 31, 215, 169),
                                     value: this.valuefirst,
-                                    onChanged: (bool? value) {
-                                      setState(() {
-                                        this.valuefirst = value;
-                                      });
+                                    onChanged: (bool? value) async {
+                                      this.valuefirst = true;
+                                      if (value == true) {
+                                        address = await viewmodel
+                                            .getAddress()
+                                            .toString();
+                                      }
+                                      setState(() {});
                                     }),
                                 Text(
                                   'Default address',
@@ -386,15 +372,10 @@ class _AddOrderBody extends State<AddOrderBody> {
                                     controller: addressController,
                                     decoration: const InputDecoration(
                                         labelText: 'New address'),
-                                    validator: (value) {
-                                      if (addressController.text.isEmpty) {
-                                        return "Enter the address for delivery/pickup purposes";
-                                      }
-                                      return null;
-                                    },
-                                    onSaved: (value) {
-                                      addressController.text = value!;
-                                    },
+
+                                    // onSaved: (value) {
+                                    //   addressController.text = value!;
+                                    // },
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.fromLTRB(
@@ -429,9 +410,7 @@ class _AddOrderBody extends State<AddOrderBody> {
                                                             dateController.text,
                                                         time:
                                                             timeController.text,
-                                                        address:
-                                                            addressController
-                                                                .text,
+                                                        address: address,
                                                         deliveryMethod:
                                                             deliveryMethod,
                                                         deliveryMethodPrice:
