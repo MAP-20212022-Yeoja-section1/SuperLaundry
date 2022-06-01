@@ -125,7 +125,7 @@ class EditWashingMachineDetailsState extends State<EditWashingMachineDetails>{
                   onPressed: ()async {
                     if (_formKey.currentState!.validate()){
                       
-                      var msg = await viewmodel.editWashingMachine(wmid: widget.editpost.wmId, weight: double.parse(wmWeightController.text),
+                      dynamic msg = await viewmodel.editWashingMachine(wmid: widget.editpost.wmId, weight: double.parse(wmWeightController.text),
                       cold: double.parse(wmColdController.text),warm: double.parse(wmWarmController.text),
                       hot: double.parse(wmHotController.text));
                       

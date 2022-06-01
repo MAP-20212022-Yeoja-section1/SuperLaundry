@@ -79,7 +79,7 @@ class AddCleanMethodState extends State<AddCleanMethod>{
                   onPressed: ()async {
                     if (_formKey.currentState!.validate()){
                       
-                      var msg = await viewmodel.addCleanMethod(cmname: cmnameController.text, 
+                      dynamic msg = await viewmodel.addCleanMethod(cmname: cmnameController.text, 
                       cmprice: double.parse(cmpriceController.text));
                       
                       if(msg==100){

@@ -13,7 +13,7 @@ class RegistrationServiceWithFirestore extends RegisterationService {
     await _auth.createUserWithEmailAndPassword(email: email, password: password)
     .then((value) => {
       postDetailsToFirestore(name, phonenum, homeaddress, email, password, role)
-    }); return 0;
+    }); return 200;
     } on FirebaseAuthException catch (e){
 
         return 100;
