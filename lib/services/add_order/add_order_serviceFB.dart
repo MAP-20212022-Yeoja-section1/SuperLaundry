@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:superlaundry/models/cleanMethodModel.dart';
 import 'package:superlaundry/services/add_order/add_order_service.dart';
 import '../../models/orders.dart';
+import '../../../app/failures.dart';
 
 class AddOrderServiceWithFireBase extends AddOrderService {
   final _auth = FirebaseAuth.instance;
@@ -79,7 +80,7 @@ class AddOrderServiceWithFireBase extends AddOrderService {
     var data;
     var res = await _userCollection.doc(uid).get().then((value) {
       data = {
-        'address': value['homeaddress'],
+        'address': value['homeaddress'].toString(),
       };
       print(data);
       return data;
@@ -98,8 +99,13 @@ class AddOrderServiceWithFireBase extends AddOrderService {
       String address,
       double totalPrice) async {
     try {
+      final FirebaseAuth auth = FirebaseAuth.instance;
+      final User? user = auth.currentUser;
+      final uid = user!.uid;
+
       final docOrders = FirebaseFirestore.instance.collection('orders').doc();
       final ordersModel = OrdersModel(
+        userId: user.uid,
         orderId: docOrders.id,
         deliveryMethod: deliveryMethod,
         date: date,
@@ -114,50 +120,26 @@ class AddOrderServiceWithFireBase extends AddOrderService {
       final map = ordersModel.toJson();
       await docOrders.set(map);
 
-      final FirebaseAuth auth = FirebaseAuth.instance;
-      final User? user = auth.currentUser;
-      final uid = user!.uid;
+      // final FirebaseAuth auth = FirebaseAuth.instance;
+      // final User? user = auth.currentUser;
+      // final uid = user!.uid;
 
-      await FirebaseFirestore.instance
-          .collection('users')
-          .doc(uid)
-          .collection('order')
-          .add(map);
+      //insert order in the 'order' sub-collection inside 'users' collection if FS
+      // await FirebaseFirestore.instance
+      //     .collection('users')
+      //     .doc(uid)
+      //     .collection('order')
+      //     .add(map);
 
-      // await addOrderToUser(docOrders.id, deliveryMethod, date, time,
-      //     cleanMethod, weight, waterTemperature, address, totalPrice);
-
-      return 200;
+      return Failures.submitOrderSucceed;
     } on Exception catch (e) {
-      return 101;
+      return Failures.submitFail;
     }
   }
 
-  @override
-  addOrderToUser(
-      String? id,
-      String deliveryMethod,
-      String date,
-      String time,
-      String cleanMethod,
-      String weight,
-      String waterTemperature,
-      String address,
-      double totalPrice) async {
-    _userCollection.doc(id).collection('order').add({
-      'orderId': id,
-      'deliveryMethod': deliveryMethod,
-      'date': date,
-      'time': time,
-      'cleanMethod': cleanMethod,
-      'weight': weight,
-      'waterTemperature': waterTemperature,
-      'address': address,
-      'totalPrice': totalPrice
-    });
-  }
-
-  // postDetailsToFirestore(
+  // @override
+  // addOrderToUser(
+  //     String? id,
   //     String deliveryMethod,
   //     String date,
   //     String time,
@@ -166,20 +148,17 @@ class AddOrderServiceWithFireBase extends AddOrderService {
   //     String waterTemperature,
   //     String address,
   //     double totalPrice) async {
-  //   FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-
-  //   OrdersModel ordersModel = OrdersModel();
-
-  //   ordersModel.deliveryMethod = deliveryMethod;
-  //   ordersModel.date = date;
-  //   ordersModel.time = time;
-  //   ordersModel.cleanMethod = cleanMethod;
-  //   ordersModel.weight = weight;
-  //   ordersModel.waterTemperature = waterTemperature;
-  //   ordersModel.address = address;
-  //   ordersModel.totalPrice = totalPrice;
-
-  //   await firebaseFirestore.collection('orders').doc().set(ordersModel.toMap());
+  //   _userCollection.doc(id).collection('order').add({
+  //     'orderId': id,
+  //     'deliveryMethod': deliveryMethod,
+  //     'date': date,
+  //     'time': time,
+  //     'cleanMethod': cleanMethod,
+  //     'weight': weight,
+  //     'waterTemperature': waterTemperature,
+  //     'address': address,
+  //     'totalPrice': totalPrice
+  //   });
   // }
 
   Stream<List<CleanMethodModel>> readCleanMethods() =>

@@ -2,13 +2,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:map_mvvm/viewmodel.dart';
 import 'package:meta/meta.dart';
+import 'package:superlaundry/app/failures.dart';
 import 'package:superlaundry/models/cleanMethodModel.dart';
 import '../../../models/orders.dart';
 import '../../../app/service_locator.dart';
 import '../../../services/add_order/add_order_service.dart';
+import '../../../app/failures.dart';
 
 class AddOrderViewmodel extends Viewmodel {
   AddOrderService get _addOrderService => locator<AddOrderService>();
+
   double totalPrice = 0.0;
   double washingMachinePrice = 0.0;
 
@@ -46,6 +49,7 @@ class AddOrderViewmodel extends Viewmodel {
       @required totalPrice}) async {
     await _addOrderService.createOrder(deliveryMethod, date, time, cleanMethod,
         weight, waterTemperature, address, totalPrice);
+    return Failures;
   }
 
   Stream<List<CleanMethodModel>> readCleanMethods() {

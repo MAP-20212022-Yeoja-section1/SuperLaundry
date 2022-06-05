@@ -47,6 +47,23 @@ class _AddOrderBody extends State<AddOrderBody> {
     return View<AddOrderViewmodel>(
         shouldRebuild: false,
         builder: (_, viewmodel) => Stack(children: <Widget>[
+              // StreamBuilder<List<CleanMethodModel>>(
+              //   stream: viewmodel.readCleanMethods(),
+              //   builder: (context, snapshot) {
+              //     if (snapshot.hasError) {
+              //       return Text('Something went wrong!');
+              //     } else if (snapshot.hasData) {
+              //       final cleanMethodModel = snapshot.data!;
+
+              //       return ListView(
+              //         scrollDirection: Axis.horizontal,
+              //         children: cleanMethodModel.map(buildCleanMethod).toList(),
+              //       );
+              //     } else {
+              //       return Center(child: CircularProgressIndicator());
+              //     }
+              //   },
+              // ),
               Container(
                 child: SingleChildScrollView(
                   padding: const EdgeInsets.fromLTRB(20.0, 1.0, 20.0, 1.0),
@@ -111,6 +128,9 @@ class _AddOrderBody extends State<AddOrderBody> {
                               'Date & time',
                               style: Theme.of(context).textTheme.bodyLarge,
                             ),
+                            // Text(
+                            //   DateFormat('yyyy-MM-dd').format(DateTime.now()),
+                            // ),
                             _buildTextFormField(
                                 dateController, context, 'Date', "YYYY/MM/DD"),
                             _buildTextFormField(
@@ -349,7 +369,7 @@ class _AddOrderBody extends State<AddOrderBody> {
                                     onChanged: (bool? value) async {
                                       this.valuefirst = true;
                                       if (value == true) {
-                                        address = await viewmodel
+                                        addressController.text = await viewmodel
                                             .getAddress()
                                             .toString();
                                       }
@@ -372,9 +392,8 @@ class _AddOrderBody extends State<AddOrderBody> {
                                     controller: addressController,
                                     decoration: const InputDecoration(
                                         labelText: 'New address'),
-
                                     // onSaved: (value) {
-                                    //   addressController.text = value!;
+                                    //   address = addressController.text;
                                     // },
                                   ),
                                   Padding(
@@ -410,7 +429,9 @@ class _AddOrderBody extends State<AddOrderBody> {
                                                             dateController.text,
                                                         time:
                                                             timeController.text,
-                                                        address: address,
+                                                        address:
+                                                            addressController
+                                                                .text,
                                                         deliveryMethod:
                                                             deliveryMethod,
                                                         deliveryMethodPrice:
@@ -427,7 +448,7 @@ class _AddOrderBody extends State<AddOrderBody> {
                                                         totalPrice:
                                                             totalPrice)));
                                       },
-                                      child: Text('Submit'),
+                                      child: Text('Next'),
                                       textColor: Colors.white,
                                       color: Color.fromARGB(255, 31, 215, 169),
                                       focusColor:
