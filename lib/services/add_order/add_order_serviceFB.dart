@@ -99,7 +99,8 @@ class AddOrderServiceWithFireBase extends AddOrderService {
       String address,
       double totalPrice,
       String orderStatus,
-      String statusTime) async {
+      String statusTime,
+      String paymentMethod) async {
     try {
       final FirebaseAuth auth = FirebaseAuth.instance;
       final User? user = auth.currentUser;
@@ -107,19 +108,19 @@ class AddOrderServiceWithFireBase extends AddOrderService {
 
       final docOrders = FirebaseFirestore.instance.collection('orders').doc();
       final ordersModel = OrdersModel(
-        userId: user.uid,
-        orderId: docOrders.id,
-        deliveryMethod: deliveryMethod,
-        date: date,
-        time: time,
-        cleanMethod: cleanMethod,
-        weight: weight,
-        waterTemperature: waterTemperature,
-        address: address,
-        totalPrice: totalPrice,
-        orderStatus: orderStatus,
-        statusTime: statusTime,
-      );
+          userId: user.uid,
+          orderId: docOrders.id,
+          deliveryMethod: deliveryMethod,
+          date: date,
+          time: time,
+          cleanMethod: cleanMethod,
+          weight: weight,
+          waterTemperature: waterTemperature,
+          address: address,
+          totalPrice: totalPrice,
+          orderStatus: orderStatus,
+          statusTime: statusTime,
+          paymentMethod: paymentMethod);
 
       final map = ordersModel.toJson();
       await docOrders.set(map);

@@ -13,6 +13,7 @@ class OrdersModel {
   double totalPrice;
   String orderStatus;
   String statusTime;
+  String paymentMethod;
 
   OrdersModel({
     this.userId = "",
@@ -27,6 +28,7 @@ class OrdersModel {
     this.totalPrice = 0.0,
     this.orderStatus = "",
     this.statusTime = "",
+    this.paymentMethod = "",
   });
 
   factory OrdersModel.fromMap(map) {
@@ -42,7 +44,8 @@ class OrdersModel {
         address: map["address"],
         totalPrice: map["totalPrice"],
         orderStatus: map["orderStatus"],
-        statusTime: map["statusTime"]);
+        statusTime: map["statusTime"],
+        paymentMethod: map['paymentMethod']);
   }
 
   Map<String, dynamic> toMap() {
@@ -58,7 +61,8 @@ class OrdersModel {
       "address": address,
       "totalPrice": totalPrice,
       "orderStatus": orderStatus,
-      "statusTime": statusTime
+      "statusTime": statusTime,
+      "paymentMethod": paymentMethod
     };
   }
 
@@ -74,7 +78,8 @@ class OrdersModel {
         "address": address,
         "totalPrice": totalPrice,
         "orderStatus": orderStatus,
-        "statusTime": statusTime
+        "statusTime": statusTime,
+        "paymentMethod": paymentMethod
       };
 
   static OrdersModel fromJson(Map<String, dynamic> json) => OrdersModel(
@@ -89,5 +94,6 @@ class OrdersModel {
       address: json["address"],
       totalPrice: json["totalPrice"],
       orderStatus: json["orderStatus"],
-      statusTime: json["statusTime"]);
+      statusTime: json["statusTime"],
+      paymentMethod: json['paymentMethod']);
 }

@@ -15,7 +15,8 @@ abstract class AddOrderService {
       String address,
       double totalPrice,
       String orderStatus,
-      String statusTime);
+      String statusTime,
+      String paymentMethod);
 
   Future calcTotalPrice(double deliveryMethodPrice, double cleanMethodPrice,
       String weight, String waterTemperature);

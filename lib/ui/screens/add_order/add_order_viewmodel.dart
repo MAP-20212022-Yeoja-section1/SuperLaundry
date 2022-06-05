@@ -48,9 +48,20 @@ class AddOrderViewmodel extends Viewmodel {
       @required address,
       @required totalPrice,
       @required orderStatus,
-      @required statusTime}) async {
-    await _addOrderService.createOrder(deliveryMethod, date, time, cleanMethod,
-        weight, waterTemperature, address, totalPrice, orderStatus, statusTime);
+      @required statusTime,
+      @required paymentMethod}) async {
+    await _addOrderService.createOrder(
+        deliveryMethod,
+        date,
+        time,
+        cleanMethod,
+        weight,
+        waterTemperature,
+        address,
+        totalPrice,
+        orderStatus,
+        statusTime,
+        paymentMethod);
     return Failures;
   }
 

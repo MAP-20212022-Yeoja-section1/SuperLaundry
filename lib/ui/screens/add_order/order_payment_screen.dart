@@ -73,6 +73,7 @@ class _orderPaymentScreenState extends State<OrderPaymentScreen> {
   // PaymentMethod? paymentMethod;
   String orderStatus = "SENT";
   String statusTime = DateTime.now().toString();
+  String paymentMethod = "";
 
   _orderPaymentScreenState(
       this.date,
@@ -148,6 +149,7 @@ class _orderPaymentScreenState extends State<OrderPaymentScreen> {
                         padding: EdgeInsets.all(30.0),
                         child: InkWell(
                             onTap: () async {
+                              paymentMethod = "Cash";
                               await viewmodel.createOrder(
                                   deliveryMethod: deliveryMethod,
                                   date: date,
@@ -158,7 +160,8 @@ class _orderPaymentScreenState extends State<OrderPaymentScreen> {
                                   address: address,
                                   totalPrice: totalPrice,
                                   orderStatus: orderStatus,
-                                  statusTime: statusTime);
+                                  statusTime: statusTime,
+                                  paymentMethod: paymentMethod);
                               userSubmit();
                             },
                             splashColor: Colors.green,
@@ -181,6 +184,7 @@ class _orderPaymentScreenState extends State<OrderPaymentScreen> {
                         padding: EdgeInsets.all(30.0),
                         child: InkWell(
                             onTap: () async {
+                              paymentMethod = "Debit/Credit Card";
                               var msg = await viewmodel.createOrder(
                                   deliveryMethod: deliveryMethod,
                                   date: date,
@@ -191,7 +195,8 @@ class _orderPaymentScreenState extends State<OrderPaymentScreen> {
                                   address: address,
                                   totalPrice: totalPrice,
                                   orderStatus: orderStatus,
-                                  statusTime: statusTime);
+                                  statusTime: statusTime,
+                                  paymentMethod: paymentMethod);
                               userSubmit();
                               // paymentMethod = await OrderPaymentService()
                               //     .createPaymentMethod();
