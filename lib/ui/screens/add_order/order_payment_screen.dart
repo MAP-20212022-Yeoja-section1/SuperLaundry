@@ -1,12 +1,12 @@
 // import 'dart:js';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:map_mvvm/map_mvvm.dart';
 // import 'package:stripe_payment/stripe_payment.dart';
 // import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:http/http.dart' as http;
-import 'package:superlaundry/services/add_order/order_payment_service.dart';
 import 'package:superlaundry/ui/screens/add_order/order_payment_app_bar.dart';
 import '../../screens/add_order/add_order_viewmodel.dart';
 
@@ -71,6 +71,8 @@ class _orderPaymentScreenState extends State<OrderPaymentScreen> {
   String time;
   String address;
   // PaymentMethod? paymentMethod;
+  String orderStatus = "SENT";
+  String statusTime = DateTime.now().toString();
 
   _orderPaymentScreenState(
       this.date,
@@ -154,7 +156,9 @@ class _orderPaymentScreenState extends State<OrderPaymentScreen> {
                                   weight: weight,
                                   waterTemperature: waterTemperature,
                                   address: address,
-                                  totalPrice: totalPrice);
+                                  totalPrice: totalPrice,
+                                  orderStatus: orderStatus,
+                                  statusTime: statusTime);
                               userSubmit();
                             },
                             splashColor: Colors.green,
@@ -185,7 +189,9 @@ class _orderPaymentScreenState extends State<OrderPaymentScreen> {
                                   weight: weight,
                                   waterTemperature: waterTemperature,
                                   address: address,
-                                  totalPrice: totalPrice);
+                                  totalPrice: totalPrice,
+                                  orderStatus: orderStatus,
+                                  statusTime: statusTime);
                               userSubmit();
                               // paymentMethod = await OrderPaymentService()
                               //     .createPaymentMethod();

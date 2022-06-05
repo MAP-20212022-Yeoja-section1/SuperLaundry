@@ -11,18 +11,23 @@ class OrdersModel {
   String waterTemperature;
   String address;
   double totalPrice;
+  String orderStatus;
+  String statusTime;
 
-  OrdersModel(
-      {this.userId = "",
-      this.orderId = "",
-      this.deliveryMethod = "",
-      this.date = "",
-      this.time = "",
-      this.cleanMethod = "",
-      this.weight = "",
-      this.waterTemperature = "",
-      this.address = "",
-      this.totalPrice = 0.0});
+  OrdersModel({
+    this.userId = "",
+    this.orderId = "",
+    this.deliveryMethod = "",
+    this.date = "",
+    this.time = "",
+    this.cleanMethod = "",
+    this.weight = "",
+    this.waterTemperature = "",
+    this.address = "",
+    this.totalPrice = 0.0,
+    this.orderStatus = "",
+    this.statusTime = "",
+  });
 
   factory OrdersModel.fromMap(map) {
     return OrdersModel(
@@ -35,7 +40,9 @@ class OrdersModel {
         weight: map["weight"],
         waterTemperature: map["waterTemperature"],
         address: map["address"],
-        totalPrice: map["totalPrice"]);
+        totalPrice: map["totalPrice"],
+        orderStatus: map["orderStatus"],
+        statusTime: map["statusTime"]);
   }
 
   Map<String, dynamic> toMap() {
@@ -50,6 +57,8 @@ class OrdersModel {
       "waterTemperature": waterTemperature,
       "address": address,
       "totalPrice": totalPrice,
+      "orderStatus": orderStatus,
+      "statusTime": statusTime
     };
   }
 
@@ -64,6 +73,8 @@ class OrdersModel {
         "waterTemperature": waterTemperature,
         "address": address,
         "totalPrice": totalPrice,
+        "orderStatus": orderStatus,
+        "statusTime": statusTime
       };
 
   static OrdersModel fromJson(Map<String, dynamic> json) => OrdersModel(
@@ -76,5 +87,7 @@ class OrdersModel {
       weight: json["weight"],
       waterTemperature: json["waterTemperature"],
       address: json["address"],
-      totalPrice: json["totalPrice"]);
+      totalPrice: json["totalPrice"],
+      orderStatus: json["orderStatus"],
+      statusTime: json["statusTime"]);
 }

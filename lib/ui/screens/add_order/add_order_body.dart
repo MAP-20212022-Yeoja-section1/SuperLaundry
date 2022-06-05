@@ -131,10 +131,10 @@ class _AddOrderBody extends State<AddOrderBody> {
                             // Text(
                             //   DateFormat('yyyy-MM-dd').format(DateTime.now()),
                             // ),
-                            _buildTextFormField(
-                                dateController, context, 'Date', "YYYY/MM/DD"),
-                            _buildTextFormField(
-                                timeController, context, 'Time', "HH:MM"),
+                            _buildTextFormField(dateController, context, 'Date',
+                                "Month DD,YYYY"),
+                            _buildTextFormField(timeController, context, 'Time',
+                                "HH:MM:SS AM/PM"),
                             SizedBox(
                               height: 20.0,
                             ),
