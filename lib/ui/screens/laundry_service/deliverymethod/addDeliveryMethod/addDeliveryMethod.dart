@@ -78,7 +78,7 @@ class AddDeliveryMethodState extends State<AddDeliveryMethod>{
                   onPressed: ()async {
                     if (_formKey.currentState!.validate()){
                       
-                      var msg = await viewmodel.addDeliveryMethod(dmname: dmnameController.text, 
+                      dynamic msg = await viewmodel.addDeliveryMethod(dmname: dmnameController.text, 
                       dmprice: double.parse(dmpriceController.text));
                       
                       if(msg==100){

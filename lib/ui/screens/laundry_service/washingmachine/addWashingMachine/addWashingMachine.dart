@@ -110,7 +110,7 @@ class AddWashingMachineState extends State<AddWashingMachine>{
                   onPressed: ()async {
                     if (_formKey.currentState!.validate()){
                       
-                      var msg = await viewmodel.addWashingMachine(weight: double.parse(wmWeightController.text),
+                      dynamic msg = await viewmodel.addWashingMachine(weight: double.parse(wmWeightController.text),
                       cold: double.parse(wmColdController.text),warm: double.parse(wmWarmController.text),
                       hot: double.parse(wmHotController.text));
                       

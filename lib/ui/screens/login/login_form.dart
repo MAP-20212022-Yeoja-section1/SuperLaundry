@@ -20,7 +20,7 @@ class LoginForm_ extends State<LoginForm> {
 
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  var msg = "";
+  dynamic msg = "";
 
   @override
   Widget build(BuildContext context) {
@@ -115,51 +115,19 @@ class LoginForm_ extends State<LoginForm> {
                                 msg = await viewmodel.logIn(
                                     email: emailController.text,
                                     password: passwordController.text);
-                                
-                                if(msg=="Customer"){
-                                  Navigator.of(context).pushReplacement(
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              mainMenuScreen()));
+
+                                if (msg == 200) {
                                   Fluttertoast.showToast(
-                                    msg: msg,
+                                    msg: "Login successful!",
                                     toastLength: Toast.LENGTH_LONG,
                                     gravity: ToastGravity.BOTTOM,
                                     fontSize: 16,
                                     backgroundColor:
                                         Color.fromARGB(255, 69, 161, 76),
                                   );
-                                }
-                                else if(msg=="Manager"){
-                                  Navigator.of(context).pushReplacement(
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              mainMenuMScreen()));
+                                } else {
                                   Fluttertoast.showToast(
-                                    msg: msg,
-                                    toastLength: Toast.LENGTH_LONG,
-                                    gravity: ToastGravity.BOTTOM,
-                                    fontSize: 16,
-                                    backgroundColor:
-                                        Color.fromARGB(255, 69, 161, 76),
-                                  );
-                                }
-                                else if(msg=="Deliveryman"){
-                                  Navigator.of(context).pushReplacement(
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              mainMenuDScreen()));
-                                  Fluttertoast.showToast(
-                                    msg: msg,
-                                    toastLength: Toast.LENGTH_LONG,
-                                    gravity: ToastGravity.BOTTOM,
-                                    fontSize: 16,
-                                    backgroundColor:
-                                        Color.fromARGB(255, 69, 161, 76),
-                                  );
-                                }else{
-                                  Fluttertoast.showToast(
-                                    msg: msg,
+                                    msg: msg.toString(),
                                     toastLength: Toast.LENGTH_LONG,
                                     gravity: ToastGravity.BOTTOM,
                                     fontSize: 16,
@@ -167,28 +135,28 @@ class LoginForm_ extends State<LoginForm> {
                                         Color.fromARGB(255, 235, 79, 68),
                                   );
 
-                                // if (msg != "Login successful!") {
-                                //   Fluttertoast.showToast(
-                                //     msg: msg,
-                                //     toastLength: Toast.LENGTH_LONG,
-                                //     gravity: ToastGravity.BOTTOM,
-                                //     fontSize: 16,
-                                //     backgroundColor:
-                                //         Color.fromARGB(255, 235, 79, 68),
-                                //   );
-                                // } else {
-                                //   Navigator.of(context).pushReplacement(
-                                //       MaterialPageRoute(
-                                //           builder: (context) =>
-                                //               mainMenuDScreen()));
-                                //   Fluttertoast.showToast(
-                                //     msg: msg,
-                                //     toastLength: Toast.LENGTH_LONG,
-                                //     gravity: ToastGravity.BOTTOM,
-                                //     fontSize: 16,
-                                //     backgroundColor:
-                                //         Color.fromARGB(255, 69, 161, 76),
-                                //   );
+                                  // if (msg != "Login successful!") {
+                                  //   Fluttertoast.showToast(
+                                  //     msg: msg,
+                                  //     toastLength: Toast.LENGTH_LONG,
+                                  //     gravity: ToastGravity.BOTTOM,
+                                  //     fontSize: 16,
+                                  //     backgroundColor:
+                                  //         Color.fromARGB(255, 235, 79, 68),
+                                  //   );
+                                  // } else {
+                                  //   Navigator.of(context).pushReplacement(
+                                  //       MaterialPageRoute(
+                                  //           builder: (context) =>
+                                  //               mainMenuDScreen()));
+                                  //   Fluttertoast.showToast(
+                                  //     msg: msg,
+                                  //     toastLength: Toast.LENGTH_LONG,
+                                  //     gravity: ToastGravity.BOTTOM,
+                                  //     fontSize: 16,
+                                  //     backgroundColor:
+                                  //         Color.fromARGB(255, 69, 161, 76),
+                                  //   );
                                 }
                               }
                             },

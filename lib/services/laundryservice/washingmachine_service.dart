@@ -33,7 +33,7 @@ class WashingMachineManagementServiceMock extends WashingMachineManagementServic
       
       await docWM.set(map);
 
-      return 0;
+      return 200;
 
     } on Exception catch (e) {
 
