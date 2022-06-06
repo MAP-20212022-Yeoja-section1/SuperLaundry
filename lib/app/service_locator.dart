@@ -22,6 +22,9 @@ import '../ui/screens/forgot_pass/forgot_pass_viewmodel.dart';
 import '../ui/screens/add_order/add_order_viewmodel.dart';
 import 'package:superlaundry/services/add_order/add_order_service.dart';
 import 'package:superlaundry/services/add_order/add_order_serviceFB.dart';
+import '../ui/screens/change_status/change_status_viewmodel.dart';
+import 'package:superlaundry/services/change_status/change_status_service.dart';
+import 'package:superlaundry/services/change_status/change_status_serviceFB.dart';
 
 //import '../services/services.dart';
 
@@ -62,4 +65,8 @@ void initializeServiceLocator() => ServiceLocator.init((locator) {
           .registerLazySingleton<AddOrderViewmodel>(() => AddOrderViewmodel());
       locator.registerLazySingleton<AddOrderService>(
           () => AddOrderServiceWithFireBase());
+      locator.registerLazySingleton<ChangeStatusViewmodel>(
+          () => ChangeStatusViewmodel());
+      locator.registerLazySingleton<ChangeStatusService>(
+          () => ChangeStatusServiceWithFireBase());
     });
