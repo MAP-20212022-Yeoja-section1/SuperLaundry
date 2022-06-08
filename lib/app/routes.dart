@@ -12,9 +12,9 @@ class Routes {
   static const String registrationRoute = '/registration';
   static const String loginRoute = '/login';
   static const String forgotPassRoute = '/forgot_pass';
-  static const String custRoute ='/customer_Home';
-  static const String manRoute ='/manager_Home';
-  static const String delRoute ='/deliveryman_Home';
+  static const String custRoute = '/customer_Home';
+  static const String manRoute = '/manager_Home';
+  static const String delRoute = '/deliveryman_Home';
 
   static Route<dynamic>? createRoute(settings) {
     switch (settings.name) {

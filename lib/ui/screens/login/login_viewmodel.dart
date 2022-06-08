@@ -5,9 +5,9 @@ import '../../../services/registration/login_service.dart';
 
 class LoginViewModel extends Viewmodel {
   LoginService get _loginService => locator<LoginService>();
-  String msg = "";
+  dynamic msg = 200;
 
-  Future<String> logIn({
+  Future logIn({
     @required email,
     @required password,
   }) async {

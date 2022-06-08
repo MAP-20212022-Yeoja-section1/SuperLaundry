@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:map_mvvm/view.dart';
+import 'package:superlaundry/ui/screens/order_history/orderhistory_screen.dart';
 import 'package:superlaundry/ui/screens/registration/registration_viewmodel.dart';
 import 'package:superlaundry/ui/screens/home_customer/mainmenu_viewmodel.dart';
 
@@ -56,7 +57,12 @@ class _mainMenuForm extends State<mainMenuForm> {
             Card(
               margin: EdgeInsets.all(0.0),
               child: InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => OrderHistoryScreen()));
+                  },
                   splashColor: Colors.green,
                   child: Center(
                       child: Column(

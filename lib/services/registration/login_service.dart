@@ -1,10 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:superlaundry/models/user.dart';
+import 'package:superlaundry/services/orderhistory/orderhistory_service.dart';
 
 // import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:superlaundry/ui/screens/home_deliveryman/mainmenuD_screen.dart';
 
 class LoginService {
+  final String? uid;
+  LoginService({this.uid});
+
   final FirebaseAuth _auth = FirebaseAuth.instance;
   // final _auth = FirebaseAuth.instance;
 
@@ -33,7 +37,6 @@ class LoginService {
         // .map((FirebaseUser user) => _userFromFirebaseUser(user));
         .authStateChanges()
         .map((User? user) => _userFromFirebaseUser(user));
-    // .map(_userFromFirebaseUser);
   }
 
   Future<String> getCurrentUID() async {
@@ -48,7 +51,7 @@ class LoginService {
       await _auth
           .signInWithEmailAndPassword(email: email, password: password)
           .then((uid) => {});
-      return "Login successful!";
+      return 200;
     } on FirebaseAuthException catch (error) {
       switch (error.code) {
         case "invalid-email":

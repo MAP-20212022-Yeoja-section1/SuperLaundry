@@ -7,21 +7,27 @@ class UserModel {
   String password;
   String role;
 
-  UserModel({this.userId="",this.name="", this.phonenum="", this.homeaddress="", this.email="", this.password="", this.role=""});
+  UserModel(
+      {this.userId = "",
+      this.name = "",
+      this.phonenum = "",
+      this.homeaddress = "",
+      this.email = "",
+      this.password = "",
+      this.role = ""});
 
-  factory UserModel.fromMap(map){
+  factory UserModel.fromMap(map) {
     return UserModel(
-      userId: map["userId"],
-      name: map["name"],
-      phonenum: map["phonenum"],
-      homeaddress: map["homeaddress"],
-      email: map["email"],
-      password: map["password"],
-      role: map["role"]
-    );
+        userId: map["userId"],
+        name: map["name"],
+        phonenum: map["phonenum"],
+        homeaddress: map["homeaddress"],
+        email: map["email"],
+        password: map["password"],
+        role: map["role"]);
   }
 
-  Map<String, dynamic> toMap(){
+  Map<String, dynamic> toMap() {
     return {
       "userId": userId,
       "name": name,
