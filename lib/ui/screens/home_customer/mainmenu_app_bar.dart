@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:map_mvvm/view.dart';
 import '../login/login_screen.dart';
+import '../wrapper.dart';
 import 'mainmenu_viewmodel.dart';
 
 class mainMenuAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -43,7 +44,7 @@ class mainMenuAppBar extends StatelessWidget implements PreferredSizeWidget {
                           backgroundColor: Color.fromARGB(255, 235, 79, 68));
                     } else {
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => LoginScreen()));
+                          builder: (context) => Wrapper()));
                       Fluttertoast.showToast(
                         msg: "Logout successfully!",
                         toastLength: Toast.LENGTH_LONG,

@@ -1,5 +1,7 @@
 import 'package:map_mvvm/service_locator.dart';
+import 'package:superlaundry/services/forgot_pass/forgot_pass_serviceFB.dart';
 import 'package:superlaundry/services/laundryservice/clean_service.dart';
+import 'package:superlaundry/services/forgot_pass/forgot_pass_serviceFB.dart';
 import 'package:superlaundry/services/laundryservice/washingmachine_service.dart';
 import 'package:superlaundry/services/logout/logout_service.dart';
 import 'package:superlaundry/services/orderhistory/orderhistory_service.dart';
@@ -20,6 +22,9 @@ import 'package:superlaundry/ui/screens/login/login_viewmodel.dart';
 import 'package:superlaundry/services/registration/login_service.dart';
 import 'package:superlaundry/services/forgot_pass/forgot_pass_service.dart';
 import '../ui/screens/forgot_pass/forgot_pass_viewmodel.dart';
+import '../ui/screens/add_order/add_order_viewmodel.dart';
+import 'package:superlaundry/services/add_order/add_order_service.dart';
+import 'package:superlaundry/services/add_order/add_order_serviceFB.dart';
 
 //import '../services/services.dart';
 
@@ -40,7 +45,7 @@ void initializeServiceLocator() => ServiceLocator.init((locator) {
       locator.registerLazySingleton<ForgotPassViewmodel>(
           () => ForgotPassViewmodel());
       locator.registerLazySingleton<ForgotPasswordService>(
-          () => ForgotPasswordService());
+          () => ForgotPasswordServicewithFirebase());
       locator.registerLazySingleton<LogoutService>(() => LogoutServiceMock());
       locator.registerLazySingleton<MenuViewmodel>(() => MenuViewmodel());
       locator.registerLazySingleton<MenudViewmodel>(() => MenudViewmodel());
@@ -62,4 +67,8 @@ void initializeServiceLocator() => ServiceLocator.init((locator) {
       //     () => ViewOrderHistoryViewModel());
       locator.registerLazySingleton<OrderHistoryViewModel>(
           () => OrderHistoryViewModel());
+      locator
+          .registerLazySingleton<AddOrderViewmodel>(() => AddOrderViewmodel());
+      locator.registerLazySingleton<AddOrderService>(
+          () => AddOrderServiceWithFireBase());
     });

@@ -6,6 +6,7 @@ import '../ui/screens/home/home_screen.dart';
 import '../ui/screens/registration/registration_screen.dart';
 import '../ui/screens/login/login_screen.dart';
 import '../ui/screens/forgot_pass/forgot_pass_screen.dart';
+import '../ui/screens/add_order/add_order_screen.dart';
 
 class Routes {
   static const String homeRoute = '/home';
@@ -15,6 +16,7 @@ class Routes {
   static const String custRoute = '/customer_Home';
   static const String manRoute = '/manager_Home';
   static const String delRoute = '/deliveryman_Home';
+  static const String addOrderRoute = '/add_order';
 
   static Route<dynamic>? createRoute(settings) {
     switch (settings.name) {
@@ -32,6 +34,8 @@ class Routes {
         return mainMenuMScreen.route();
       case delRoute:
         return mainMenuDScreen.route();
+      case addOrderRoute:
+        return AddOrderScreen.route();
     }
     return null;
   }

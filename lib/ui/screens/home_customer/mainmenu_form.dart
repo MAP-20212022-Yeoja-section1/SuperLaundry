@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:map_mvvm/view.dart';
 import 'package:superlaundry/ui/screens/order_history/orderhistory_screen.dart';
+import 'package:superlaundry/ui/screens/add_order/add_order_screen.dart';
+import 'package:superlaundry/ui/screens/add_order/order_payment_screen.dart';
 import 'package:superlaundry/ui/screens/registration/registration_viewmodel.dart';
 import 'package:superlaundry/ui/screens/home_customer/mainmenu_viewmodel.dart';
 
@@ -21,7 +23,12 @@ class _mainMenuForm extends State<mainMenuForm> {
             Card(
               margin: EdgeInsets.all(0.0),
               child: InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => AddOrderScreen()
+                            // OrderPaymentScreen()
+                            ));
+                  },
                   splashColor: Colors.green,
                   child: Center(
                       child: Column(

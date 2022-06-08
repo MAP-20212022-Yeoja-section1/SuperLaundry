@@ -91,7 +91,7 @@ class DeliveryMethodDetailsState extends State<DeliveryMethodDetails>{
                             FlatButton(
                               child: Text("Yes"),
                               onPressed: () async {
-                                var msg = await viewmodel.deleteDeliveryMethod(dmid: widget.post.dmId);
+                                dynamic msg = await viewmodel.deleteDeliveryMethod(dmid: widget.post.dmId);
                                 if(msg==100){
                                 Fluttertoast.showToast(
                                   msg: "Error! Unable to delete the delivery method.",

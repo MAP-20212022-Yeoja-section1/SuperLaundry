@@ -92,7 +92,7 @@ class CleanMethodDetailsState extends State<CleanMethodDetails>{
                             FlatButton(
                               child: Text("Yes"),
                               onPressed: () async {
-                                var msg = await viewmodel.deleteCleanMethod(cmid: widget.post.cmId);
+                                dynamic msg = await viewmodel.deleteCleanMethod(cmid: widget.post.cmId);
                                 if(msg==100){
                                 Fluttertoast.showToast(
                                   msg: "Error! Unable to delete the clean method.",

@@ -32,7 +32,7 @@ class CleanManagementServiceMock extends CleanManagementService{
       
       await docClean.set(map);
 
-      return 0;
+      return 200;
 
     } on Exception catch (e) {
 

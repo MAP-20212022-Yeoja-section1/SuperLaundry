@@ -93,7 +93,7 @@ class EditCleanMethodDetailsState extends State<EditCleanMethodDetails>{
                   onPressed: ()async {
                     if (_formKey.currentState!.validate()){
                       
-                      var msg = await viewmodel.editCleanMethod(cmid: widget.editpost.cmId, cmname: cmnameController.text, 
+                      dynamic msg = await viewmodel.editCleanMethod(cmid: widget.editpost.cmId, cmname: cmnameController.text, 
                       cmprice: double.parse(cmpriceController.text));
                       
                       if(msg==100){

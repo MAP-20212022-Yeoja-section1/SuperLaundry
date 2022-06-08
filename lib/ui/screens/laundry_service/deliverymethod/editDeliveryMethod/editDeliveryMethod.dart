@@ -95,7 +95,7 @@ class EditDeliveryMethodDetailsState extends State<EditDeliveryMethodDetails>{
                   onPressed: ()async {
                     if (_formKey.currentState!.validate()){
                       
-                      var msg = await viewmodel.editDeliveryMethod(dmid: widget.editpost.dmId, dmname: dmnameController.text, 
+                      dynamic msg = await viewmodel.editDeliveryMethod(dmid: widget.editpost.dmId, dmname: dmnameController.text, 
                       dmprice: double.parse(dmpriceController.text));
                       
                       if(msg==100){

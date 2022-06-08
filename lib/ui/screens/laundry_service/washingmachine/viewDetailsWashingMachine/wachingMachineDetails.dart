@@ -117,7 +117,7 @@ class WashingMachineDetailsState extends State<WashingMachineDetails>{
                             FlatButton(
                               child: Text("Yes"),
                               onPressed: () async {
-                                var msg = await viewmodel.deleteWashingMachine(wmid: widget.post.wmId);
+                                dynamic msg = await viewmodel.deleteWashingMachine(wmid: widget.post.wmId);
                                 if(msg==100){
                                 Fluttertoast.showToast(
                                   msg: "Error! Unable to delete the washing machine.",
