@@ -1,12 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:superlaundry/models/order.dart';
+// import 'package:superlaundry/models/order.dart';
+import 'package:superlaundry/models/orders.dart';
 // import 'package:superlaundry/models/user.dart';
 // import 'package:superlaundry/services/registration/login_service.dart';
 // import 'package:superlaundry/app/service_locator.dart';
 
 abstract class OrderHistoryService {
-  Stream<List<OrderModel>> readOrderHistory();
+  Stream<List<OrdersModel>> readOrderHistory();
   final String? uid;
   OrderHistoryService({this.uid});
   // Future<Map> getOrderDetails();
@@ -15,17 +16,18 @@ abstract class OrderHistoryService {
 class OrderHistoryServiceMock extends OrderHistoryService {
   // get order history list
   @override
-  Stream<List<OrderModel>> readOrderHistory() {
+  Stream<List<OrdersModel>> readOrderHistory() {
     final FirebaseAuth auth = FirebaseAuth.instance;
     final User? user = auth.currentUser;
     final uid = user!.uid;
 
     return FirebaseFirestore.instance
-        .collection('order')
+        .collection('orders')
         .where('userId', isEqualTo: uid)
+        .where('orderStatus', isEqualTo: 'COMPLETED')
         .snapshots()
         .map((snapshot) => snapshot.docs
-            .map((doc) => OrderModel.fromJson(doc.data()))
+            .map((doc) => OrdersModel.fromJson(doc.data()))
             .toList());
   }
 

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:map_mvvm/map_mvvm.dart';
-import 'package:superlaundry/models/order.dart';
+import 'package:superlaundry/models/orders.dart';
 import 'package:superlaundry/ui/screens/order_history/orderhistory_viewmodel.dart';
-import 'package:superlaundry/ui/screens/order_history/vieworderhistory/vieworderhistory_body.dart';
-import 'package:superlaundry/ui/screens/order_history/vieworderhistory/vieworderhistory_screen.dart';
+import 'package:superlaundry/ui/screens/order_history/vieworderhistory_body.dart';
+// import 'package:superlaundry/ui/screens/order_history/vieworderhistory/vieworderhistory_screen.dart';
 import 'package:intl/intl.dart';
 
 class OrderHistoryBody extends StatefulWidget {
@@ -15,13 +15,13 @@ class OrderHistoryBody extends StatefulWidget {
 
 class _OrderHistoryBody extends State<OrderHistoryBody> {
   @override
-  Widget build(BuildContext Context) {
+  Widget build(BuildContext context) {
     return View<OrderHistoryViewModel>(
       shouldRebuild: false,
       builder: (_, viewmodel) => SingleChildScrollView(
         child: Column(
           children: [
-            StreamBuilder<List<OrderModel>>(
+            StreamBuilder<List<OrdersModel>>(
                 stream: viewmodel.readOrderHistory(),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {

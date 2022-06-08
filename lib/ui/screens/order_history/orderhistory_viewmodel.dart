@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:map_mvvm/map_mvvm.dart';
 import 'package:map_mvvm/viewmodel.dart';
-import 'package:superlaundry/models/order.dart';
+import 'package:superlaundry/models/orders.dart';
 import 'package:superlaundry/services/orderhistory/orderhistory_service.dart';
 import 'package:superlaundry/services/registration/login_service.dart';
 import 'package:superlaundry/app/service_locator.dart';
@@ -19,7 +19,7 @@ class OrderHistoryViewModel extends Viewmodel {
     return _authService.getCurrentUID();
   }
 
-  Stream<List<OrderModel>> readOrderHistory() {
+  Stream<List<OrdersModel>> readOrderHistory() {
     return _orderHistoryService.readOrderHistory();
   }
 }

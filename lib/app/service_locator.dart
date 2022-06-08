@@ -14,7 +14,6 @@ import 'package:superlaundry/ui/screens/laundry_service/cleanmethod/viewCleanMet
 import 'package:superlaundry/ui/screens/laundry_service/deliverymethod/viewDeliveryMethod/deliveryser_viewmodel.dart';
 import 'package:superlaundry/ui/screens/laundry_service/washingmachine/viewWashingMachine/washingmachine_viewmodel.dart';
 import 'package:superlaundry/ui/screens/order_history/orderhistory_viewmodel.dart';
-import 'package:superlaundry/ui/screens/order_history/vieworderhistory/vieworderhistory_viewmodel.dart';
 import '../services/laundryservice/delivery_service.dart';
 import '../ui/screens/home/home_viewmodel.dart';
 import '../ui/screens/registration/registration_viewmodel.dart';
