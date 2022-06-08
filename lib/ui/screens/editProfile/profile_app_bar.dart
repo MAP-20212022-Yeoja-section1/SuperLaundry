@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:superlaundry/ui/screens/home_manager/mainmenuM_screen.dart';
+import 'package:superlaundry/ui/screens/wrapper.dart';
 
 class profileAppBar extends StatelessWidget implements PreferredSizeWidget {
   const profileAppBar({
@@ -15,8 +16,8 @@ class profileAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Text('PROFILE PAGE'),
       leading: IconButton(
         onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => mainMenuMScreen()));
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => Wrapper()));
         },
         icon: Icon(Icons.chevron_left_sharp),
         iconSize: 40.0,
