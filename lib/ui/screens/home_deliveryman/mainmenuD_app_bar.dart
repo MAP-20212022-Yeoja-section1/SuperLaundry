@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:map_mvvm/view.dart';
 import 'package:superlaundry/ui/screens/wrapper.dart';
-
+import 'package:superlaundry/ui/screens/editProfile/profile_screen.dart';
 import '../home_deliveryman/mainmenuD_viewmodel.dart';
 import '../login/login_screen.dart';
 import 'mainmenuD_viewmodel.dart';
@@ -23,7 +23,10 @@ class mainMenuDAppBar extends StatelessWidget implements PreferredSizeWidget {
         builder: (_, viewmodel) => AppBar(
               title: Text('MAIN MENU'),
               leading: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ProfileScreen()));
+                },
                 icon: Icon(Icons.person),
                 iconSize: 30.0,
               ),
@@ -35,7 +38,7 @@ class mainMenuDAppBar extends StatelessWidget implements PreferredSizeWidget {
                   ),
                   onPressed: () async {
                     dynamic msg = await viewmodel.logoutUser();
-                    if (msg==100) {
+                    if (msg == 100) {
                       Fluttertoast.showToast(
                           msg: "Unable to logout!",
                           toastLength: Toast.LENGTH_LONG,
@@ -43,8 +46,8 @@ class mainMenuDAppBar extends StatelessWidget implements PreferredSizeWidget {
                           fontSize: 16,
                           backgroundColor: Color.fromARGB(255, 235, 79, 68));
                     } else {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => Wrapper()));
+                      Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (context) => Wrapper()));
                       Fluttertoast.showToast(
                         msg: "Logout successfully!",
                         toastLength: Toast.LENGTH_LONG,

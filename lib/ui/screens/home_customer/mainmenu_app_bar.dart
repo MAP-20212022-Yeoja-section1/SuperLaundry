@@ -5,6 +5,7 @@ import 'package:map_mvvm/view.dart';
 import '../login/login_screen.dart';
 import '../wrapper.dart';
 import 'mainmenu_viewmodel.dart';
+import 'package:superlaundry/ui/screens/editProfile/profile_screen.dart';
 
 class mainMenuAppBar extends StatelessWidget implements PreferredSizeWidget {
   const mainMenuAppBar({
@@ -22,7 +23,8 @@ class mainMenuAppBar extends StatelessWidget implements PreferredSizeWidget {
               title: Text('MAIN MENU'),
               leading: IconButton(
                 onPressed: () {
-                  //Navigator.push(context, MaterialPageRoute(builder: (context)=>ManagerMenu()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ProfileScreen()));
                 },
                 icon: Icon(Icons.person),
                 iconSize: 30.0,
@@ -43,8 +45,8 @@ class mainMenuAppBar extends StatelessWidget implements PreferredSizeWidget {
                           fontSize: 16,
                           backgroundColor: Color.fromARGB(255, 235, 79, 68));
                     } else {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => Wrapper()));
+                      Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (context) => Wrapper()));
                       Fluttertoast.showToast(
                         msg: "Logout successfully!",
                         toastLength: Toast.LENGTH_LONG,
@@ -62,5 +64,3 @@ class mainMenuAppBar extends StatelessWidget implements PreferredSizeWidget {
             ));
   }
 }
-
-class MenuViewModel {}

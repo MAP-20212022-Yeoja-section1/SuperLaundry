@@ -24,6 +24,8 @@ import '../ui/screens/forgot_pass/forgot_pass_viewmodel.dart';
 import '../ui/screens/add_order/add_order_viewmodel.dart';
 import 'package:superlaundry/services/add_order/add_order_service.dart';
 import 'package:superlaundry/services/add_order/add_order_serviceFB.dart';
+import '../ui/screens/editProfile/profile_viewmodel.dart';
+import 'package:superlaundry/services/profile_service.dart';
 
 //import '../services/services.dart';
 
@@ -49,6 +51,8 @@ void initializeServiceLocator() => ServiceLocator.init((locator) {
       locator.registerLazySingleton<MenuViewmodel>(() => MenuViewmodel());
       locator.registerLazySingleton<MenudViewmodel>(() => MenudViewmodel());
       locator.registerLazySingleton<MenumViewmodel>(() => MenumViewmodel());
+      locator.registerLazySingleton<ProfileViewmodel>(() => ProfileViewmodel());
+      locator.registerLazySingleton<ProfileService>(() => ProfileService());
       locator.registerLazySingleton<CleanViewmodel>(() => CleanViewmodel());
       locator.registerLazySingleton<CleanManagementService>(
           () => CleanManagementServiceMock());
