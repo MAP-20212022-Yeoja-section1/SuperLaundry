@@ -17,23 +17,22 @@ class OrdersModel {
   bool acceptedDelivery;
   String deliveryId;
 
-  OrdersModel({
-    this.userId = "",
-    this.orderId = "",
-    this.deliveryMethod = "",
-    this.date = "",
-    this.time = "",
-    this.cleanMethod = "",
-    this.weight = "",
-    this.waterTemperature = "",
-    this.address = "",
-    this.totalPrice = 0.0,
-    this.orderStatus = "",
-    this.statusTime = "",
-    this.paymentMethod = "",
-    this.acceptedDelivery = false,
-    this.deliveryId = ""
-  });
+  OrdersModel(
+      {this.userId = "",
+      this.orderId = "",
+      this.deliveryMethod = "",
+      this.date = "",
+      this.time = "",
+      this.cleanMethod = "",
+      this.weight = "",
+      this.waterTemperature = "",
+      this.address = "",
+      this.totalPrice = 0.0,
+      this.orderStatus = "",
+      this.statusTime = "",
+      this.paymentMethod = "",
+      this.acceptedDelivery = false,
+      this.deliveryId = ""});
 
   factory OrdersModel.fromMap(map) {
     return OrdersModel(
@@ -51,8 +50,7 @@ class OrdersModel {
         statusTime: map["statusTime"],
         paymentMethod: map['paymentMethod'],
         acceptedDelivery: map['acceptedDelivery'],
-        deliveryId: map['deliveryId'] 
-        );
+        deliveryId: map['deliveryId']);
   }
 
   Map<String, dynamic> toMap() {
@@ -70,8 +68,8 @@ class OrdersModel {
       "orderStatus": orderStatus,
       "statusTime": statusTime,
       "paymentMethod": paymentMethod,
-      "acceptedDelivery":acceptedDelivery,
-      "deliveryId": deliveryId 
+      "acceptedDelivery": acceptedDelivery,
+      "deliveryId": deliveryId
     };
   }
 
@@ -89,25 +87,25 @@ class OrdersModel {
         "orderStatus": orderStatus,
         "statusTime": statusTime,
         "paymentMethod": paymentMethod,
-        "acceptedDelivery":acceptedDelivery,
-        "deliveryId": deliveryId     
+        "acceptedDelivery": acceptedDelivery,
+        // "deliveryId": deliveryId
       };
 
   static OrdersModel fromJson(Map<String, dynamic> json) => OrdersModel(
-      userId: json['userId'],
-      orderId: json['orderId'],
-      deliveryMethod: json["deliveryMethod"],
-      date: json["date"],
-      time: json["time"],
-      cleanMethod: json["cleanMethod"],
-      weight: json["weight"],
-      waterTemperature: json["waterTemperature"],
-      address: json["address"],
-      totalPrice: json["totalPrice"],
-      orderStatus: json["orderStatus"],
-      statusTime: json["statusTime"],
-      paymentMethod: json['paymentMethod'],
-      acceptedDelivery: json['acceptedDelivery'],
-      deliveryId: json['deliveryId']     
-    );
+        userId: json['userId'],
+        orderId: json['orderId'],
+        deliveryMethod: json["deliveryMethod"],
+        date: json["date"],
+        time: json["time"],
+        cleanMethod: json["cleanMethod"],
+        weight: json["weight"],
+        waterTemperature: json["waterTemperature"],
+        address: json["address"],
+        totalPrice: json["totalPrice"],
+        orderStatus: json["orderStatus"],
+        statusTime: json["statusTime"],
+        paymentMethod: json['paymentMethod'],
+        acceptedDelivery: json['acceptedDelivery'],
+        // deliveryId: json['deliveryId']
+      );
 }

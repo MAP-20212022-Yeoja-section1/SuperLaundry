@@ -19,6 +19,20 @@ class DeliOrderService {
             .toList());
   }
 
+  @override
+  Future updateDelivery(String orderId) async {
+    try {
+      final FirebaseAuth auth = FirebaseAuth.instance;
+      final User? user = auth.currentUser;
+      final uid = user!.uid;
+      final docOrder =
+          FirebaseFirestore.instance.collection("orders").doc(orderId);
+
+      await docOrder.update({'deliveryId': uid, 'acceptedDelivery': true});
+    } on Exception catch (e) {
+      return 100;
+    }
+  }
   // @override
   // Stream<List<UserModel>> readDeliUser() => FirebaseFirestore.instance
   //     .collection('users')

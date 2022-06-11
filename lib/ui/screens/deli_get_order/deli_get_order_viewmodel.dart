@@ -1,6 +1,7 @@
 // ignore_for_file: camel_case_types
 
 import 'package:map_mvvm/map_mvvm.dart';
+import 'package:meta/meta.dart';
 import 'package:superlaundry/app/service_locator.dart';
 import '../../../../../models/orders.dart';
 import 'package:superlaundry/services/deliOrder/deliOrder_service.dart';
@@ -27,5 +28,9 @@ class deliOrderViewmodel extends Viewmodel {
 
   Future getCurrentID() async {
     return _loginService.getCurrentUID();
+  }
+
+  Future updateDelivery({@required orderId}) async {
+    return await _deliOrderService.updateDelivery(orderId);
   }
 }

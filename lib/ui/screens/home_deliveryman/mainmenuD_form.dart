@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:map_mvvm/view.dart';
 import 'package:superlaundry/ui/screens/deli_get_order/deli_get_order_screen.dart';
 import 'package:superlaundry/ui/screens/deliveryOrder/delivery_order_screen.dart';
+import 'package:superlaundry/ui/screens/editProfile/profile_screen.dart';
 import 'package:superlaundry/ui/screens/home_deliveryman/mainmenuD_viewmodel.dart';
 
 class mainMenuDForm extends StatefulWidget {

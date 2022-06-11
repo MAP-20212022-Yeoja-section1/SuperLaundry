@@ -1,6 +1,4 @@
-// ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors, camel_case_types
-
-import 'dart:html';
+// ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors, camel_case_types, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
 import 'package:map_mvvm/view.dart';
@@ -98,10 +96,10 @@ class _deliGetOrderBody extends State<deliGetOrderBody> {
             size: 32,
             color: Color.fromARGB(255, 17, 162, 126),
           ),
-          // onTap: () => Navigator.push(
-          //     context,
-          //     MaterialPageRoute(
-          //         builder: (context) => DeliOrderDetails(post: od))),
+          onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => DeliOrderDetails(post: od))),
         ),
       ));
 }
