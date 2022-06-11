@@ -20,7 +20,7 @@ class _mainMenuDForm extends State<mainMenuDForm> {
             Card(
               margin: EdgeInsets.all(0.0),
               child: InkWell(
-                  onTap: () {},
+                  onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>AcceptedDeliveryOrderScreen()));},
                   splashColor: Colors.green,
                   child: Center(
                       child: Column(
