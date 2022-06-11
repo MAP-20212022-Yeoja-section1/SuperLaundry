@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:map_mvvm/view.dart';
+import 'package:superlaundry/ui/screens/deliveryOrder/delivery_order_screen.dart';
 import 'package:superlaundry/ui/screens/home_deliveryman/mainmenuD_viewmodel.dart';
 
 class mainMenuDForm extends StatefulWidget {
@@ -38,7 +39,7 @@ class _mainMenuDForm extends State<mainMenuDForm> {
             Card(
               margin: EdgeInsets.all(0.0),
               child: InkWell(
-                  onTap: () {},
+                  onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>AcceptedDeliveryOrderScreen()));},
                   splashColor: Colors.green,
                   child: Center(
                       child: Column(

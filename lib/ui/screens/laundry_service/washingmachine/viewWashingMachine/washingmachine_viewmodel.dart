@@ -2,7 +2,7 @@ import 'package:map_mvvm/map_mvvm.dart';
 import 'package:meta/meta.dart';
 import 'package:superlaundry/app/service_locator.dart';
 import '../../../../../models/washingMachineModel.dart';
-import '../../../../../services/laundryservice/washingmachine_service.dart';
+import '../../../../../services/laundryservice/washing_machine_service.dart';
 
 class WashingMachineViewmodel extends Viewmodel {
 

@@ -1,17 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:superlaundry/services/laundryservice/washing_machine_service.dart';
 import '../../models/washingMachineModel.dart';
-
-abstract class WashingMachineManagementService {
-
-  Future addWashingMachine(double weight, double cold, double warm, double hot);
-
-  Stream<List<WashingMachineModel>> readWashingMachines();
-
-  Future editWashingMachine(String wmid, double weight, double cold, double warm, double hot);
-
-  Future deleteWashingMachine(String wmid);
-
-}
 
 class WashingMachineManagementServiceMock extends WashingMachineManagementService{
 
@@ -42,6 +31,7 @@ class WashingMachineManagementServiceMock extends WashingMachineManagementServic
     }
   }
 
+  @override
   Stream<List<WashingMachineModel>> readWashingMachines() => 
   FirebaseFirestore.instance
   .collection('washingmachines')
