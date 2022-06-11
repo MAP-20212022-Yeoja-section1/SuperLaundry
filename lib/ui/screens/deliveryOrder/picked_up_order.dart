@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors_in_immutables, use_key_in_widget_constructors
+// ignore_for_file: prefer_const_constructors_in_immutables, use_key_in_widget_constructors, prefer_const_constructors, deprecated_member_use
 
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -86,14 +86,23 @@ class PickedUpOrderState extends State<PickedUpOrder>{
                                           ),  
                                       ),
                                   ),
-                                  const Align(
+                                  Align(
                                     alignment: Alignment.centerLeft,
-                                    child: Padding(
-                                      padding: EdgeInsets.all(15),
-                                      child:Text("Customer Name: waiting",
-                                              style: TextStyle(fontSize: 16), 
+                                    child: FutureBuilder<String>(
+                                    future: viewmodel.getCustomerName(widget.post.userId),
+                                    builder: (BuildContext context, snapshot){
+                                      if(snapshot.hasData){
+                                        return Padding(
+                                      padding: const EdgeInsets.all(15),
+                                      child:Text("Customer Name: " + snapshot.data.toString(),
+                                              style: const TextStyle(fontSize: 16), 
                                           ),  
-                                      ),
+                                        );
+                                      }else{
+                                        return const Text('No data is found!');
+                                      }
+                                    }, 
+                                  ),
                                   ),
                                   Align(
                                     alignment: Alignment.centerLeft,
@@ -108,12 +117,21 @@ class PickedUpOrderState extends State<PickedUpOrder>{
                                   // ignore: prefer_const_constructors
                                   Align(
                                     alignment: Alignment.centerLeft,
-                                    child: const Padding(
-                                      padding: EdgeInsets.all(15),
-                                      child:Text("Phone Number: waiting",
-                                              style: TextStyle(fontSize: 16), 
+                                    child: FutureBuilder<String>(
+                                    future: viewmodel.getCustomerPhoneNum(widget.post.userId),
+                                    builder: (BuildContext context, snapshot){
+                                      if(snapshot.hasData){
+                                        return Padding(
+                                      padding: const EdgeInsets.all(15),
+                                      child:Text("Phone Number: " + snapshot.data.toString(),
+                                              style: const TextStyle(fontSize: 16), 
                                           ),  
-                                      ),
+                                        );
+                                      }else{
+                                        return const Text('No data is found!');
+                                      }
+                                    }, 
+                                  ),
                                   ),
                                   Align(
                                     alignment: Alignment.centerLeft,
@@ -190,6 +208,7 @@ class PickedUpOrderState extends State<PickedUpOrder>{
                   Padding(
                       padding: const EdgeInsets.only(top:10, bottom:20),
                       child: FloatingActionButton.extended(
+                      heroTag: "btn1",
                       onPressed: ()async {
           
                           dynamic msg = await viewmodel.updateStatusDelivery(orderId: widget.post.orderId, orderStatus:"PICKED UP");
@@ -220,7 +239,64 @@ class PickedUpOrderState extends State<PickedUpOrder>{
                         fontSize: 18)),
                         highlightElevation: 10.0,
                         backgroundColor: const Color.fromARGB(255, 4, 107, 81),
-                  ),)
+                  ),),
+                  Padding(
+                  padding: EdgeInsets.only(bottom:20),
+                  child: FloatingActionButton.extended(
+                  heroTag: "btn2",
+                  onPressed: ()async {
+                    showDialog(
+                      context: context, 
+                      builder: (context){
+                        return AlertDialog(
+                          elevation: 20,
+                          title: Center(child: Text("Cancel Delivery", style:TextStyle(color: Colors.red))),
+                          content: Text("Are you sure you want to cancel the delivery?",
+                          textAlign: TextAlign.center,
+                          ),
+                          actions: <Widget>[
+                            FlatButton(
+                              child: Text("Yes"),
+                              onPressed: () async {
+                                dynamic msg = await viewmodel.cancelDelivery(widget.post.orderId);
+                                if(msg==100){
+                                Fluttertoast.showToast(
+                                  msg: "Error! Unable to cancel the delivery.",
+                                  toastLength: Toast.LENGTH_LONG,
+                                  gravity: ToastGravity.BOTTOM,
+                                  fontSize: 16,
+                                  backgroundColor: Color.fromARGB(255, 209, 68, 58),
+                                );}
+                                else{
+                                Fluttertoast.showToast(msg: "The delivery cancellation is successfully!",
+                                    toastLength: Toast.LENGTH_LONG,
+                                        gravity: ToastGravity.BOTTOM,
+                                        fontSize: 16,
+                                        backgroundColor: Color.fromARGB(255, 69, 161, 76),
+                                    );
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=> AcceptedDeliveryOrderScreen()));
+                                } 
+                              }
+                              ),
+                              FlatButton(
+                              child: Text("No"),
+                              onPressed: (){
+                                Navigator.of(context).pop();
+                              }
+                              )              
+                          ],
+                        );
+                      }
+                      );                                                     
+                    },                   
+                    label: Text(
+                    'Cancel Delivery',
+                    style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18)),
+                    highlightElevation: 10.0,
+                    backgroundColor: Color.fromARGB(255, 248, 40, 40),
+              ),)
                 ],
               ),
           ),

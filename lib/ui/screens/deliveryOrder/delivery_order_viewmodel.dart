@@ -18,9 +18,15 @@ class DeliveryOrderViewmodel extends Viewmodel {
 
   }
 
-  // Future deleteCleanMethod({@required cmid}) async{
+  Future<String> getCustomerName(String userId) async {
+    return await _deliveryOrderManagementService.getCustomerName(userId);
+  }
 
-  //   return await _cleanManagementService.deleteCleanMethod(cmid);
+  Future<String> getCustomerPhoneNum(String userId) async {
+    return await _deliveryOrderManagementService.getCustomerPhoneNum(userId);
+  }
 
-  // }
+  Future cancelDelivery(String orderId) async{
+    return await _deliveryOrderManagementService.cancelDelivery(orderId);
+  }
 }

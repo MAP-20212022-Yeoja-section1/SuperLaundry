@@ -39,5 +39,57 @@ class DeliveryOrderManagementServiceMock extends DeliveryOrderManagementService{
 
     } 
   }
-  
+
+  @override
+  Future<String> getCustomerName(String userId) async {
+
+    String name;
+
+        return FirebaseFirestore.instance
+        .collection('users')
+        .doc(userId)
+        .get()
+        .then((value) {
+          Map data = value.data() as Map;
+          name = data['name'].toString();
+          return name;
+        });
+  }
+
+  @override
+  Future<String> getCustomerPhoneNum(String userId) async {
+    
+    String pnum;
+
+        return FirebaseFirestore.instance
+        .collection('users')
+        .doc(userId)
+        .get()
+        .then((value) {
+          Map data = value.data() as Map;
+          pnum = data['phonenum'].toString();
+          return pnum;
+        });
+  }
+
+  @override
+  Future cancelDelivery(String orderId) async{
+      
+    try{
+
+      final docOrder = FirebaseFirestore.instance
+      .collection("orders")
+      .doc(orderId);
+
+      await docOrder.update({
+        'acceptedDelivery': false,
+        'deliveryId': FieldValue.delete(),
+      });
+
+    }on Exception catch (e){
+
+      return 100;
+
+    }
+  }
 }
