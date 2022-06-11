@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:map_mvvm/view.dart';
+import 'package:superlaundry/ui/screens/deli_get_order/deli_get_order_screen.dart';
 import 'package:superlaundry/ui/screens/deliveryOrder/delivery_order_screen.dart';
 import 'package:superlaundry/ui/screens/home_deliveryman/mainmenuD_viewmodel.dart';
 
@@ -20,7 +21,12 @@ class _mainMenuDForm extends State<mainMenuDForm> {
             Card(
               margin: EdgeInsets.all(0.0),
               child: InkWell(
-                  onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>AcceptedDeliveryOrderScreen()));},
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => deliGetOrderScreen()));
+                  },
                   splashColor: Colors.green,
                   child: Center(
                       child: Column(
@@ -39,7 +45,13 @@ class _mainMenuDForm extends State<mainMenuDForm> {
             Card(
               margin: EdgeInsets.all(0.0),
               child: InkWell(
-                  onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>AcceptedDeliveryOrderScreen()));},
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                AcceptedDeliveryOrderScreen()));
+                  },
                   splashColor: Colors.green,
                   child: Center(
                       child: Column(
