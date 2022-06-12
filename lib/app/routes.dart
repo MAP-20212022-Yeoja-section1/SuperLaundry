@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:superlaundry/ui/screens/home_customer/mainmenu_screen.dart';
 import 'package:superlaundry/ui/screens/home_deliveryman/mainmenuD_screen.dart';
 import 'package:superlaundry/ui/screens/home_manager/mainmenuM_screen.dart';
+import 'package:superlaundry/ui/screens/manage_order/manageorder_screen.dart';
 import 'package:superlaundry/ui/screens/order_history/orderhistory_screen.dart';
 import '../ui/screens/home/home_screen.dart';
 import '../ui/screens/registration/registration_screen.dart';
@@ -19,6 +20,7 @@ class Routes {
   static const String delRoute = '/deliveryman_Home';
   static const String addOrderRoute = '/add_order';
   static const String orderHistoryRoute = '/order_history';
+  static const String manageOrder = '/manage_order';
 
   static Route<dynamic>? createRoute(settings) {
     switch (settings.name) {
@@ -40,6 +42,8 @@ class Routes {
         return AddOrderScreen.route();
       case orderHistoryRoute:
         return OrderHistoryScreen.route();
+      case manageOrder:
+        return ManageOrderScreen.route();
     }
     return null;
   }

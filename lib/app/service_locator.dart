@@ -6,6 +6,8 @@ import 'package:superlaundry/services/forgot_pass/forgot_pass_serviceFB.dart';
 import 'package:superlaundry/services/laundryservice/clean_service_mock.dart';
 import 'package:superlaundry/services/laundryservice/washing_machine_service_mock.dart';
 import 'package:superlaundry/services/logout/logout_service_mock.dart';
+import 'package:superlaundry/services/manage_order/manage_order_service.dart';
+import 'package:superlaundry/services/manage_order/manage_order_service_mock.dart';
 import 'package:superlaundry/services/orderhistory/orderhistory_service.dart';
 import 'package:superlaundry/services/registration/registrationService.dart';
 import 'package:superlaundry/services/registration/registration_serviceFirestore.dart';
@@ -17,6 +19,7 @@ import 'package:superlaundry/ui/screens/home_manager/mainmenuM_viewmodel.dart';
 import 'package:superlaundry/ui/screens/laundry_service/cleanmethod/viewCleanMethod/cleanser_viewmodel.dart';
 import 'package:superlaundry/ui/screens/laundry_service/deliverymethod/viewDeliveryMethod/deliveryser_viewmodel.dart';
 import 'package:superlaundry/ui/screens/laundry_service/washingmachine/viewWashingMachine/washingmachine_viewmodel.dart';
+import 'package:superlaundry/ui/screens/manage_order/manageorder_viewmodel.dart';
 import 'package:superlaundry/ui/screens/order_history/orderhistory_viewmodel.dart';
 import '../services/laundryservice/clean_service.dart';
 import '../services/laundryservice/delivery_service.dart';
@@ -92,8 +95,12 @@ void initializeServiceLocator() => ServiceLocator.init((locator) {
           () => DeliveryOrderViewmodel());
       locator.registerLazySingleton<DeliveryOrderManagementService>(
           () => DeliveryOrderManagementServiceMock());
-          locator.registerLazySingleton<ChangeStatusViewmodel>(
+      locator.registerLazySingleton<ChangeStatusViewmodel>(
           () => ChangeStatusViewmodel());
       locator.registerLazySingleton<ChangeStatusService>(
           () => ChangeStatusServiceWithFireBase());
+      locator.registerLazySingleton<ManageOrderService>(
+          () => ManageOrderServiceMock());
+      locator.registerLazySingleton<ManageOrderViewModel>(
+          () => ManageOrderViewModel());
     });
