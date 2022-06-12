@@ -5,3 +5,5 @@ export 'registration/login_service.dart';
 export 'orderhistory/orderhistory_service.dart';
 export 'add_order/add_order_service.dart';
 export 'add_order/add_order_serviceFB.dart';
+export 'change_status/change_status_service.dart';
+export 'change_status/change_status_serviceFB.dart';

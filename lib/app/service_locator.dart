@@ -34,6 +34,9 @@ import 'package:superlaundry/services/add_order/add_order_service.dart';
 import 'package:superlaundry/services/add_order/add_order_serviceFB.dart';
 import '../ui/screens/editProfile/profile_viewmodel.dart';
 import 'package:superlaundry/services/profile_service.dart';
+import '../ui/screens/change_status/change_status_viewmodel.dart';
+import 'package:superlaundry/services/change_status/change_status_service.dart';
+import 'package:superlaundry/services/change_status/change_status_serviceFB.dart';
 
 //import '../services/services.dart';
 
@@ -89,4 +92,8 @@ void initializeServiceLocator() => ServiceLocator.init((locator) {
           () => DeliveryOrderViewmodel());
       locator.registerLazySingleton<DeliveryOrderManagementService>(
           () => DeliveryOrderManagementServiceMock());
+          locator.registerLazySingleton<ChangeStatusViewmodel>(
+          () => ChangeStatusViewmodel());
+      locator.registerLazySingleton<ChangeStatusService>(
+          () => ChangeStatusServiceWithFireBase());
     });

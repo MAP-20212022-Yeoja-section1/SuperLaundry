@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:map_mvvm/view.dart';
 import 'package:superlaundry/ui/screens/home_manager/mainmenuM_viewmodel.dart';
 import 'package:superlaundry/ui/screens/laundry_service/laundryser_screen.dart';
+import 'package:superlaundry/ui/screens/change_status/change_status_screen.dart';
 
 class mainMenuMForm extends StatefulWidget {
   static Route route() => MaterialPageRoute(builder: (_) => mainMenuMForm());
@@ -40,7 +41,10 @@ class _mainMenuMForm extends State<mainMenuMForm> {
               margin: EdgeInsets.all(0.0),
               child: InkWell(
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>LaundrySerScreen()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => LaundrySerScreen()));
                   },
                   splashColor: Colors.green,
                   child: Center(
@@ -79,7 +83,10 @@ class _mainMenuMForm extends State<mainMenuMForm> {
             Card(
               margin: EdgeInsets.all(0.0),
               child: InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => ChangeStatusScreen()));
+                  },
                   splashColor: Colors.green,
                   child: Center(
                       child: Column(
