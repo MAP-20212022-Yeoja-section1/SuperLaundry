@@ -84,17 +84,16 @@ class DeliOrderDetailsState extends State<DeliOrderDetails> {
                                   ),
                                   Padding(
                                       padding: const EdgeInsets.all(10),
-                                      child: ListTile(
-                                          title: Text(
+                                      child: Text(
                                         "ORDER DETAILS: ",
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           color:
                                               Color.fromARGB(255, 17, 162, 126),
                                           fontWeight: FontWeight.bold,
-                                          fontSize: 22,
+                                          fontSize: 18,
                                         ),
-                                      ))),
+                                      )),
                                   Align(
                                     alignment: Alignment.centerLeft,
                                     child: FutureBuilder<String>(
