@@ -1,14 +1,11 @@
+// ignore_for_file: prefer_typing_uninitialized_variables, annotate_overrides
+
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:superlaundry/models/user.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:mvvm_counter/services/profile_service.dart';
-import 'package:superlaundry/services/profile_service.dart';
+import 'package:superlaundry/services/profile_edit/profile_service.dart';
 import 'package:superlaundry/services/registration/login_service.dart';
 import 'package:superlaundry/app/service_locator.dart';
 
-class ProfileService {
-  final String? uid;
-  ProfileService({this.uid});
+class ProfileServiceMock extends ProfileService {
   final LoginService _auth = locator<LoginService>();
   final CollectionReference _users =
       FirebaseFirestore.instance.collection('users');

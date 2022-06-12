@@ -1,16 +1,12 @@
-// import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+// ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors
+
 import 'package:flutter/material.dart';
-// import 'package:provider/provider/.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:superlaundry/models/user.dart';
 import 'package:map_mvvm/map_mvvm.dart';
 import 'profile_viewmodel.dart';
 import 'package:superlaundry/ui/screens/editProfile/profile_viewmodel.dart';
-import 'package:superlaundry/services/profile_service.dart';
 
 class ProfileBody extends StatefulWidget {
-  // static Route route() => MaterialPageRoute(builder: (_) => ProfileBody());
   const ProfileBody({
     Key? key,
   }) : super(key: key);
@@ -199,7 +195,7 @@ class _ProfileBodyState extends State<ProfileBody> {
                           ],
                         );
                       } else {
-                        return ListView();
+                        return Text('No data is found!');
                       } //else block
                     } //snapshot
                     ))));

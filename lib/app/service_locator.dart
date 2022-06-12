@@ -1,5 +1,6 @@
 import 'package:map_mvvm/service_locator.dart';
 import 'package:superlaundry/services/deliOrder/deliOrder_service.dart';
+import 'package:superlaundry/services/deliOrder/deliOrder_service_mock.dart';
 import 'package:superlaundry/services/deliveryOrderService/delivery_order_service.dart';
 import 'package:superlaundry/services/deliveryOrderService/delivery_order_service_mock.dart';
 import 'package:superlaundry/services/forgot_pass/forgot_pass_serviceFB.dart';
@@ -9,6 +10,7 @@ import 'package:superlaundry/services/logout/logout_service_mock.dart';
 import 'package:superlaundry/services/manage_order/manage_order_service.dart';
 import 'package:superlaundry/services/manage_order/manage_order_service_mock.dart';
 import 'package:superlaundry/services/orderhistory/orderhistory_service.dart';
+import 'package:superlaundry/services/profile_edit/profile_service_mock.dart';
 import 'package:superlaundry/services/registration/registrationService.dart';
 import 'package:superlaundry/services/registration/registration_serviceFirestore.dart';
 import 'package:superlaundry/ui/screens/deli_get_order/deli_get_order_viewmodel.dart';
@@ -36,7 +38,7 @@ import '../ui/screens/add_order/add_order_viewmodel.dart';
 import 'package:superlaundry/services/add_order/add_order_service.dart';
 import 'package:superlaundry/services/add_order/add_order_serviceFB.dart';
 import '../ui/screens/editProfile/profile_viewmodel.dart';
-import 'package:superlaundry/services/profile_service.dart';
+import 'package:superlaundry/services/profile_edit/profile_service.dart';
 import '../ui/screens/change_status/change_status_viewmodel.dart';
 import 'package:superlaundry/services/change_status/change_status_service.dart';
 import 'package:superlaundry/services/change_status/change_status_serviceFB.dart';
@@ -66,8 +68,8 @@ void initializeServiceLocator() => ServiceLocator.init((locator) {
       locator.registerLazySingleton<MenudViewmodel>(() => MenudViewmodel());
       locator.registerLazySingleton<MenumViewmodel>(() => MenumViewmodel());
       locator.registerLazySingleton<ProfileViewmodel>(() => ProfileViewmodel());
-      locator.registerLazySingleton<ProfileService>(() => ProfileService());
-      locator.registerLazySingleton<DeliOrderService>(() => DeliOrderService());
+      locator.registerLazySingleton<ProfileService>(() => ProfileServiceMock());
+      // locator.registerLazySingleton<DeliOrderService>(() => DeliOrderService());
       locator.registerLazySingleton<deliOrderViewmodel>(
           () => deliOrderViewmodel());
       locator.registerLazySingleton<CleanViewmodel>(() => CleanViewmodel());
@@ -95,6 +97,8 @@ void initializeServiceLocator() => ServiceLocator.init((locator) {
           () => DeliveryOrderViewmodel());
       locator.registerLazySingleton<DeliveryOrderManagementService>(
           () => DeliveryOrderManagementServiceMock());
+      locator.registerLazySingleton<DeliOrderService>(
+          () => DeliOrderServiceMock());
       locator.registerLazySingleton<ChangeStatusViewmodel>(
           () => ChangeStatusViewmodel());
       locator.registerLazySingleton<ChangeStatusService>(
