@@ -15,7 +15,7 @@ class deliGetOrderAppBar extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text('DELIVERY'),
+      title: Text('PENDING DELIVERY'),
       leading: IconButton(
         onPressed: () {
           Navigator.push(context,

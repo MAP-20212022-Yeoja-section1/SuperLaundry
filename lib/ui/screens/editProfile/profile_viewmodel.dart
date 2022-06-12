@@ -1,16 +1,14 @@
 import 'package:map_mvvm/viewmodel.dart';
+import 'package:superlaundry/services/profile_edit/profile_service.dart';
 import '../../../app/service_locator.dart';
 import '../../../services/logout/logout_service.dart';
 import 'package:map_mvvm/map_mvvm.dart';
 import 'package:superlaundry/app/service_locator.dart';
-import '../../../../../services/profile_service.dart';
-import 'package:superlaundry/services/profile_service.dart';
 import '../../../services/registration/login_service.dart';
 
 class ProfileViewmodel extends Viewmodel {
   final ProfileService _profileService = locator<ProfileService>();
   final LoginService _loginService = locator<LoginService>();
-
   LogoutService get _logoutService => locator<LogoutService>();
   dynamic msg = '';
 

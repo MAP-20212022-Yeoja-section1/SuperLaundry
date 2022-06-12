@@ -1,45 +1,10 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+// ignore_for_file: file_names
+
 import 'package:superlaundry/models/orders.dart';
-import 'package:superlaundry/models/user.dart';
 
-class DeliOrderService {
-  @override
-  Stream<List<OrdersModel>> readDeliOrder() {
-    final FirebaseAuth auth = FirebaseAuth.instance;
-    final User? user = auth.currentUser;
-    final uid = user!.uid;
-
-    return FirebaseFirestore.instance
-        .collection('orders')
-        .where('acceptedDelivery', isEqualTo: false)
-        .snapshots()
-        .map((snapshot) => snapshot.docs
-            .map((doc) => OrdersModel.fromJson(doc.data()))
-            .toList());
-  }
-
-  @override
-  Future updateDelivery(String orderId) async {
-    try {
-      final FirebaseAuth auth = FirebaseAuth.instance;
-      final User? user = auth.currentUser;
-      final uid = user!.uid;
-      final docOrder =
-          FirebaseFirestore.instance.collection("orders").doc(orderId);
-
-      await docOrder.update({'deliveryId': uid, 'acceptedDelivery': true});
-    } on Exception catch (e) {
-      return 100;
-    }
-  }
-  // @override
-  // Stream<List<UserModel>> readDeliUser() => FirebaseFirestore.instance
-  //     .collection('users')
-  //     .where('userId', isEqualTo: uid)
-  //     // .where('orderStatus', isEqualTo: 'READY FOR PICK UP')
-  //     .where('acceptedDelivery', isEqualTo: false)
-  //     .snapshots()
-  //     .map((snapshot) =>
-  //         snapshot.docs.map((doc) => UserModel.fromMap(doc.data())).toList());
+abstract class DeliOrderService {
+  Stream<List<OrdersModel>> readDeliOrder();
+  Future updateDelivery(String orderId);
+  Future<String> getCustName(String userId);
+  Future<String> getCustPNo(String userId);
 }

@@ -1,24 +1,17 @@
-// ignore_for_file: camel_case_types
+// ignore_for_file: camel_case_types, unused_element
 
 import 'package:map_mvvm/map_mvvm.dart';
 import 'package:meta/meta.dart';
 import 'package:superlaundry/app/service_locator.dart';
 import '../../../../../models/orders.dart';
 import 'package:superlaundry/services/deliOrder/deliOrder_service.dart';
-import 'package:superlaundry/services/profile_service.dart';
-import '../../../services/registration/login_service.dart';
+import 'package:superlaundry/services/profile_edit/profile_service.dart';
 
 class deliOrderViewmodel extends Viewmodel {
-  // DeliveryOrderService get _DeliveryOrderService => locator<DeliveryOrderService>();
   DeliOrderService get _deliOrderService => locator<DeliOrderService>();
   final ProfileService _profileService = locator<ProfileService>();
-  final LoginService _loginService = locator<LoginService>();
 
   Stream<List<OrdersModel>> readDeliOrder() {
-    return _deliOrderService.readDeliOrder();
-  }
-
-  Stream<List<OrdersModel>> readDeliUser() {
     return _deliOrderService.readDeliOrder();
   }
 
@@ -26,8 +19,12 @@ class deliOrderViewmodel extends Viewmodel {
     return _profileService.getUserData();
   }
 
-  Future getCurrentID() async {
-    return _loginService.getCurrentUID();
+  Future<String> getCustName(String userId) async {
+    return await _deliOrderService.getCustName(userId);
+  }
+
+  Future<String> getCustPNo(String userId) async {
+    return await _deliOrderService.getCustPNo(userId);
   }
 
   Future updateDelivery({@required orderId}) async {
