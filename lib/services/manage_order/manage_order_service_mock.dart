@@ -37,8 +37,11 @@ class ManageOrderServiceMock extends ManageOrderService {
       final docOrder =
           FirebaseFirestore.instance.collection("orders").doc(orderId);
 
-      await docOrder
-          .update({'orderStatus': "ACCEPTED", 'acceptedDelivery': false});
+      await docOrder.update({
+        'orderStatus': "ACCEPTED",
+        'acceptedDelivery': false,
+        'orderCompletion': 'INCOMPLETE'
+      });
     } on Exception catch (e) {
       return 100;
     }
