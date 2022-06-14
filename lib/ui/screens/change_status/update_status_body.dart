@@ -161,15 +161,38 @@ class ActiveOrdersDetailsState extends State<ActiveOrdersDetails> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20)),
                           onPressed: () async {
-                            await viewmodel.updateStatus(
+                            dynamic msg = await viewmodel.updateStatus(
                                 orderStatus: statusController.text,
                                 statusTime: DateTime.now().toIso8601String(),
                                 orderId: widget.post.orderId);
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        ChangeStatusScreen()));
+
+                            if (msg == 100) {
+                              Fluttertoast.showToast(
+                                msg:
+                                    "Error! Unable to update the order status.",
+                                toastLength: Toast.LENGTH_LONG,
+                                gravity: ToastGravity.BOTTOM,
+                                fontSize: 16,
+                                backgroundColor:
+                                    const Color.fromARGB(255, 209, 68, 58),
+                              );
+                            } else {
+                              Fluttertoast.showToast(
+                                msg:
+                                    "The order status is successfully updated!",
+                                toastLength: Toast.LENGTH_LONG,
+                                gravity: ToastGravity.BOTTOM,
+                                fontSize: 16,
+                                backgroundColor:
+                                    const Color.fromARGB(255, 69, 161, 76),
+                              );
+
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          ChangeStatusScreen()));
+                            }
                           },
                           child: Text('Update'),
                           textColor: Colors.white,

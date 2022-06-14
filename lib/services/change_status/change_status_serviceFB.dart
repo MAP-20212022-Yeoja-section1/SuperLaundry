@@ -5,14 +5,6 @@ import '../../models/orders.dart';
 import '../../../app/failures.dart';
 
 class ChangeStatusServiceWithFireBase extends ChangeStatusService {
-  // Stream<List<OrdersModel>> readActiveOrders() => FirebaseFirestore.instance
-  //     .collection('orders')
-  //     .where('orderCompletion', isEqualTo: 'INCOMPLETE')
-  //     .where('orderStatus', isNotEqualTo: 'REJECTED')
-  //     .snapshots()
-  //     .map((snapshot) => snapshot.docs
-  //         .map((doc) => OrdersModel.fromJson(doc.data()))
-  //         .toList());
   @override
   Stream<List<OrdersModel>> readActiveOrders() {
     final FirebaseAuth auth = FirebaseAuth.instance;
@@ -48,7 +40,7 @@ class ChangeStatusServiceWithFireBase extends ChangeStatusService {
         });
       }
     } on Exception catch (e) {
-      // return 100;
+      return 100;
     }
   }
 }
