@@ -58,7 +58,7 @@ class DeliveryOrderDetailsState extends State<DeliveryOrderDetails>{
                             children: <Widget>[
                               Container(
                                 decoration: BoxDecoration(
-                                    color: Color.fromARGB(255, 13, 150, 93),
+                                    color: Color.fromARGB(255, 31, 169, 134),
                                     borderRadius: BorderRadius.only(
                                         topLeft: Radius.circular(15),
                                         topRight: Radius.circular(15))),
@@ -224,9 +224,13 @@ class DeliveryOrderDetailsState extends State<DeliveryOrderDetails>{
                                   ),
                                 ),
                               ),
+                              Divider(
+                                    thickness: 1,
+                                    color: Color.fromARGB(255, 209, 206, 206),
+                                  ),
                               Container(
                                 decoration: BoxDecoration(
-                                    color: Color.fromARGB(255, 13, 150, 93),
+                                    color: Colors.white,
                                     borderRadius: BorderRadius.only(
                                         bottomLeft: Radius.circular(15),
                                         bottomRight: Radius.circular(15))),
@@ -240,7 +244,9 @@ class DeliveryOrderDetailsState extends State<DeliveryOrderDetails>{
                                           "\n\nStatus Time: " +
                                           widget.post.statusTime,
                                       style: const TextStyle(
-                                          fontSize: 18, color: Colors.white),
+                                          fontSize: 18,
+                                          color: Color.fromARGB(255, 24, 109, 88),
+                                          fontWeight: FontWeight.w500),
                                     ),
                                   ),
                                 ),
@@ -250,7 +256,7 @@ class DeliveryOrderDetailsState extends State<DeliveryOrderDetails>{
                         ),
                       ),            
                   Padding(
-                  padding: EdgeInsets.only(bottom:20),
+                  padding: EdgeInsets.only(top:20, bottom:30),
                   child: FloatingActionButton.extended(
                   onPressed: ()async {
                     showDialog(
@@ -304,6 +310,7 @@ class DeliveryOrderDetailsState extends State<DeliveryOrderDetails>{
                     fontSize: 18)),
                     highlightElevation: 10.0,
                     backgroundColor: Color.fromARGB(255, 255, 83, 83),
+                    icon: Icon(Icons.cancel_sharp)
               ),)
                 ],
               ),

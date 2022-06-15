@@ -55,7 +55,7 @@ class PickedUpOrderState extends State<PickedUpOrder>{
                                 child: Column(
                                 children: <Widget>[
                                   Container(
-                                    decoration: BoxDecoration(color: Color.fromARGB(255, 13, 150, 93),
+                                    decoration: BoxDecoration(color: Color.fromARGB(255, 31, 169, 134),
                                     borderRadius: BorderRadius.only(topLeft: Radius.circular(15), topRight: Radius.circular(15))),
                                     child: Center(
                                       child: Padding(
@@ -205,8 +205,12 @@ class PickedUpOrderState extends State<PickedUpOrder>{
                                           ),  
                                       ),
                                   ),
+                                Divider(
+                                    thickness: 1,
+                                    color: Color.fromARGB(255, 209, 206, 206),
+                                  ),
                                 Container(
-                                        decoration: BoxDecoration(color: Color.fromARGB(255, 13, 150, 93),
+                                        decoration: BoxDecoration(color: Colors.white,
                                          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(15), bottomRight: Radius.circular(15))),
                                         child: Column(
                                           children: [
@@ -217,8 +221,8 @@ class PickedUpOrderState extends State<PickedUpOrder>{
                                                       widget.post.orderStatus +"\n\nStatus Time: "+widget.post.statusTime,
                                                       style: const TextStyle(
                                                         fontSize: 18,
-                                                        color:Colors.white
-                                                        ), 
+                                                        color: Color.fromARGB(255, 24, 109, 88),
+                                                        fontWeight: FontWeight.w500), 
                                                   ),  
                                               ),
                                             ),
@@ -261,9 +265,10 @@ class PickedUpOrderState extends State<PickedUpOrder>{
                                     label: const Text('Picked Up',
                                         // ignore: unnecessary_const
                                         style: const TextStyle(
-                                            color: Color.fromARGB(255, 13, 150, 93),
+                                            color: Colors.white,
                                             fontWeight: FontWeight.bold, fontSize: 18)),
-                                    backgroundColor: Colors.white,
+                                    backgroundColor: Color.fromARGB(255, 31, 169, 134),
+                                    icon: Icon(Icons.done_sharp),
                                   ),
                                 ),
                                 ]
@@ -275,7 +280,7 @@ class PickedUpOrderState extends State<PickedUpOrder>{
                                     ),
                                  
                   Padding(
-                  padding: EdgeInsets.only(bottom:20),
+                  padding: EdgeInsets.only(top:20 , bottom:30),
                   child: FloatingActionButton.extended(
                   heroTag: "btn2",
                   onPressed: ()async {
@@ -330,6 +335,7 @@ class PickedUpOrderState extends State<PickedUpOrder>{
                     fontSize: 18)),
                     highlightElevation: 10.0,
                     backgroundColor: Color.fromARGB(255, 255, 83, 83),
+                    icon: Icon(Icons.cancel_sharp),
               ),)
                 ],
               ),
