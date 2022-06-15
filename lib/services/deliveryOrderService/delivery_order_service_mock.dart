@@ -30,7 +30,8 @@ class DeliveryOrderManagementServiceMock extends DeliveryOrderManagementService{
       .doc(orderId);
 
       await docOrder.update({
-        'orderStatus' : orderStatus
+        'orderStatus' : orderStatus,
+        'statusTime' : DateTime.now().toIso8601String(),
       });
 
     }on Exception catch (e){

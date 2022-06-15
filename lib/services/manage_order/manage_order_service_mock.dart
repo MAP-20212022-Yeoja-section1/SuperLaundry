@@ -57,7 +57,7 @@ class ManageOrderServiceMock extends ManageOrderService {
           FirebaseFirestore.instance.collection("orders").doc(orderId);
 
       await docOrder
-          .update({'orderStatus': "REJECTED", 'acceptedDelivery': false});
+          .update({'orderStatus': "REJECTED"});
     } on Exception catch (e) {
       return 100;
     }

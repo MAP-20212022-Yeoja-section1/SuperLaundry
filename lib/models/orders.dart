@@ -1,5 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 class OrdersModel {
   String userId;
   String orderId;
@@ -48,9 +46,8 @@ class OrdersModel {
         totalPrice: map["totalPrice"],
         orderStatus: map["orderStatus"],
         statusTime: map["statusTime"],
-        paymentMethod: map['paymentMethod'],
-        acceptedDelivery: map['acceptedDelivery'],
-        deliveryId: map['deliveryId']);
+        paymentMethod: map['paymentMethod']
+        );
   }
 
   Map<String, dynamic> toMap() {
@@ -67,9 +64,7 @@ class OrdersModel {
       "totalPrice": totalPrice,
       "orderStatus": orderStatus,
       "statusTime": statusTime,
-      "paymentMethod": paymentMethod,
-      "acceptedDelivery": acceptedDelivery,
-      "deliveryId": deliveryId
+      "paymentMethod": paymentMethod
     };
   }
 
@@ -86,9 +81,7 @@ class OrdersModel {
         "totalPrice": totalPrice,
         "orderStatus": orderStatus,
         "statusTime": statusTime,
-        "paymentMethod": paymentMethod,
-        "acceptedDelivery": acceptedDelivery,
-        // "deliveryId": deliveryId
+        "paymentMethod": paymentMethod
       };
 
   static OrdersModel fromJson(Map<String, dynamic> json) => OrdersModel(
@@ -104,8 +97,6 @@ class OrdersModel {
         totalPrice: json["totalPrice"],
         orderStatus: json["orderStatus"],
         statusTime: json["statusTime"],
-        paymentMethod: json['paymentMethod'],
-        acceptedDelivery: json['acceptedDelivery'],
-        // deliveryId: json['deliveryId']
+        paymentMethod: json['paymentMethod']
       );
 }

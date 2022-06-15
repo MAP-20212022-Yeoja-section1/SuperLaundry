@@ -47,167 +47,210 @@ class DeliveryOrderDetailsState extends State<DeliveryOrderDetails>{
             child: Column(
                 children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Card(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Card(
                           shape: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(30), 
-                                borderSide: const BorderSide(color: Colors.white)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(10.0),
-                              child: Column(
-                                children: <Widget>[
-                                  Padding(
-                                    padding: const EdgeInsets.all(15),
-                                    child:Center(
-                                      child:Text("Order ID: "+
-                                            widget.post.orderId,
-                                            style: const TextStyle(fontSize: 18, color:Color.fromARGB(255, 4, 107, 81), fontWeight: FontWeight.bold), 
-                                        ),  
+                              borderRadius: BorderRadius.circular(15),
+                              borderSide: BorderSide(
+                                  color: Color.fromARGB(255, 255, 255, 255),
+                                  width: 0)),
+                          child: Column(
+                            children: <Widget>[
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: Color.fromARGB(255, 13, 150, 93),
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(15),
+                                        topRight: Radius.circular(15))),
+                                child: Center(
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(
+                                        bottom: 15, top: 20),
+                                    child: Text(
+                                      "Order Details",
+                                      style: const TextStyle(
+                                          fontSize: 24,
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.white),
                                     ),
                                   ),
-                                  const Divider(color:  Color.fromARGB(255, 135, 135, 135),thickness: 1),
-                                  Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(15),
-                                      child:Text("Order Date: "+
-                                              widget.post.date,
-                                              style: const TextStyle(fontSize: 16), 
-                                          ),  
-                                      ),
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(15),
+                                  child: Text(
+                                    "Order ID: " + widget.post.orderId,
+                                    style: const TextStyle(fontSize: 16),
                                   ),
-                                  Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(15),
-                                      child:Text("Order Time: "+
-                                              widget.post.time,
-                                              style: const TextStyle(fontSize: 16), 
-                                          ),  
-                                      ),
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(15),
+                                  child: Text(
+                                    "Order Date: " + widget.post.date,
+                                    style: const TextStyle(fontSize: 16),
                                   ),
-                                  // ignore: prefer_const_constructors
-                                  Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: FutureBuilder<String>(
-                                    future: viewmodel.getCustomerName(widget.post.userId),
-                                    builder: (BuildContext context, snapshot){
-                                      if(snapshot.hasData){
-                                        return Padding(
-                                      padding: const EdgeInsets.all(15),
-                                      child:Text("Customer Name: " + snapshot.data.toString(),
-                                              style: const TextStyle(fontSize: 16), 
-                                          ),  
-                                        );
-                                      }else{
-                                        return const Text('No data is found!');
-                                      }
-                                    }, 
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(15),
+                                  child: Text(
+                                    "Order Time: " + widget.post.time,
+                                    style: const TextStyle(fontSize: 16),
                                   ),
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: FutureBuilder<String>(
+                                  future: viewmodel
+                                      .getCustomerName(widget.post.userId),
+                                  builder: (BuildContext context, snapshot) {
+                                    if (snapshot.hasData) {
+                                      return Padding(
+                                        padding: const EdgeInsets.all(15),
+                                        child: Text(
+                                          "Customer Name: " +
+                                              snapshot.data.toString(),
+                                          style: const TextStyle(fontSize: 16),
+                                        ),
+                                      );
+                                    } else {
+                                      return const Text('No data is found!');
+                                    }
+                                  },
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(15),
+                                  child: Text(
+                                    "Address: " + widget.post.address,
+                                    style: const TextStyle(fontSize: 16),
                                   ),
-                                  Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(15),
-                                      child:Text("Address: "+
-                                              widget.post.address,
-                                              style: const TextStyle(fontSize: 16), 
-                                          ),  
-                                      ),
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: FutureBuilder<String>(
+                                  future: viewmodel
+                                      .getCustomerPhoneNum(widget.post.userId),
+                                  builder: (BuildContext context, snapshot) {
+                                    if (snapshot.hasData) {
+                                      return Padding(
+                                        padding: const EdgeInsets.all(15),
+                                        child: Text(
+                                          "Phone Number: " +
+                                              snapshot.data.toString(),
+                                          style: const TextStyle(fontSize: 16),
+                                        ),
+                                      );
+                                    } else {
+                                      return const Text('No data is found!');
+                                    }
+                                  },
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(15),
+                                  child: Text(
+                                    "Cleaning Method: " +
+                                        widget.post.cleanMethod,
+                                    style: const TextStyle(fontSize: 16),
                                   ),
-                                  // ignore: prefer_const_constructors
-                                  Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: FutureBuilder<String>(
-                                    future: viewmodel.getCustomerPhoneNum(widget.post.userId),
-                                    builder: (BuildContext context, snapshot){
-                                      if(snapshot.hasData){
-                                        return Padding(
-                                      padding: const EdgeInsets.all(15),
-                                      child:Text("Phone Number: " + snapshot.data.toString(),
-                                              style: const TextStyle(fontSize: 16), 
-                                          ),  
-                                        );
-                                      }else{
-                                        return const Text('No data is found!');
-                                      }
-                                    }, 
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(15),
+                                  child: Text(
+                                    "Weight: " + widget.post.weight + " kg",
+                                    style: const TextStyle(fontSize: 16),
                                   ),
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(15),
+                                  child: Text(
+                                    "Water Temperature: " +
+                                        widget.post.waterTemperature,
+                                    style: const TextStyle(fontSize: 16),
                                   ),
-                                  Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(15),
-                                      child:Text("Cleaning Method: "+
-                                              widget.post.cleanMethod,
-                                              style: const TextStyle(fontSize: 16), 
-                                          ),  
-                                      ),
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(15),
+                                  child: Text(
+                                    "Total Price: RM " +
+                                        widget.post.totalPrice
+                                            .toStringAsFixed(2),
+                                    style: const TextStyle(fontSize: 16),
                                   ),
-                                  Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(15),
-                                      child:Text("Weight: "+
-                                              widget.post.weight + " kg",
-                                              style: const TextStyle(fontSize: 16), 
-                                          ),  
-                                      ),
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(15),
+                                  child: Text(
+                                    "Payment Method: " +
+                                        widget.post.paymentMethod,
+                                    style: const TextStyle(fontSize: 16),
                                   ),
-                                  Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(15),
-                                      child:Text("Water Temperature: "+
-                                              widget.post.waterTemperature,
-                                              style: const TextStyle(fontSize: 16), 
-                                          ),  
-                                      ),
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(15),
+                                  child: Text(
+                                    "Delivery Method: " +
+                                        widget.post.deliveryMethod,
+                                    style: const TextStyle(fontSize: 16),
                                   ),
-                                  Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(15),
-                                      child:Text("Total Price: RM "+
-                                              widget.post.totalPrice.toStringAsFixed(2),
-                                              style: const TextStyle(fontSize: 16), 
-                                          ),  
-                                      ),
-                                  ),
-                                  Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(15),
-                                      child:Text("Payment Method: "+
-                                              widget.post.paymentMethod,
-                                              style: const TextStyle(fontSize: 16), 
-                                          ),  
-                                      ),
-                                  ),
-                                  Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(15),
-                                      child:Text("Delivery Method: "+
-                                              widget.post.deliveryMethod,
-                                              style: const TextStyle(fontSize: 16), 
-                                          ),  
-                                      ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(15),
-                                    child:Text("Order Status: "+
-                                            widget.post.orderStatus,
-                                            style: const TextStyle(fontSize: 18, color: Color.fromARGB(255, 4, 107, 81), fontWeight: FontWeight.w600), 
-                                        ),  
+                                ),
+                              ),
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: Color.fromARGB(255, 13, 150, 93),
+                                    borderRadius: BorderRadius.only(
+                                        bottomLeft: Radius.circular(15),
+                                        bottomRight: Radius.circular(15))),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      bottom: 15, top: 15, left: 10, right: 10),
+                                  child: Center(
+                                    child: Text(
+                                      "Order Status: " +
+                                          widget.post.orderStatus +
+                                          "\n\nStatus Time: " +
+                                          widget.post.statusTime,
+                                      style: const TextStyle(
+                                          fontSize: 18, color: Colors.white),
                                     ),
-                                ]
-                               )  
-                          )
-                      ),
-                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),            
                   Padding(
-                  padding: EdgeInsets.only(top:10,bottom:20),
+                  padding: EdgeInsets.only(bottom:20),
                   child: FloatingActionButton.extended(
                   onPressed: ()async {
                     showDialog(
@@ -215,8 +258,8 @@ class DeliveryOrderDetailsState extends State<DeliveryOrderDetails>{
                       builder: (context){
                         return AlertDialog(
                           elevation: 20,
-                          title: Center(child: const Text("Cancel Delivery", style:TextStyle(color: Colors.red))),
-                          content: const Text("Are you sure you want to cancel the delivery?",
+                          title: Center(child: Text("Cancel Delivery", style:TextStyle(color: Colors.red))),
+                          content: Text("Are you sure you want to cancel the delivery?",
                           textAlign: TextAlign.center,
                           ),
                           actions: <Widget>[
@@ -260,7 +303,7 @@ class DeliveryOrderDetailsState extends State<DeliveryOrderDetails>{
                     fontWeight: FontWeight.bold,
                     fontSize: 18)),
                     highlightElevation: 10.0,
-                    backgroundColor: Color.fromARGB(255, 248, 40, 40),
+                    backgroundColor: Color.fromARGB(255, 255, 83, 83),
               ),)
                 ],
               ),

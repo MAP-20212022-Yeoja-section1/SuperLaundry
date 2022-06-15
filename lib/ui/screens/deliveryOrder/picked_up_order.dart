@@ -47,25 +47,38 @@ class PickedUpOrderState extends State<PickedUpOrder>{
             child: Column(
                 children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.all(10.0),
+                      padding: const EdgeInsets.all(15.0),
                       child: Card(
-                          shape: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(30), 
-                                borderSide: const BorderSide(color: Colors.white)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(10.0),
-                              child: Column(
+                          shape:  OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15),
+                              borderSide: BorderSide(color: Color.fromARGB(255, 255, 255, 255),width: 0)),
+                                child: Column(
                                 children: <Widget>[
-                                  Padding(
-                                    padding: const EdgeInsets.all(15),
-                                    child:Center(
-                                      child:Text("Order ID: "+
-                                            widget.post.orderId,
-                                            style: const TextStyle(fontSize: 18, color:Color.fromARGB(255, 4, 107, 81), fontWeight: FontWeight.bold), 
-                                        ),  
+                                  Container(
+                                    decoration: BoxDecoration(color: Color.fromARGB(255, 13, 150, 93),
+                                    borderRadius: BorderRadius.only(topLeft: Radius.circular(15), topRight: Radius.circular(15))),
+                                    child: Center(
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(bottom: 15, top: 20),
+                                        child:Text("Order Details",
+                                                style: const TextStyle(
+                                                  fontSize: 24,
+                                                  fontWeight: FontWeight.w600,
+                                                  color: Colors.white), 
+                                            ),  
+                                        ),
                                     ),
                                   ),
-                                  const Divider(color: Color.fromARGB(255, 135, 135, 135),thickness: 1),
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(15),
+                                      child:Text("Order ID: "+
+                                              widget.post.orderId,
+                                              style: const TextStyle(fontSize: 16), 
+                                          ),  
+                                      ),
+                                  ),
                                   Align(
                                     alignment: Alignment.centerLeft,
                                     child: Padding(
@@ -114,7 +127,6 @@ class PickedUpOrderState extends State<PickedUpOrder>{
                                           ),  
                                       ),
                                   ),
-                                  // ignore: prefer_const_constructors
                                   Align(
                                     alignment: Alignment.centerLeft,
                                     child: FutureBuilder<String>(
@@ -193,53 +205,75 @@ class PickedUpOrderState extends State<PickedUpOrder>{
                                           ),  
                                       ),
                                   ),
+                                Container(
+                                        decoration: BoxDecoration(color: Color.fromARGB(255, 13, 150, 93),
+                                         borderRadius: BorderRadius.only(bottomLeft: Radius.circular(15), bottomRight: Radius.circular(15))),
+                                        child: Column(
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.only(bottom: 15, top: 15, left: 10, right: 10),
+                                              child: Center(
+                                                child:Text("Order Status: "+
+                                                      widget.post.orderStatus +"\n\nStatus Time: "+widget.post.statusTime,
+                                                      style: const TextStyle(
+                                                        fontSize: 18,
+                                                        color:Colors.white
+                                                        ), 
+                                                  ),  
+                                              ),
+                                            ),
                                   Padding(
-                                    padding: const EdgeInsets.all(15),
-                                    child:Text("Order Status: "+
-                                            widget.post.orderStatus,
-                                            style: const TextStyle(fontSize: 18, color: Color.fromARGB(255, 4, 107, 81), fontWeight: FontWeight.w600), 
-                                        ),  
-                                    ),
+                                  padding: const EdgeInsets.only(top: 10, bottom: 20),
+                                  child: FloatingActionButton.extended(
+                                    heroTag: "btn1",
+                                    onPressed: () async {
+                                      dynamic msg = await viewmodel.updateStatusDelivery(
+                                          orderId: widget.post.orderId,
+                                          orderStatus: "PICKED UP");
+
+                                      if (msg == 100) {
+                                        Fluttertoast.showToast(
+                                          msg:
+                                              "Error! Unable to update the delivery status.",
+                                          toastLength: Toast.LENGTH_LONG,
+                                          gravity: ToastGravity.BOTTOM,
+                                          fontSize: 16,
+                                          backgroundColor:
+                                              const Color.fromARGB(255, 209, 68, 58),
+                                        );
+                                      } else {
+                                        Fluttertoast.showToast(
+                                          msg:
+                                              "The delivery status is successfully updated!",
+                                          toastLength: Toast.LENGTH_LONG,
+                                          gravity: ToastGravity.BOTTOM,
+                                          fontSize: 16,
+                                          backgroundColor:
+                                              const Color.fromARGB(255, 69, 161, 76),
+                                        );
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    AcceptedDeliveryOrderScreen()));
+                                      }
+                                    },
+                                    label: const Text('Picked Up',
+                                        // ignore: unnecessary_const
+                                        style: const TextStyle(
+                                            color: Color.fromARGB(255, 13, 150, 93),
+                                            fontWeight: FontWeight.bold, fontSize: 18)),
+                                    backgroundColor: Colors.white,
+                                  ),
+                                ),
                                 ]
                                )  
-                          )
                       ),
-                    ),
-                  Padding(
-                      padding: const EdgeInsets.only(top:10, bottom:20),
-                      child: FloatingActionButton.extended(
-                      heroTag: "btn1",
-                      onPressed: ()async {
-          
-                          dynamic msg = await viewmodel.updateStatusDelivery(orderId: widget.post.orderId, orderStatus:"PICKED UP");
-                          
-                          if(msg==100){
-                          Fluttertoast.showToast(
-                            msg: "Error! Unable to update the delivery status.",
-                            toastLength: Toast.LENGTH_LONG,
-                            gravity: ToastGravity.BOTTOM,
-                            fontSize: 16,
-                            backgroundColor: const Color.fromARGB(255, 209, 68, 58),
-                          );}
-                          else{
-                          Fluttertoast.showToast(msg: "The delivery status is successfully updated!",
-                              toastLength: Toast.LENGTH_LONG,
-                                  gravity: ToastGravity.BOTTOM,
-                                  fontSize: 16,
-                                  backgroundColor: const Color.fromARGB(255, 69, 161, 76),
-                              );
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=> AcceptedDeliveryOrderScreen()));
-                          }                                                                          
-                        },                   
-                        label: const Text(
-                        'Picked Up',
-                        // ignore: unnecessary_const
-                        style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18)),
-                        highlightElevation: 10.0,
-                        backgroundColor: const Color.fromARGB(255, 4, 107, 81),
-                  ),),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                 
                   Padding(
                   padding: EdgeInsets.only(bottom:20),
                   child: FloatingActionButton.extended(
@@ -295,7 +329,7 @@ class PickedUpOrderState extends State<PickedUpOrder>{
                     fontWeight: FontWeight.bold,
                     fontSize: 18)),
                     highlightElevation: 10.0,
-                    backgroundColor: Color.fromARGB(255, 248, 40, 40),
+                    backgroundColor: Color.fromARGB(255, 255, 83, 83),
               ),)
                 ],
               ),

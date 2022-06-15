@@ -23,60 +23,72 @@ class _AcceptedDeliveryOrderBody extends State<AcceptedDeliveryOrderBody> {
     return View<DeliveryOrderViewmodel>(
       shouldRebuild: false,
       builder: (_, viewmodel) =>
-        SingleChildScrollView(
-          child: Column(
-            children: [
-              StreamBuilder<List<OrdersModel>>(
-                stream: viewmodel.readAcceptedDeliveryOrder(),
-                builder: (context, snapshot){
-                  if(snapshot.hasData){
-                    final acceptedDelOrders = snapshot.data!;
-                    return ListView(
-                      shrinkWrap: true,
-                      children: acceptedDelOrders.map(buildAcceptedDelOrder).toList(),
-                    );
-                  }else if(snapshot.hasError){
-                      return Center(
-                        child: Text(snapshot.error.toString(),
-                          style: TextStyle(
-                            color: Colors.white,
-                            backgroundColor: Colors.red[700]
-                          ),
-                        ),
-                      );
-                  }else{
-                    return const Center(child: CircularProgressIndicator());
+        Stack(
+          children: [
+            Container(
+              decoration: const BoxDecoration(color: Color.fromARGB(255, 192, 252, 238)),
+            ),
+            SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: Column(
+                children: [
+                  StreamBuilder<List<OrdersModel>>(
+                    stream: viewmodel.readAcceptedDeliveryOrder(),
+                    builder: (context, snapshot){
+                      if(snapshot.hasData){
+                        final acceptedDelOrders = snapshot.data!;
+                        return ListView(
+                          shrinkWrap: true,
+                          children: acceptedDelOrders.map(buildAcceptedDelOrder).toList(),
+                        );
+                      }else if(snapshot.hasError){
+                          return Center(
+                            child: Text(snapshot.error.toString(),
+                              style: TextStyle(
+                                color: Colors.white,
+                                backgroundColor: Colors.red[700]
+                              ),
+                            ),
+                          );
+                      }else{
+                        return const Center(child: CircularProgressIndicator());
+                      }
                   }
-              }
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
+          ]
         ),              
       );
   }
 
   Widget buildAcceptedDelOrder(OrdersModel dOrder) => Card(
     shape:  OutlineInputBorder(
-    borderRadius: BorderRadius.circular(3),
-    borderSide: const BorderSide(color: Colors.white)
+    borderRadius: BorderRadius.circular(10),
+    borderSide: const BorderSide(color: Color.fromARGB(255, 255, 255, 255))
     ),
     child: Padding(
     padding: const EdgeInsets.all(15.0),
     child: ListTile(
       title: Text(dOrder.orderStatus,
                 style: const TextStyle(
+                      fontSize: 20,
                       fontWeight: FontWeight.w600,
                       color: Color.fromARGB(255, 17, 162, 126)
                       ),),
-      subtitle: Text("Order ID: "+ dOrder.orderId,
+      subtitle: Text(dOrder.date + " | "+ dOrder.time,
             style: const TextStyle(
             fontSize: 16,
             height: 2.5,
             ),
           ),
+      dense: true,
       trailing: const Icon(
         Icons.chevron_right_rounded,
-        size: 32,
+        size: 48,
         color: Color.fromARGB(255, 17, 162, 126),
         ),
         onTap: (){
