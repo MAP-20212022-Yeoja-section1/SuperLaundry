@@ -369,9 +369,8 @@ class _AddOrderBody extends State<AddOrderBody> {
                                     onChanged: (bool? value) async {
                                       this.valuefirst = true;
                                       if (value == true) {
-                                        addressController.text = await viewmodel
-                                            .getAddress()
-                                            .toString();
+                                        addressController.text =
+                                            await viewmodel.getAddress();
                                       }
                                       setState(() {});
                                     }),

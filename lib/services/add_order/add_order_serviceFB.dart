@@ -73,19 +73,22 @@ class AddOrderServiceWithFireBase extends AddOrderService {
   }
 
   @override
-  Future<Map> getAddress() async {
+  Future<String> getAddress() async {
     final FirebaseAuth auth = FirebaseAuth.instance;
     final User? user = auth.currentUser;
     final uid = user!.uid;
-    var data;
-    var res = await _userCollection.doc(uid).get().then((value) {
-      data = {
-        'address': value['homeaddress'].toString(),
-      };
-      print(data);
-      return data;
+
+    String address;
+
+    return FirebaseFirestore.instance
+        .collection('users')
+        .doc(uid)
+        .get()
+        .then((value) {
+      Map data = value.data() as Map;
+      address = data['homeaddress'].toString();
+      return address;
     });
-    return res;
   }
 
   @override
@@ -125,42 +128,11 @@ class AddOrderServiceWithFireBase extends AddOrderService {
       final map = ordersModel.toJson();
       await docOrders.set(map);
 
-      //insert order in the 'order' sub-collection inside 'users' collection if FS
-      // await FirebaseFirestore.instance
-      //     .collection('users')
-      //     .doc(uid)
-      //     .collection('order')
-      //     .add(map);
-
       return Failures.submitOrderSucceed;
     } on Exception catch (e) {
       return Failures.submitFail;
     }
   }
-
-  // @override
-  // addOrderToUser(
-  //     String? id,
-  //     String deliveryMethod,
-  //     String date,
-  //     String time,
-  //     String cleanMethod,
-  //     String weight,
-  //     String waterTemperature,
-  //     String address,
-  //     double totalPrice) async {
-  //   _userCollection.doc(id).collection('order').add({
-  //     'orderId': id,
-  //     'deliveryMethod': deliveryMethod,
-  //     'date': date,
-  //     'time': time,
-  //     'cleanMethod': cleanMethod,
-  //     'weight': weight,
-  //     'waterTemperature': waterTemperature,
-  //     'address': address,
-  //     'totalPrice': totalPrice
-  //   });
-  // }
 
   Stream<List<CleanMethodModel>> readCleanMethods() =>
       FirebaseFirestore.instance.collection('cleanmethods').snapshots().map(

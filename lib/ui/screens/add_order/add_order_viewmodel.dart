@@ -32,10 +32,8 @@ class AddOrderViewmodel extends Viewmodel {
     return totalPrice;
   }
 
-  Future getAddress() async {
-    var address;
-    address = await _addOrderService.getAddress().toString();
-    return address;
+  Future<String> getAddress() async {
+    return await _addOrderService.getAddress();
   }
 
   Future createOrder(

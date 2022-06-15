@@ -23,7 +23,7 @@ abstract class AddOrderService {
 
   Future getWashingMachinePrice(String weight, String waterTemperature);
 
-  Future<Map> getAddress();
+  Future<String> getAddress();
 
   Stream<List<CleanMethodModel>> readCleanMethods();
 }
