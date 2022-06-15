@@ -82,7 +82,7 @@ class _ChangeStatusBody extends State<ChangeStatusBody> {
             'Order ID: ' + om.orderId,
             style: TextStyle(fontSize: 17),
           ),
-          subtitle: Text(om.date + " | " + om.time),
+          subtitle: Text(om.date + " | " + om.orderStatus),
           trailing: const Icon(
             Icons.chevron_right_rounded,
             size: 32,
