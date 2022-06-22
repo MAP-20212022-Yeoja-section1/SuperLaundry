@@ -1,8 +1,4 @@
-import 'package:map_mvvm/map_mvvm.dart';
-import 'package:meta/meta.dart';
-import 'package:superlaundry/app/service_locator.dart';
-import 'package:superlaundry/models/orders.dart';
-import 'package:superlaundry/services/deliveryOrderService/delivery_order_service.dart';
+import 'delivery_order.dart';
 
 class DeliveryOrderViewmodel extends Viewmodel {
 

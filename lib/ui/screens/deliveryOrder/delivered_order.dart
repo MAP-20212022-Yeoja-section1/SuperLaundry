@@ -1,11 +1,6 @@
 // ignore_for_file: prefer_const_constructors_in_immutables, use_key_in_widget_constructors, prefer_const_constructors, deprecated_member_use
 
-import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:map_mvvm/map_mvvm.dart';
-import 'package:superlaundry/models/orders.dart';
-import 'package:superlaundry/ui/screens/deliveryOrder/delivery_order_screen.dart';
-import 'delivery_order_viewmodel.dart';
+import 'delivery_order.dart';
 
 class DeliveredOrder extends StatefulWidget {
   final OrdersModel post;

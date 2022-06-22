@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:superlaundry/models/orders.dart';
 import 'delivery_order_service.dart';
 
-class DeliveryOrderManagementServiceMock extends DeliveryOrderManagementService{
+class DeliveryOrderManagementServiceFB extends DeliveryOrderManagementService{
   
   @override
   Stream<List<OrdersModel>> readAcceptedDeliveryOrder() {

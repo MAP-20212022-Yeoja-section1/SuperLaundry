@@ -1,12 +1,6 @@
 // ignore_for_file: non_constant_identifier_names, use_key_in_widget_constructors
 
-import 'package:flutter/material.dart';
-import 'package:map_mvvm/view.dart';
-import 'package:superlaundry/models/orders.dart';
-import 'package:superlaundry/ui/screens/deliveryOrder/delivered_order.dart';
-import 'package:superlaundry/ui/screens/deliveryOrder/delivery_order_details.dart';
-import 'package:superlaundry/ui/screens/deliveryOrder/picked_up_order.dart';
-import 'delivery_order_viewmodel.dart';
+import 'delivery_order.dart';
 
 class AcceptedDeliveryOrderBody extends StatefulWidget {
 
