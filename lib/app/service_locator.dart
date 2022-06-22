@@ -2,13 +2,13 @@ import 'package:map_mvvm/service_locator.dart';
 import 'package:superlaundry/services/deliOrder/deliOrder_service.dart';
 import 'package:superlaundry/services/deliOrder/deliOrder_service_mock.dart';
 import 'package:superlaundry/services/deliveryOrderService/delivery_order_service.dart';
-import 'package:superlaundry/services/deliveryOrderService/delivery_order_service_mock.dart';
+import 'package:superlaundry/services/deliveryOrderService/delivery_order_service_FB.dart';
 import 'package:superlaundry/services/forgot_pass/forgot_pass_serviceFB.dart';
 import 'package:superlaundry/services/laundryservice/clean_service_mock.dart';
 import 'package:superlaundry/services/laundryservice/washing_machine_service_mock.dart';
 import 'package:superlaundry/services/logout/logout_service_mock.dart';
 import 'package:superlaundry/services/manage_order/manage_order_service.dart';
-import 'package:superlaundry/services/manage_order/manage_order_service_mock.dart';
+import 'package:superlaundry/services/manage_order/manage_order_service_FB.dart';
 import 'package:superlaundry/services/orderhistory/orderhistory_service.dart';
 import 'package:superlaundry/services/profile_edit/profile_service_mock.dart';
 import 'package:superlaundry/services/registration/registrationService.dart';
@@ -99,7 +99,7 @@ void initializeServiceLocator() => ServiceLocator.init((locator) {
       locator.registerLazySingleton<DeliveryOrderViewmodel>(
           () => DeliveryOrderViewmodel());
       locator.registerLazySingleton<DeliveryOrderManagementService>(
-          () => DeliveryOrderManagementServiceMock());
+          () => DeliveryOrderManagementServiceFB());
       locator.registerLazySingleton<DeliOrderService>(
           () => DeliOrderServiceMock());
       locator.registerLazySingleton<ChangeStatusViewmodel>(

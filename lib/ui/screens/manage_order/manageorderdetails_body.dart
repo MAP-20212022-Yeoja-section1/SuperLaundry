@@ -1,15 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
-// import 'package:flutter/src/foundation/key.dart';
-// import 'package:flutter/src/widgets/framework.dart';
-import 'package:superlaundry/models/orders.dart';
-import 'package:superlaundry/ui/screens/manage_order/manageorder_screen.dart';
-import 'package:superlaundry/ui/screens/manage_order/manageorder_viewmodel.dart';
-import 'package:superlaundry/ui/screens/order_history/orderhistory_screen.dart';
-import 'package:superlaundry/ui/screens/order_history/orderhistory_viewmodel.dart';
-// import 'package:superlaundry/ui/screens/order_history/vieworderhistory/vieworderhistory_viewmodel.dart';
-import 'package:map_mvvm/map_mvvm.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'manageorder.dart';
 
 class ManageOrderDetailsBody extends StatefulWidget {
   final OrdersModel post;

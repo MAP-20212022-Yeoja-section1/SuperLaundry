@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:map_mvvm/map_mvvm.dart';
-import 'package:superlaundry/models/orders.dart';
-import 'package:superlaundry/ui/screens/manage_order/manageorder_viewmodel.dart';
-import 'package:superlaundry/ui/screens/manage_order/manageorderdetails_body.dart';
+import 'manageorder.dart';
 
 class ManageOrderBody extends StatefulWidget {
   static Route route() => MaterialPageRoute(builder: (_) => ManageOrderBody());
