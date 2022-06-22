@@ -1,15 +1,4 @@
-// import 'dart:js';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:map_mvvm/map_mvvm.dart';
-// import 'package:stripe_payment/stripe_payment.dart';
-// import 'package:flutter_stripe/flutter_stripe.dart';
-import 'package:http/http.dart' as http;
-import 'package:superlaundry/ui/screens/add_order/order_payment_app_bar.dart';
-import '../../screens/add_order/add_order_viewmodel.dart';
-import 'package:superlaundry/ui/screens/home_customer/mainmenu_screen.dart';
+import 'add_order.dart';
 
 class OrderPaymentScreen extends StatefulWidget {
   String deliveryMethod;

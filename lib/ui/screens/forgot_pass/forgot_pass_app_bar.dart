@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'forgot_pass.dart';
 
 class ForgotPassAppBar extends StatelessWidget implements PreferredSizeWidget {
   const ForgotPassAppBar({

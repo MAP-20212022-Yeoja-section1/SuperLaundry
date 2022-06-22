@@ -1,10 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-// import 'package:map_mvvm/map_mvvm.dart';
-// import '../../screens/home/home_viewmodel.dart';
-import 'package:map_mvvm/view.dart';
-import '../../screens/forgot_pass/forgot_pass_viewmodel.dart';
-import '../login/login_screen.dart';
+import 'forgot_pass.dart';
 
 class ForgotPassBody extends StatefulWidget {
   // const ForgotPassBody({

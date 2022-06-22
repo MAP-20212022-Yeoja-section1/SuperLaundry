@@ -1,3 +1,13 @@
 export 'forgot_pass_app_bar.dart';
 export 'forgot_pass_body.dart';
-export 'forgot_pass_float.dart';
+export 'package:map_mvvm/viewmodel.dart';
+export 'package:meta/meta.dart';
+export '../../../models/user.dart';
+export '../../../app/service_locator.dart';
+export '../../../services/forgot_pass/forgot_pass_service.dart';
+export 'package:flutter/material.dart';
+export 'package:fluttertoast/fluttertoast.dart';
+export 'package:map_mvvm/view.dart';
+export '../../screens/forgot_pass/forgot_pass_viewmodel.dart';
+export '../login/login_screen.dart';
+export 'package:flutter/material.dart';

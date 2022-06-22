@@ -1,15 +1,4 @@
-import 'dart:convert';
-import 'package:meta/meta.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:map_mvvm/map_mvvm.dart';
-import 'package:map_mvvm/view.dart';
-import 'package:superlaundry/models/orders.dart';
-import 'package:superlaundry/models/cleanMethodModel.dart';
-import 'package:superlaundry/ui/screens/add_order/order_payment_screen.dart';
-import '../../screens/add_order/add_order_viewmodel.dart';
-import 'package:intl/intl.dart';
+import 'add_order.dart';
 
 class AddOrderBody extends StatefulWidget {
   static Route route() => MaterialPageRoute(builder: (_) => AddOrderBody());
