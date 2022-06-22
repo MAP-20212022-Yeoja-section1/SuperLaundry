@@ -1,12 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:map_mvvm/viewmodel.dart';
-import 'package:meta/meta.dart';
-import 'package:superlaundry/app/failures.dart';
-import '../../../models/reviews.dart';
-import '../../../app/service_locator.dart';
-import '../../../services/cust_review/cust_review_service.dart';
-import '../../../app/failures.dart';
+import 'cust_review.dart';
 
 class CustReviewViewmodel extends Viewmodel {
   CustReviewService get _custReviewService => locator<CustReviewService>();

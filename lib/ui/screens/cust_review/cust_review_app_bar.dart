@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:superlaundry/ui/screens/cust_review/cust_review_screen.dart';
+import 'cust_review.dart';
 
 class CustReviewAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustReviewAppBar({

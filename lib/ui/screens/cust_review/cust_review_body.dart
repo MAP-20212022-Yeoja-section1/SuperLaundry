@@ -1,11 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:map_mvvm/map_mvvm.dart';
-import 'package:map_mvvm/view.dart';
-// import 'package:superlaundry/models/reviews.dart';
-import '../../screens/cust_review/cust_review_viewmodel.dart';
-import 'package:intl/intl.dart';
-import 'dart:math';
+import 'cust_review.dart';
 
 class CustReviewBody extends StatefulWidget {
   static Route route() => MaterialPageRoute(builder: (_) => CustReviewBody());
