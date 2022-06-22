@@ -1,12 +1,4 @@
-import 'package:map_mvvm/map_mvvm.dart';
-import 'package:map_mvvm/viewmodel.dart';
-import 'package:superlaundry/models/orders.dart';
-import 'package:superlaundry/services/manage_order/manage_order_service.dart';
-import 'package:superlaundry/services/registration/login_service.dart';
-import 'package:superlaundry/app/service_locator.dart';
-import 'package:meta/meta.dart';
-import '../../../../../models/orders.dart';
-import '../../../services/registration/login_service.dart';
+import 'manageorder.dart';
 
 class ManageOrderViewModel extends Viewmodel {
   final LoginService _authService = locator<LoginService>();
