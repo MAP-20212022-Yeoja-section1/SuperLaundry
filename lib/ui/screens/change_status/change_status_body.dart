@@ -1,14 +1,4 @@
-import 'dart:convert';
-import 'package:meta/meta.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:map_mvvm/map_mvvm.dart';
-import 'package:map_mvvm/view.dart';
-import 'package:superlaundry/models/orders.dart';
-import 'package:superlaundry/ui/screens/change_status/update_status_body.dart';
-import '../../screens/change_status/change_status_viewmodel.dart';
-import 'package:intl/intl.dart';
+import 'change_status.dart';
 
 class ChangeStatusBody extends StatefulWidget {
   static Route route() => MaterialPageRoute(builder: (_) => ChangeStatusBody());

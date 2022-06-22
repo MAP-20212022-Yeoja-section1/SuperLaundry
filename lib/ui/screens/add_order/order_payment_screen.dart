@@ -9,6 +9,7 @@ import 'package:map_mvvm/map_mvvm.dart';
 import 'package:http/http.dart' as http;
 import 'package:superlaundry/ui/screens/add_order/order_payment_app_bar.dart';
 import '../../screens/add_order/add_order_viewmodel.dart';
+import 'package:superlaundry/ui/screens/home_customer/mainmenu_screen.dart';
 
 class OrderPaymentScreen extends StatefulWidget {
   String deliveryMethod;
@@ -252,7 +253,10 @@ class _orderPaymentScreenState extends State<OrderPaymentScreen> {
               TextButton(
                 child: new Text("OK"),
                 onPressed: () {
-                  Navigator.of(context).pop();
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => mainMenuScreen()));
                 },
               ),
             ],

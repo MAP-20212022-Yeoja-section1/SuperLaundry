@@ -1,9 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:map_mvvm/view.dart';
-import 'package:superlaundry/models/orders.dart';
-import 'package:superlaundry/ui/screens/change_status/change_status_screen.dart';
-import '../../screens/change_status/change_status_viewmodel.dart';
+import 'change_status.dart';
 
 class ActiveOrdersDetails extends StatefulWidget {
   final OrdersModel post;

@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:superlaundry/services/change_status/change_status_service.dart';
 import '../../models/orders.dart';
-import '../../../app/failures.dart';
 
 class ChangeStatusServiceWithFireBase extends ChangeStatusService {
   @override
@@ -29,7 +28,7 @@ class ChangeStatusServiceWithFireBase extends ChangeStatusService {
 
       if (orderStatus == "COMPLETED") {
         await docOrder.update({
-          'orderStatus': orderStatus,
+          'orderStatus': orderStatus, //constant reference
           'statusTime': statusTime,
           'orderCompletion': 'COMPLETED'
         });

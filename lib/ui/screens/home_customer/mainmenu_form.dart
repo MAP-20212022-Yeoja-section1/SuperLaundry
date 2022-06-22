@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:map_mvvm/view.dart';
 import 'package:superlaundry/ui/screens/order_history/orderhistory_screen.dart';
+import 'package:superlaundry/ui/screens/cust_review/cust_review_screen.dart';
 import 'package:superlaundry/ui/screens/add_order/add_order_screen.dart';
 import 'package:superlaundry/ui/screens/add_order/order_payment_screen.dart';
 import 'package:superlaundry/ui/screens/registration/registration_viewmodel.dart';
@@ -25,7 +26,9 @@ class _mainMenuForm extends State<mainMenuForm> {
               child: InkWell(
                   onTap: () {
                     Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => AddOrderScreen()
+                        // MaterialPageRoute(builder: (context) => AddOrderScreen()
+                        MaterialPageRoute(
+                            builder: (context) => CustReviewScreen()
                             // OrderPaymentScreen()
                             ));
                   },

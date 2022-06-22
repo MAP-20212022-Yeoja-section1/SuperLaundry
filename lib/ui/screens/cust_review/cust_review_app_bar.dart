@@ -1,8 +1,8 @@
-import 'change_status.dart';
+import 'package:flutter/material.dart';
+import 'package:superlaundry/ui/screens/cust_review/cust_review_screen.dart';
 
-class ChangeStatusAppBar extends StatelessWidget
-    implements PreferredSizeWidget {
-  const ChangeStatusAppBar({
+class CustReviewAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const CustReviewAppBar({
     Key? key,
   }) : super(key: key);
 
@@ -12,12 +12,13 @@ class ChangeStatusAppBar extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text('UPDATE STATUS'),
+      title: Text('LEAVE REVIEW'),
       automaticallyImplyLeading: false,
       leading: IconButton(
         onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => mainMenuMScreen()));
+          //   Navigator.push(context,
+          //       MaterialPageRoute(builder: (context) => mainMenuMScreen()));
+          if (Navigator.canPop(context)) Navigator.pop(context);
         },
         icon: Icon(Icons.chevron_left_sharp),
         iconSize: 40.0,

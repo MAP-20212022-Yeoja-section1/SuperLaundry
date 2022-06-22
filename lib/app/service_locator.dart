@@ -42,6 +42,9 @@ import 'package:superlaundry/services/profile_edit/profile_service.dart';
 import '../ui/screens/change_status/change_status_viewmodel.dart';
 import 'package:superlaundry/services/change_status/change_status_service.dart';
 import 'package:superlaundry/services/change_status/change_status_serviceFB.dart';
+import '../ui/screens/cust_review/cust_review_viewmodel.dart';
+import 'package:superlaundry/services/cust_review/cust_review_service.dart';
+import 'package:superlaundry/services/cust_review/cust_review_serviceFB.dart';
 
 //import '../services/services.dart';
 
@@ -107,4 +110,8 @@ void initializeServiceLocator() => ServiceLocator.init((locator) {
           () => ManageOrderServiceMock());
       locator.registerLazySingleton<ManageOrderViewModel>(
           () => ManageOrderViewModel());
+          locator.registerLazySingleton<CustReviewViewmodel>(
+          () => CustReviewViewmodel());
+      locator.registerLazySingleton<CustReviewService>(
+          () => CustReviewServiceWithFireBase());
     });
