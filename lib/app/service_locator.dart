@@ -13,6 +13,7 @@ import 'package:superlaundry/services/orderhistory/orderhistory_service.dart';
 import 'package:superlaundry/services/profile_edit/profile_service_mock.dart';
 import 'package:superlaundry/services/registration/registrationService.dart';
 import 'package:superlaundry/services/registration/registration_serviceFirestore.dart';
+import 'package:superlaundry/services/reportService/report_service_FB.dart';
 import 'package:superlaundry/ui/screens/deli_get_order/deli_get_order_viewmodel.dart';
 import 'package:superlaundry/ui/screens/deliveryOrder/delivery_order_viewmodel.dart';
 import 'package:superlaundry/ui/screens/home_customer/mainmenu_viewmodel.dart';
@@ -28,6 +29,7 @@ import '../services/laundryservice/delivery_service.dart';
 import '../services/laundryservice/delivery_service_mock.dart';
 import '../services/laundryservice/washing_machine_service.dart';
 import '../services/logout/logout_service.dart';
+import '../services/reportService/report_service.dart';
 import '../ui/screens/home/home_viewmodel.dart';
 import '../ui/screens/registration/registration_viewmodel.dart';
 import 'package:superlaundry/ui/screens/login/login_viewmodel.dart';
@@ -45,6 +47,8 @@ import 'package:superlaundry/services/change_status/change_status_serviceFB.dart
 import '../ui/screens/cust_review/cust_review_viewmodel.dart';
 import 'package:superlaundry/services/cust_review/cust_review_service.dart';
 import 'package:superlaundry/services/cust_review/cust_review_serviceFB.dart';
+
+import '../ui/screens/viewReport/view_report_viewmodel.dart';
 
 //import '../services/services.dart';
 
@@ -110,8 +114,12 @@ void initializeServiceLocator() => ServiceLocator.init((locator) {
           () => ManageOrderServiceMock());
       locator.registerLazySingleton<ManageOrderViewModel>(
           () => ManageOrderViewModel());
-          locator.registerLazySingleton<CustReviewViewmodel>(
+      locator.registerLazySingleton<CustReviewViewmodel>(
           () => CustReviewViewmodel());
       locator.registerLazySingleton<CustReviewService>(
           () => CustReviewServiceWithFireBase());
+      locator.registerLazySingleton<ReportViewmodel>(
+          () => ReportViewmodel());
+      locator.registerLazySingleton<ReportService>(
+          () => ReportServiceWithFirestore());
     });

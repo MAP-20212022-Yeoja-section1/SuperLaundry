@@ -1,9 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:superlaundry/ui/screens/home_manager/mainmenuM_screen.dart';
+import 'view_report.dart';
 
-class LaundrySerAppBar extends StatelessWidget
+class ReportAppBar extends StatelessWidget
     implements PreferredSizeWidget {
-  const LaundrySerAppBar({
+  const ReportAppBar({
     Key? key,
   }) : super(key: key);
 
@@ -13,7 +12,7 @@ class LaundrySerAppBar extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text('LAUNDRY SERVICE'),
+      title: Text('REPORT'),
       leading: IconButton(
         onPressed: () {
           Navigator.push(context, MaterialPageRoute(builder: (context)=>mainMenuMScreen()));
