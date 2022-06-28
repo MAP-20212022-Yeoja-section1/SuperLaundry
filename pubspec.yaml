@@ -44,6 +44,9 @@ dependencies:
   provider: ^6.0.2
   shared_preferences: ^2.0.13
   intl: ^0.17.0
+  pdf: ^3.8.1
+  open_file: ^3.2.1
+  path_provider: ^2.0.11
   # stripe_payment: ^1.1.4
   # flutter_stripe: ^3.0.2
 

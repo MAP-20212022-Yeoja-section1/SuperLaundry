@@ -1,10 +1,16 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:map_mvvm/failure.dart';
+import 'package:intl/intl.dart';
 
 /// Try running a callback. When error happened,
 /// it will open an error snackbar
 ///
+class Utils {
+  static formatPrice(double price) => '\$ ${price.toStringAsFixed(2)}';
+  static formatDate(DateTime date) => DateFormat.yMd().format(date);
+}
+
 Future<void> showSnackBarWhenError(
     BuildContext context, AsyncCallback callback) async {
   try {

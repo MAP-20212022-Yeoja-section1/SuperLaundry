@@ -6,6 +6,7 @@ import 'package:superlaundry/ui/screens/add_order/add_order_screen.dart';
 import 'package:superlaundry/ui/screens/add_order/order_payment_screen.dart';
 import 'package:superlaundry/ui/screens/registration/registration_viewmodel.dart';
 import 'package:superlaundry/ui/screens/home_customer/mainmenu_viewmodel.dart';
+import 'package:superlaundry/ui/screens/print_invoice/print_invoice.dart';
 
 class mainMenuForm extends StatefulWidget {
   static Route route() => MaterialPageRoute(builder: (_) => mainMenuForm());
@@ -25,12 +26,8 @@ class _mainMenuForm extends State<mainMenuForm> {
               margin: EdgeInsets.all(0.0),
               child: InkWell(
                   onTap: () {
-                    Navigator.of(context).push(
-                        // MaterialPageRoute(builder: (context) => AddOrderScreen()
-                        MaterialPageRoute(
-                            builder: (context) => CustReviewScreen()
-                            // OrderPaymentScreen()
-                            ));
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => AddOrderScreen()));
                   },
                   splashColor: Colors.green,
                   child: Center(
@@ -104,7 +101,50 @@ class _mainMenuForm extends State<mainMenuForm> {
                           style: new TextStyle(fontSize: 17.0))
                     ],
                   ))),
-            )
+            ),
+            Card(
+              margin: EdgeInsets.all(0.0),
+              child: InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => CustReviewScreen()));
+                  },
+                  splashColor: Colors.green,
+                  child: Center(
+                      child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      Icon(
+                        Icons.home,
+                        size: 70.0,
+                      ),
+                      Text("Leave Review & Rating",
+                          style: new TextStyle(fontSize: 17.0),
+                          textAlign: TextAlign.center)
+                    ],
+                  ))),
+            ),
+            Card(
+              margin: EdgeInsets.all(0.0),
+              child: InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => PrintInvoiceScreen()));
+                  },
+                  splashColor: Colors.green,
+                  child: Center(
+                      child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      Icon(
+                        Icons.home,
+                        size: 70.0,
+                      ),
+                      Text("Generate Invoice",
+                          style: new TextStyle(fontSize: 17.0))
+                    ],
+                  ))),
+            ),
           ])),
     );
   }
