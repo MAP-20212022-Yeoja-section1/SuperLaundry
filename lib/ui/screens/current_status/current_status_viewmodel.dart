@@ -9,7 +9,7 @@ class CurrStatusViewmodel extends Viewmodel {
     return _CurrStatusService.readStatus();
   }
 
-  Future<String> getStatus(String userId) async {
-    return await _CurrStatusService.getStatus(userId);
-  }
+  // Future<String> getStatus(String userId) async {
+  //   return await _CurrStatusService.getStatus(userId);
+  // }
 }
