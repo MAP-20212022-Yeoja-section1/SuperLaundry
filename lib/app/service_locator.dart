@@ -9,6 +9,8 @@ import 'package:superlaundry/services/laundryservice/washing_machine_service_moc
 import 'package:superlaundry/services/logout/logout_service_mock.dart';
 import 'package:superlaundry/services/manage_order/manage_order_service.dart';
 import 'package:superlaundry/services/manage_order/manage_order_service_FB.dart';
+import 'package:superlaundry/services/orderStatus/orderStatus_service.dart';
+import 'package:superlaundry/services/orderStatus/orderStatus_service_mock.dart';
 import 'package:superlaundry/services/orderhistory/orderhistory_service.dart';
 import 'package:superlaundry/services/profile_edit/profile_service_mock.dart';
 import 'package:superlaundry/services/registration/registrationService.dart';
@@ -30,6 +32,7 @@ import '../services/laundryservice/delivery_service_mock.dart';
 import '../services/laundryservice/washing_machine_service.dart';
 import '../services/logout/logout_service.dart';
 import '../services/reportService/report_service.dart';
+import '../ui/screens/current_status/current_status_viewmodel.dart';
 import '../ui/screens/home/home_viewmodel.dart';
 import '../ui/screens/registration/registration_viewmodel.dart';
 import 'package:superlaundry/ui/screens/login/login_viewmodel.dart';
@@ -127,4 +130,8 @@ void initializeServiceLocator() => ServiceLocator.init((locator) {
           () => PrintInvoiceViewModel());
       locator.registerLazySingleton<PrintInvoiceService>(
           () => PrintInvoiceServiceWithFireBase());
+      locator.registerLazySingleton<CurrStatusViewmodel>(
+          () => CurrStatusViewmodel());
+      locator.registerLazySingleton<CurrStatusService>(
+          () => CurrStatusServiceMock());
     });

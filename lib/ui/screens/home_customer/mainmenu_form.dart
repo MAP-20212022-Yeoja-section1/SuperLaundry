@@ -8,6 +8,8 @@ import 'package:superlaundry/ui/screens/registration/registration_viewmodel.dart
 import 'package:superlaundry/ui/screens/home_customer/mainmenu_viewmodel.dart';
 import 'package:superlaundry/ui/screens/print_invoice/print_invoice.dart';
 
+import '../current_status/current_status.dart';
+
 class mainMenuForm extends StatefulWidget {
   static Route route() => MaterialPageRoute(builder: (_) => mainMenuForm());
 
@@ -87,7 +89,10 @@ class _mainMenuForm extends State<mainMenuForm> {
             Card(
               margin: EdgeInsets.all(0.0),
               child: InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => CurrStatusScreen()));
+                  },
                   splashColor: Colors.green,
                   child: Center(
                       child: Column(
