@@ -37,8 +37,9 @@ class _mainMenuForm extends State<mainMenuForm> {
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       Icon(
-                        Icons.home,
+                        Icons.add_circle_rounded,
                         size: 70.0,
+                        color: Color.fromARGB(255, 22, 135, 107),
                       ),
                       Text("Add Order", style: new TextStyle(fontSize: 17.0))
                     ],
@@ -54,8 +55,9 @@ class _mainMenuForm extends State<mainMenuForm> {
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       Icon(
-                        Icons.home,
+                        Icons.emoji_emotions_outlined,
                         size: 70.0,
+                        color: Color.fromARGB(255, 22, 135, 107),
                       ),
                       Text("View Super Laundry Details",
                           style: new TextStyle(fontSize: 17.0),
@@ -78,8 +80,9 @@ class _mainMenuForm extends State<mainMenuForm> {
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       Icon(
-                        Icons.home,
+                        Icons.history_rounded,
                         size: 70.0,
+                        color: Color.fromARGB(255, 22, 135, 107),
                       ),
                       Text("View Order History",
                           style: new TextStyle(fontSize: 17.0))
@@ -99,8 +102,9 @@ class _mainMenuForm extends State<mainMenuForm> {
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       Icon(
-                        Icons.home,
+                        Icons.add_location_rounded,
                         size: 70.0,
+                        color: Color.fromARGB(255, 22, 135, 107),
                       ),
                       Text("View Order Status",
                           style: new TextStyle(fontSize: 17.0))
@@ -120,8 +124,9 @@ class _mainMenuForm extends State<mainMenuForm> {
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       Icon(
-                        Icons.home,
+                        Icons.add_comment_rounded,
                         size: 70.0,
+                        color: Color.fromARGB(255, 22, 135, 107),
                       ),
                       Text("Leave Review & Rating",
                           style: new TextStyle(fontSize: 17.0),
@@ -142,8 +147,9 @@ class _mainMenuForm extends State<mainMenuForm> {
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       Icon(
-                        Icons.home,
+                        Icons.file_present_outlined,
                         size: 70.0,
+                        color: Color.fromARGB(255, 22, 135, 107),
                       ),
                       Text("Generate Invoice",
                           style: new TextStyle(fontSize: 17.0))
