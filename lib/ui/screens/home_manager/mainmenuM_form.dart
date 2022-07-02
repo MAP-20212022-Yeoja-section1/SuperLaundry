@@ -34,7 +34,8 @@ class _mainMenuMForm extends State<mainMenuMForm> {
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       Icon(
-                        Icons.home,
+                        Icons.text_snippet_outlined,
+                        color: Color.fromARGB(255, 22, 135, 107),
                         size: 70.0,
                       ),
                       Text("View laundry Service Report",
@@ -58,7 +59,8 @@ class _mainMenuMForm extends State<mainMenuMForm> {
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       Icon(
-                        Icons.home,
+                        Icons.local_laundry_service_rounded,
+                        color: Color.fromARGB(255, 22, 135, 107),
                         size: 70.0,
                       ),
                       Text("Manage Laundry Service",
@@ -82,7 +84,8 @@ class _mainMenuMForm extends State<mainMenuMForm> {
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       Icon(
-                        Icons.home,
+                        Icons.shopping_cart,
+                        color: Color.fromARGB(255, 22, 135, 107),
                         size: 70.0,
                       ),
                       Text("Laundry Service Order",
@@ -106,7 +109,8 @@ class _mainMenuMForm extends State<mainMenuMForm> {
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       Icon(
-                        Icons.home,
+                        Icons.rate_review_outlined,
+                        color: Color.fromARGB(255, 22, 135, 107),
                         size: 70.0,
                       ),
                       Text("View Customer Review",
@@ -128,7 +132,8 @@ class _mainMenuMForm extends State<mainMenuMForm> {
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       Icon(
-                        Icons.home,
+                        Icons.update,
+                        color: Color.fromARGB(255, 22, 135, 107),
                         size: 70.0,
                       ),
                       Text("Update Laundry Status",

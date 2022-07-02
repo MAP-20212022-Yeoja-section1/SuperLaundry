@@ -250,7 +250,7 @@ class CurrStatusDetailsState extends State<CurrStatusDetails> {
                                               widget.post.orderStatus !=
                                                   "REJECTED") ...[
                                             const Icon(
-                                              Icons.car_crash,
+                                              Icons.home,
                                               size: 50,
                                               color: Colors.red,
                                             ),
@@ -258,13 +258,13 @@ class CurrStatusDetailsState extends State<CurrStatusDetails> {
                                           ] else if (widget.post.orderStatus ==
                                               "REJECTED") ...[
                                             const Icon(
-                                              Icons.car_crash,
+                                              Icons.home,
                                               size: 50,
                                               color: Colors.red,
                                             ),
                                           ] else ...[
                                             const Icon(
-                                              Icons.car_crash,
+                                              Icons.home,
                                               size: 50,
                                               color: Colors.black,
                                             ),
