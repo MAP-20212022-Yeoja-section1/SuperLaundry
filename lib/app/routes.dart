@@ -5,11 +5,13 @@ import 'package:superlaundry/ui/screens/home_manager/mainmenuM_screen.dart';
 import 'package:superlaundry/ui/screens/manage_order/manageorder_screen.dart';
 import 'package:superlaundry/ui/screens/view_review/view_review_screen.dart';
 import 'package:superlaundry/ui/screens/order_history/orderhistory_screen.dart';
+import 'package:superlaundry/ui/screens/print_invoice/print_invoice_screen.dart';
 import '../ui/screens/home/home_screen.dart';
 import '../ui/screens/registration/registration_screen.dart';
 import '../ui/screens/login/login_screen.dart';
 import '../ui/screens/forgot_pass/forgot_pass_screen.dart';
 import '../ui/screens/add_order/add_order_screen.dart';
+import '../ui/screens/print_invoice/print_invoice_screen.dart';
 
 class Routes {
   static const String homeRoute = '/home';
@@ -23,6 +25,7 @@ class Routes {
   static const String orderHistoryRoute = '/order_history';
   static const String manageOrder = '/manage_order';
   static const String viewReview = '/view_review';
+  static const String printInvoiceRoute = '/print_invoice';
 
   static Route<dynamic>? createRoute(settings) {
     switch (settings.name) {
@@ -48,6 +51,8 @@ class Routes {
         return ManageOrderScreen.route();
       case viewReview:
         return ViewReviewScreen.route();
+      case printInvoiceRoute:
+        return PrintInvoiceScreen.route();
     }
     return null;
   }

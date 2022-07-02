@@ -50,8 +50,10 @@ import 'package:superlaundry/services/change_status/change_status_serviceFB.dart
 import '../ui/screens/cust_review/cust_review_viewmodel.dart';
 import 'package:superlaundry/services/cust_review/cust_review_service.dart';
 import 'package:superlaundry/services/cust_review/cust_review_serviceFB.dart';
-
 import '../ui/screens/viewReport/view_report_viewmodel.dart';
+import '../ui/screens/print_invoice/print_invoice_viewmodel.dart';
+import 'package:superlaundry/services/print_invoice/print_invoice_service.dart';
+import 'package:superlaundry/services/print_invoice/print_invoice_serviceFB.dart';
 
 //import '../services/services.dart';
 
@@ -128,4 +130,8 @@ void initializeServiceLocator() => ServiceLocator.init((locator) {
           () => ViewReviewServiceWithFirestore());
       locator.registerLazySingleton<ViewReviewViewModel>(
           () => ViewReviewViewModel());
+      locator.registerLazySingleton<PrintInvoiceViewModel>(
+          () => PrintInvoiceViewModel());
+      locator.registerLazySingleton<PrintInvoiceService>(
+          () => PrintInvoiceServiceWithFireBase());
     });

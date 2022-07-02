@@ -46,6 +46,9 @@ dependencies:
   intl: ^0.17.0
   flutter_rating_bar: ^4.0.1
   
+  pdf: ^3.8.1
+  open_file: ^3.2.1
+  path_provider: ^2.0.11
   # stripe_payment: ^1.1.4
   # flutter_stripe: ^3.0.2
 
