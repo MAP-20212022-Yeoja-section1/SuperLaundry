@@ -1,6 +1,6 @@
-import 'current_status.dart';
+// ignore_for_file: non_constant_identifier_names
 
-// ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors
+import 'current_status.dart';
 
 class CurrStatusBody extends StatefulWidget {
   static Route route() => MaterialPageRoute(builder: (_) => CurrStatusBody());
@@ -78,56 +78,4 @@ class _CurrStatusBodyState extends State<CurrStatusBody> {
                       builder: (context) => CurrStatusDetails(post: os)));
             }),
       ));
-
-  // Widget build(BuildContext context) {
-  //   return Scaffold(
-  //       body: Center(
-  //     child: Theme(
-  //       data: Theme.of(context).copyWith(
-  //         colorScheme: const ColorScheme.light(primary: Colors.lightGreen),
-  //       ),
-  //       child: Stepper(
-  //         currentStep: currentStep,
-  //         onStepTapped: (index) {
-  //           setState(() => currentStep = index);
-  //         },
-  //         onStepContinue: () {
-  //           if (currentStep != 2) {
-  //             setState(() => currentStep++);
-  //           }
-  //         },
-  //         onStepCancel: () {
-  //           if (currentStep != 0) {
-  //             setState(() => currentStep--);
-  //           }
-  //         },
-  //         steps: [
-  //           Step(
-  //             isActive: currentStep >= 0,
-  //             title: Text('LaundrySatus'),
-  //             content: Text(
-  //               "STATUS: ",
-  //               // + widget.post.orderStatus,
-  //               textAlign: TextAlign.center,
-  //               style: const TextStyle(
-  //                   fontSize: 12,
-  //                   color: Color.fromARGB(255, 4, 107, 81),
-  //                   fontWeight: FontWeight.w600),
-  //             ),
-  //           ),
-  //           Step(
-  //             isActive: currentStep >= 1,
-  //             title: Text('DeliverySatus'),
-  //             content: Text('Content for step 2'),
-  //           ),
-  //           Step(
-  //             isActive: currentStep >= 2,
-  //             title: Text('Completed'),
-  //             content: Text('Content for step 3'),
-  //           ),
-  //         ],
-  //       ),
-  //     ),
-  //   ));
-  // }
 }

@@ -1,5 +1,3 @@
-// ignore_for_file: override_on_non_overriding_member
-
 import 'current_status.dart';
 
 class CurrStatusScreen extends StatefulWidget {

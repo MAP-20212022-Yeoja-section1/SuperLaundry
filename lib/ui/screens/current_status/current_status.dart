@@ -15,6 +15,3 @@ export 'package:superlaundry/models/orders.dart';
 export 'package:superlaundry/ui/screens/current_status/ViewOrderStatus/currentStatusDetails.dart';
 export 'package:superlaundry/ui/screens/current_status/current_status_viewmodel.dart';
 export 'package:superlaundry/ui/screens/deli_get_order/deli_get_order_screen.dart';
-
-// export 'package:vertical_stepper/vertical_stepper.dart';
-// export 'package:vertical_stepper/vertical_stepper.dart' as step;

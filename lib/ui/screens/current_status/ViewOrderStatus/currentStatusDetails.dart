@@ -1,12 +1,8 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, prefer_const_constructors_in_immutables, use_key_in_widget_constructors
-
 import 'package:flutter/material.dart';
-// import 'package:fluttertoast/fluttertoast.dart';
 import 'package:map_mvvm/view.dart';
 import 'package:superlaundry/models/orders.dart';
 import 'package:superlaundry/ui/screens/current_status/current_status_screen.dart';
 import 'package:superlaundry/ui/screens/current_status/current_status_viewmodel.dart';
-// import 'package:superlaundry/ui/screens/deli_get_order/deli_get_order_screen.dart';
 
 class CurrStatusDetails extends StatefulWidget {
   final OrdersModel post;
@@ -61,7 +57,7 @@ class CurrStatusDetailsState extends State<CurrStatusDetails> {
                             padding: const EdgeInsets.only(left: 10.0),
                             child: ListTile(
                               title: Text(
-                                "ORDER STATUS",
+                                "YOUR ORDER ACTIVITY",
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                   fontSize: 20,
@@ -89,7 +85,7 @@ class CurrStatusDetailsState extends State<CurrStatusDetails> {
                                     setState(() => currentStep = index);
                                   },
                                   onStepContinue: () {
-                                    if (currentStep != 2) {
+                                    if (currentStep != 3) {
                                       setState(() => currentStep++);
                                     }
                                   },
@@ -101,41 +97,252 @@ class CurrStatusDetailsState extends State<CurrStatusDetails> {
                                   steps: [
                                     Step(
                                       isActive: currentStep >= 0,
-                                      title: Text('Your Order Satus'),
-                                      content: Text(
-                                        "STATUS: " + widget.post.orderStatus,
-                                        textAlign: TextAlign.center,
-                                        style: const TextStyle(
-                                            fontSize: 16,
-                                            color:
-                                                Color.fromARGB(255, 4, 107, 81),
-                                            fontWeight: FontWeight.bold),
+                                      title: Text('Order Status'),
+                                      content: Column(
+                                        children: [
+                                          if (widget.post.orderStatus ==
+                                              "ACCEPTED") ...[
+                                            const Icon(
+                                              Icons.book_online,
+                                              size: 50,
+                                              color: Colors.black,
+                                            ),
+                                            Text(
+                                                "Your Order Received...Please Wait!",
+                                                style: TextStyle(
+                                                    fontSize: 16,
+                                                    color: Colors.black,
+                                                    fontWeight:
+                                                        FontWeight.bold))
+                                          ] else if (widget.post.orderStatus ==
+                                              "REJECTED") ...[
+                                            const Icon(
+                                              Icons.book_online,
+                                              size: 50,
+                                              color: Colors.red,
+                                            ),
+                                            Text("Your Order Rejected",
+                                                style: TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.black))
+                                          ] else if (widget.post.orderStatus !=
+                                                  "REJECTED" &&
+                                              widget.post.orderStatus !=
+                                                  "ACCEPTED") ...[
+                                            const Icon(
+                                              Icons.cabin,
+                                              size: 50,
+                                              color: Colors.black,
+                                            ),
+                                            Text("Your Order In Progress...",
+                                                style: TextStyle(
+                                                    fontSize: 16,
+                                                    color: Colors.black))
+                                          ] else ...[
+                                            const Icon(Icons.cabin,
+                                                size: 50, color: Colors.red),
+                                            Text("Error",
+                                                style: TextStyle(
+                                                    fontSize: 16,
+                                                    color: Colors.red))
+                                          ],
+                                        ],
                                       ),
                                     ),
                                     Step(
                                       isActive: currentStep >= 1,
-                                      title: Text('DeliverySatus'),
-                                      content: Text(
-                                        "STATUS: " + widget.post.orderStatus,
-                                        textAlign: TextAlign.center,
-                                        style: const TextStyle(
-                                            fontSize: 16,
-                                            color:
-                                                Color.fromARGB(255, 4, 107, 81),
-                                            fontWeight: FontWeight.bold),
+                                      title: Text('Laundry Status'),
+                                      content: Column(
+                                        children: <Widget>[
+                                          if (widget.post.orderStatus ==
+                                              "FOLDING") ...[
+                                            const Icon(
+                                              Icons.cabin,
+                                              size: 50,
+                                              color: Colors.black,
+                                            )
+                                          ] else if (widget.post.orderStatus ==
+                                              "WASHING") ...[
+                                            const Icon(
+                                              Icons.cabin,
+                                              size: 50,
+                                              color: Colors.black,
+                                            )
+                                          ] else if (widget.post.orderStatus ==
+                                              "DRYING") ...[
+                                            const Icon(
+                                              Icons.cabin,
+                                              size: 50,
+                                              color: Colors.black,
+                                            )
+                                          ] else if (widget.post.orderStatus ==
+                                              "READY FOR PICK UP") ...[
+                                            const Icon(
+                                              Icons.cabin,
+                                              size: 50,
+                                              color: Colors.black,
+                                            )
+                                          ] else if (widget.post.orderStatus ==
+                                              "READY FOR DELIVERY") ...[
+                                            const Icon(
+                                              Icons.cabin,
+                                              size: 50,
+                                              color: Colors.black,
+                                            )
+                                          ] else if (widget.post.orderStatus ==
+                                              "REJECTED") ...[
+                                            const Icon(
+                                              Icons.cabin,
+                                              size: 50,
+                                              color: Colors.red,
+                                            )
+                                          ] else if (widget.post.orderStatus ==
+                                                  "PICKED UP" ||
+                                              widget.post.orderStatus ==
+                                                  "DELIVERED") ...[
+                                            const Icon(
+                                              Icons.cabin,
+                                              size: 50,
+                                              color: Colors.black,
+                                            ),
+                                            Text("Your Laundry On The Way!")
+                                          ] else ...[
+                                            const Icon(
+                                              Icons.cabin,
+                                              size: 50,
+                                              color: Colors.black,
+                                            ),
+                                            Text(
+                                                "Laundry In Process...Please Wait")
+                                          ],
+                                          Text(
+                                            "CURRENT STATUS: " +
+                                                widget.post.orderStatus,
+                                            textAlign: TextAlign.center,
+                                            style: const TextStyle(
+                                                fontSize: 16,
+                                                color: Color.fromARGB(
+                                                    255, 4, 107, 81),
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                     Step(
                                       isActive: currentStep >= 2,
+                                      title: Text('Delivery Status'),
+                                      content: Column(
+                                        children: [
+                                          if (widget.post.orderStatus == "PICKED UP" ||
+                                              widget.post.orderStatus ==
+                                                  "DELIVERED") ...[
+                                            const Icon(
+                                              Icons.drive_eta,
+                                              size: 50,
+                                              color: Colors.black,
+                                            ),
+                                            Text("On It's Way!"),
+                                          ] else if (widget.post.orderStatus !=
+                                                  "DELIVERED" &&
+                                              widget.post.orderStatus !=
+                                                  "PICKED UP" &&
+                                              widget.post.orderStatus !=
+                                                  "REJECTED") ...[
+                                            const Icon(
+                                              Icons.home,
+                                              size: 50,
+                                              color: Colors.red,
+                                            ),
+                                            Text("Laundry In Progress")
+                                          ] else if (widget.post.orderStatus ==
+                                              "REJECTED") ...[
+                                            const Icon(
+                                              Icons.home,
+                                              size: 50,
+                                              color: Colors.red,
+                                            ),
+                                          ] else ...[
+                                            const Icon(
+                                              Icons.home,
+                                              size: 50,
+                                              color: Colors.black,
+                                            ),
+                                          ],
+                                          Text(
+                                            "CURRENT STATUS: " +
+                                                widget.post.orderStatus,
+                                            textAlign: TextAlign.center,
+                                            style: const TextStyle(
+                                                fontSize: 16,
+                                                color: Color.fromARGB(
+                                                    255, 4, 107, 81),
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Step(
+                                      isActive: currentStep >= 3,
                                       title: Text('Completed'),
-                                      content: Text(
-                                        " YOUR ORDER STATUS HAS COMPLETED ",
-                                        textAlign: TextAlign.center,
-                                        style: const TextStyle(
-                                            fontSize: 16,
-                                            color:
-                                                Color.fromARGB(255, 4, 107, 81),
-                                            fontWeight: FontWeight.bold),
+                                      content: Column(
+                                        children: [
+                                          if (widget.post.orderStatus ==
+                                              "COMPLETED") ...[
+                                            const Icon(
+                                              Icons.cable,
+                                              size: 50,
+                                              color: Colors.black,
+                                            ),
+                                            Text(
+                                              " YOUR ORDER STATUS HAS COMPLETED ",
+                                              textAlign: TextAlign.center,
+                                              style: const TextStyle(
+                                                  fontSize: 16,
+                                                  color: Color.fromARGB(
+                                                      255, 4, 107, 81),
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ] else if (widget.post.orderStatus ==
+                                              "INCOMPLETE") ...[
+                                            const Icon(Icons.cable,
+                                                size: 50, color: Colors.red),
+                                            Text(
+                                              " YOUR ORDER STATUS IS INCOMPLETE! ",
+                                              textAlign: TextAlign.center,
+                                              style: const TextStyle(
+                                                  fontSize: 16,
+                                                  color: Colors.red,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ] else if (widget.post.orderStatus ==
+                                              "REJECTED") ...[
+                                            const Icon(
+                                              Icons.cabin,
+                                              size: 50,
+                                              color: Colors.red,
+                                            ),
+                                            Text(
+                                              "YOUR ORDER IS REJECTED! ",
+                                              style: const TextStyle(
+                                                  fontSize: 16,
+                                                  color: Colors.red,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ] else ...[
+                                            const Icon(
+                                              Icons.cabin,
+                                              size: 50,
+                                              color: Colors.red,
+                                            ),
+                                            Text("ORDER IN PROGRESS...WAITING",
+                                                style: TextStyle(
+                                                    fontSize: 16,
+                                                    color: Colors.black,
+                                                    fontWeight:
+                                                        FontWeight.bold))
+                                          ],
+                                        ],
                                       ),
                                     ),
                                   ],
@@ -158,7 +365,7 @@ class CurrStatusDetailsState extends State<CurrStatusDetails> {
                                   child: ListTile(
                                     title: Text(
                                       "ORDER SUMMARY",
-                                      textAlign: TextAlign.left,
+                                      textAlign: TextAlign.center,
                                       style: TextStyle(
                                         fontSize: 17,
                                         fontWeight: FontWeight.bold,
@@ -166,10 +373,26 @@ class CurrStatusDetailsState extends State<CurrStatusDetails> {
                                     ),
                                   ),
                                 ),
+                                Divider(
+                                  thickness: 1,
+                                  color: Colors.grey,
+                                ),
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    "Method: " + widget.post.cleanMethod + " ",
+                                    "+ Laundry Service: " +
+                                        widget.post.cleanMethod +
+                                        " ",
+                                    style: TextStyle(fontSize: 16),
+                                    textAlign: TextAlign.right,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    "+ Delivery Service: " +
+                                        widget.post.deliveryMethod +
+                                        " ",
                                     style: TextStyle(fontSize: 16),
                                     textAlign: TextAlign.right,
                                   ),
@@ -181,59 +404,29 @@ class CurrStatusDetailsState extends State<CurrStatusDetails> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    "Total Price: " +
-                                        widget.post.totalPrice.toString() +
-                                        " ",
+                                    "Payment: " + widget.post.paymentMethod,
                                     style: TextStyle(fontSize: 16),
                                     textAlign: TextAlign.right,
+                                  ),
+                                ),
+                                Divider(
+                                  thickness: 1,
+                                  color: Colors.grey,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    "Total Price: RM" +
+                                        widget.post.totalPrice.toString(),
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold),
+                                    textAlign: TextAlign.left,
                                   ),
                                 ),
                               ],
                             )),
                       ),
-
-                      // Padding(
-                      //   padding: const EdgeInsets.only(top: 10, bottom: 20),
-                      //   child: FloatingActionButton.extended(
-                      //     onPressed: () async {
-                      //       dynamic msg = await viewmodel.updateDelivery(
-                      //           orderId: widget.post.orderId);
-
-                      //       if (msg == 100) {
-                      //         Fluttertoast.showToast(
-                      //           msg:
-                      //               "Error! Unable to assigned the delivery order.",
-                      //           toastLength: Toast.LENGTH_LONG,
-                      //           gravity: ToastGravity.BOTTOM,
-                      //           fontSize: 16,
-                      //           backgroundColor:
-                      //               const Color.fromARGB(255, 209, 68, 58),
-                      //         );
-                      //       } else {
-                      //         Fluttertoast.showToast(
-                      //           msg:
-                      //               "The delivery status has been asigned successfully!",
-                      //           toastLength: Toast.LENGTH_LONG,
-                      //           gravity: ToastGravity.BOTTOM,
-                      //           fontSize: 16,
-                      //           backgroundColor:
-                      //               const Color.fromARGB(255, 69, 161, 76),
-                      //         );
-                      //         Navigator.push(
-                      //             context,
-                      //             MaterialPageRoute(
-                      //                 builder: (context) =>
-                      //                     deliGetOrderScreen()));
-                      //       }
-                      //     },
-                      //     label: const Text('Accept Order',
-                      //         // ignore: unnecessary_const
-                      //         style: const TextStyle(
-                      //             fontWeight: FontWeight.bold, fontSize: 18)),
-                      //     highlightElevation: 10.0,
-                      //     backgroundColor: Color.fromARGB(255, 4, 107, 81),
-                      //   ),
-                      // )
                     ]))
               ]),
             ));
