@@ -1,12 +1,8 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, prefer_const_constructors_in_immutables, use_key_in_widget_constructors
-
 import 'package:flutter/material.dart';
-// import 'package:fluttertoast/fluttertoast.dart';
 import 'package:map_mvvm/view.dart';
 import 'package:superlaundry/models/orders.dart';
 import 'package:superlaundry/ui/screens/current_status/current_status_screen.dart';
 import 'package:superlaundry/ui/screens/current_status/current_status_viewmodel.dart';
-// import 'package:superlaundry/ui/screens/deli_get_order/deli_get_order_screen.dart';
 
 class CurrStatusDetails extends StatefulWidget {
   final OrdersModel post;
@@ -156,7 +152,7 @@ class CurrStatusDetailsState extends State<CurrStatusDetails> {
                                     ),
                                     Step(
                                       isActive: currentStep >= 1,
-                                      title: Text('Order Status'),
+                                      title: Text('Laundry Status'),
                                       content: Column(
                                         children: <Widget>[
                                           if (widget.post.orderStatus ==
@@ -369,7 +365,7 @@ class CurrStatusDetailsState extends State<CurrStatusDetails> {
                                   child: ListTile(
                                     title: Text(
                                       "ORDER SUMMARY",
-                                      textAlign: TextAlign.left,
+                                      textAlign: TextAlign.center,
                                       style: TextStyle(
                                         fontSize: 17,
                                         fontWeight: FontWeight.bold,
@@ -377,10 +373,14 @@ class CurrStatusDetailsState extends State<CurrStatusDetails> {
                                     ),
                                   ),
                                 ),
+                                Divider(
+                                  thickness: 1,
+                                  color: Colors.grey,
+                                ),
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    "Laundry Service: " +
+                                    "+ Laundry Service: " +
                                         widget.post.cleanMethod +
                                         " ",
                                     style: TextStyle(fontSize: 16),
@@ -390,7 +390,7 @@ class CurrStatusDetailsState extends State<CurrStatusDetails> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    "Delivery Service: " +
+                                    "+ Delivery Service: " +
                                         widget.post.deliveryMethod +
                                         " ",
                                     style: TextStyle(fontSize: 16),
@@ -404,8 +404,7 @@ class CurrStatusDetailsState extends State<CurrStatusDetails> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    "Payment Method: " +
-                                        widget.post.paymentMethod,
+                                    "Payment: " + widget.post.paymentMethod,
                                     style: TextStyle(fontSize: 16),
                                     textAlign: TextAlign.right,
                                   ),
@@ -422,7 +421,7 @@ class CurrStatusDetailsState extends State<CurrStatusDetails> {
                                     style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold),
-                                    textAlign: TextAlign.right,
+                                    textAlign: TextAlign.left,
                                   ),
                                 ),
                               ],

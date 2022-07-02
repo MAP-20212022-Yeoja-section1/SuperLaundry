@@ -8,8 +8,4 @@ class CurrStatusViewmodel extends Viewmodel {
   Stream<List<OrdersModel>> readStatus() {
     return _CurrStatusService.readStatus();
   }
-
-  // Future<String> getStatus(String userId) async {
-  //   return await _CurrStatusService.getStatus(userId);
-  // }
 }
