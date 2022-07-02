@@ -67,15 +67,22 @@ class _FourStarReviewBody extends State<FourStarReviewBody> {
                                                 size: 14.0,
                                               )),
                                           const SizedBox(width: 16.0),
-                                          Text(review.rating +
-                                              ' | ' +
-                                              review.dissatisfaction),
+                                          Text(
+                                              review.rating +
+                                                  ' | ' +
+                                                  review.dissatisfaction,
+                                              style: TextStyle(fontSize: 17)),
                                         ],
                                       ),
-                                      subtitle:
-                                          Text('"' + review.comment + '"'),
+
+                                      subtitle: Text('"' + review.comment + '"',
+                                          style: TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold)),
                                       // subtitle:
                                       //     Text('Comment: ' + review.comment),
+                                      trailing: Icon(
+                                          Icons.featured_play_list_outlined),
                                       onTap: () {
                                         Navigator.push(
                                             context,
