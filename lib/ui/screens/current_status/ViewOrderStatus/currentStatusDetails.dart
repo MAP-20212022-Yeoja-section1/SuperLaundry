@@ -300,17 +300,19 @@ class CurrStatusDetailsState extends State<CurrStatusDetails> {
                                               size: 50,
                                               color: Colors.red,
                                             ),
-                                          ] else if (widget.post.orderStatus !=
-                                                  "COMPLETED" &&
-                                              widget.post.orderStatus !=
-                                                  "REJECTED") ...[
-                                            const Icon(
-                                              Icons.airport_shuttle,
-                                              size: 50,
-                                              color: Colors.black,
-                                            ),
-                                            Text("Laundry In Progress")
-                                          ] else if (widget.post.orderStatus ==
+                                          ]
+                                          //else if (widget.post.orderStatus !=
+                                          //         "COMPLETED" &&
+                                          //     widget.post.orderStatus !=
+                                          //         "REJECTED") ...[
+                                          //   const Icon(
+                                          //     Icons.airport_shuttle,
+                                          //     size: 50,
+                                          //     color: Colors.black,
+                                          //   ),
+                                          //   Text("Laundry In Progress")
+                                          // ]
+                                          else if (widget.post.orderStatus ==
                                               "COMPLETED") ...[
                                             const Icon(
                                               Icons.airport_shuttle,
