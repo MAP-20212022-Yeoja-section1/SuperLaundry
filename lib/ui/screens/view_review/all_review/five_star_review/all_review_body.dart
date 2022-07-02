@@ -1,16 +1,13 @@
 import 'package:superlaundry/ui/screens/view_review/view_review.dart';
 
-class FiveStarReviewBody extends StatefulWidget {
-  static Route route() =>
-      MaterialPageRoute(builder: (_) => FiveStarReviewBody());
+class AllReviewBody extends StatefulWidget {
+  static Route route() => MaterialPageRoute(builder: (_) => AllReviewBody());
 
   @override
-  _FiveStarReviewBody createState() => _FiveStarReviewBody();
+  _AllReviewBody createState() => _AllReviewBody();
 }
 
-class _FiveStarReviewBody extends State<FiveStarReviewBody> {
-  String star = "5";
-
+class _AllReviewBody extends State<AllReviewBody> {
   @override
   Widget build(BuildContext context) {
     return View<ViewReviewViewModel>(
@@ -25,7 +22,7 @@ class _FiveStarReviewBody extends State<FiveStarReviewBody> {
           child: Column(
             children: [
               StreamBuilder<List<ReviewsModel>>(
-                  stream: viewmodel.readStarsReviewsList(star),
+                  stream: viewmodel.readAllReviews(),
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       final review = snapshot.data!;
@@ -90,7 +87,7 @@ class _FiveStarReviewBody extends State<FiveStarReviewBody> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    FiveStarReviewDetailsBody(
+                                                    AllReviewDetailsBody(
                                                         post: review)));
                                       },
                                     ),

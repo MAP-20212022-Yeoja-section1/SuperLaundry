@@ -9,6 +9,8 @@ class OneStarReviewBody extends StatefulWidget {
 }
 
 class _OneStarReviewBody extends State<OneStarReviewBody> {
+  String star = "1";
+
   @override
   Widget build(BuildContext context) {
     return View<ViewReviewViewModel>(
@@ -23,7 +25,7 @@ class _OneStarReviewBody extends State<OneStarReviewBody> {
           child: Column(
             children: [
               StreamBuilder<List<ReviewsModel>>(
-                  stream: viewmodel.readOneStarsReviews(),
+                  stream: viewmodel.readStarsReviewsList(star),
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       final review = snapshot.data!;

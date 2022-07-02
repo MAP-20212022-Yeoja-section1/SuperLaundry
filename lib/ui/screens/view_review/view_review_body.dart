@@ -1,3 +1,5 @@
+import 'package:superlaundry/ui/screens/view_review/all_review/five_star_review/all_review_screen.dart';
+
 import 'view_review.dart';
 
 class ViewReviewBodyMain extends StatefulWidget {
@@ -9,6 +11,12 @@ class ViewReviewBodyMain extends StatefulWidget {
 }
 
 class _ViewReviewBodyMain extends State<ViewReviewBodyMain> {
+  String oneStar = "1";
+  String twoStar = "2";
+  String threeStar = "3";
+  String fourStar = "4";
+  String fiveStar = "5";
+
   @override
   Widget build(BuildContext context) {
     return View<ViewReviewViewModel>(
@@ -63,7 +71,8 @@ class _ViewReviewBodyMain extends State<ViewReviewBodyMain> {
                                 thickness: 1, color: Colors.grey, height: 20),
                             SizedBox(height: 12.0),
                             FutureBuilder(
-                                future: viewmodel.readTotalFiveStarsReviews(),
+                                future: viewmodel
+                                    .readTotalNumberStarReviews(fiveStar),
                                 builder: (context, snapshot) {
                                   if (snapshot.hasData) {
                                     return Card(
@@ -98,7 +107,8 @@ class _ViewReviewBodyMain extends State<ViewReviewBodyMain> {
                                                             .center,
                                                         children: List<
                                                                 Widget>.generate(
-                                                            5, (int index) {
+                                                            int.parse(fiveStar),
+                                                            (int index) {
                                                           return Icon(
                                                               Icons
                                                                   .star_outlined,
@@ -115,7 +125,8 @@ class _ViewReviewBodyMain extends State<ViewReviewBodyMain> {
                                                       const EdgeInsets.only(
                                                           top: 5.0),
                                                   child: Text(
-                                                      "5 Stars Reviews : " +
+                                                      fiveStar +
+                                                          " Stars Reviews : " +
                                                           snapshot.data
                                                               .toString(),
                                                       style: new TextStyle(
@@ -139,7 +150,8 @@ class _ViewReviewBodyMain extends State<ViewReviewBodyMain> {
                                   }
                                 }),
                             FutureBuilder(
-                                future: viewmodel.readTotalFourStarsReviews(),
+                                future: viewmodel
+                                    .readTotalNumberStarReviews(fourStar),
                                 builder: (context, snapshot) {
                                   if (snapshot.hasData) {
                                     return Card(
@@ -174,7 +186,8 @@ class _ViewReviewBodyMain extends State<ViewReviewBodyMain> {
                                                             .center,
                                                         children: List<
                                                                 Widget>.generate(
-                                                            4, (int index) {
+                                                            int.parse(fourStar),
+                                                            (int index) {
                                                           return Icon(
                                                               Icons
                                                                   .star_outlined,
@@ -191,7 +204,8 @@ class _ViewReviewBodyMain extends State<ViewReviewBodyMain> {
                                                       const EdgeInsets.only(
                                                           top: 5.0),
                                                   child: Text(
-                                                      "4 Stars Reviews : " +
+                                                      fourStar +
+                                                          " Stars Reviews : " +
                                                           snapshot.data
                                                               .toString(),
                                                       style: new TextStyle(
@@ -215,7 +229,8 @@ class _ViewReviewBodyMain extends State<ViewReviewBodyMain> {
                                   }
                                 }),
                             FutureBuilder(
-                                future: viewmodel.readTotalThreeStarsReviews(),
+                                future: viewmodel
+                                    .readTotalNumberStarReviews(threeStar),
                                 builder: (context, snapshot) {
                                   if (snapshot.hasData) {
                                     return Card(
@@ -250,7 +265,9 @@ class _ViewReviewBodyMain extends State<ViewReviewBodyMain> {
                                                             .center,
                                                         children: List<
                                                                 Widget>.generate(
-                                                            3, (int index) {
+                                                            int.parse(
+                                                                threeStar),
+                                                            (int index) {
                                                           return Icon(
                                                               Icons
                                                                   .star_outlined,
@@ -267,7 +284,8 @@ class _ViewReviewBodyMain extends State<ViewReviewBodyMain> {
                                                       const EdgeInsets.only(
                                                           top: 5.0),
                                                   child: Text(
-                                                      "3 Stars Reviews : " +
+                                                      threeStar +
+                                                          " Stars Reviews : " +
                                                           snapshot.data
                                                               .toString(),
                                                       style: new TextStyle(
@@ -291,7 +309,8 @@ class _ViewReviewBodyMain extends State<ViewReviewBodyMain> {
                                   }
                                 }),
                             FutureBuilder(
-                                future: viewmodel.readTotalTwoStarsReviews(),
+                                future: viewmodel
+                                    .readTotalNumberStarReviews(twoStar),
                                 builder: (context, snapshot) {
                                   if (snapshot.hasData) {
                                     return Card(
@@ -326,7 +345,8 @@ class _ViewReviewBodyMain extends State<ViewReviewBodyMain> {
                                                             .center,
                                                         children: List<
                                                                 Widget>.generate(
-                                                            2, (int index) {
+                                                            int.parse(twoStar),
+                                                            (int index) {
                                                           return Icon(
                                                               Icons
                                                                   .star_outlined,
@@ -343,7 +363,8 @@ class _ViewReviewBodyMain extends State<ViewReviewBodyMain> {
                                                       const EdgeInsets.only(
                                                           top: 5.0),
                                                   child: Text(
-                                                      "2 Stars Reviews : " +
+                                                      twoStar +
+                                                          " Stars Reviews : " +
                                                           snapshot.data
                                                               .toString(),
                                                       style: new TextStyle(
@@ -367,7 +388,8 @@ class _ViewReviewBodyMain extends State<ViewReviewBodyMain> {
                                   }
                                 }),
                             FutureBuilder(
-                                future: viewmodel.readTotalOneStarsReviews(),
+                                future: viewmodel
+                                    .readTotalNumberStarReviews(oneStar),
                                 builder: (context, snapshot) {
                                   if (snapshot.hasData) {
                                     return Card(
@@ -402,7 +424,8 @@ class _ViewReviewBodyMain extends State<ViewReviewBodyMain> {
                                                             .center,
                                                         children: List<
                                                                 Widget>.generate(
-                                                            1, (int index) {
+                                                            int.parse(oneStar),
+                                                            (int index) {
                                                           return Icon(
                                                               Icons
                                                                   .star_outlined,
@@ -419,11 +442,88 @@ class _ViewReviewBodyMain extends State<ViewReviewBodyMain> {
                                                       const EdgeInsets.only(
                                                           top: 5.0),
                                                   child: Text(
-                                                      "1 Star Reviews : " +
+                                                      oneStar +
+                                                          " Star Reviews : " +
                                                           snapshot.data
                                                               .toString(),
                                                       style: new TextStyle(
                                                           fontSize: 17.0)),
+                                                )
+                                              ],
+                                            ))),
+                                      ),
+                                    );
+                                  } else if (snapshot.hasError) {
+                                    return Center(
+                                      child: Text(
+                                        snapshot.error.toString(),
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            backgroundColor: Colors.red[700]),
+                                      ),
+                                    );
+                                  } else {
+                                    return Center(child: Text("loading..."));
+                                  }
+                                }),
+                            FutureBuilder(
+                                future: viewmodel.readTotalReviews(),
+                                builder: (context, snapshot) {
+                                  if (snapshot.hasData) {
+                                    return Card(
+                                      margin: EdgeInsets.all(5.0),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: InkWell(
+                                            onTap: () {
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          AllReviewScreen()));
+                                            },
+                                            child: Center(
+                                                child: Column(
+                                              children: <Widget>[
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(0.0),
+                                                  child: Align(
+                                                    alignment: Alignment.center,
+                                                    child: Container(
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                              .size
+                                                              .width,
+                                                      height: 15,
+                                                      color: Color.fromARGB(
+                                                          255, 255, 255, 255),
+                                                      // child: Wrap(
+                                                      //   alignment: WrapAlignment
+                                                      //       .center,
+                                                      //   children: List<
+                                                      //           Widget>.generate(
+                                                      //       5, (int index) {
+                                                      //     return Icon(
+                                                      //         Icons
+                                                      //             .star_outlined,
+                                                      //         size: 40,
+                                                      //         color:
+                                                      //             Colors.amber);
+                                                      //   }),
+                                                      // ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          bottom: 12.0),
+                                                  child: Text("All Reviews ",
+                                                      style: new TextStyle(
+                                                          fontSize: 20.0,
+                                                          fontWeight:
+                                                              FontWeight.bold)),
                                                 )
                                               ],
                                             ))),
