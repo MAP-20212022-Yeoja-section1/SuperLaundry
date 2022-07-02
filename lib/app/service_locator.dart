@@ -16,6 +16,8 @@ import 'package:superlaundry/services/profile_edit/profile_service_mock.dart';
 import 'package:superlaundry/services/registration/registrationService.dart';
 import 'package:superlaundry/services/registration/registration_serviceFirestore.dart';
 import 'package:superlaundry/services/reportService/report_service_FB.dart';
+import 'package:superlaundry/services/view_review/view_review_service.dart';
+import 'package:superlaundry/services/view_review/view_review_service_FB.dart';
 import 'package:superlaundry/ui/screens/deli_get_order/deli_get_order_viewmodel.dart';
 import 'package:superlaundry/ui/screens/deliveryOrder/delivery_order_viewmodel.dart';
 import 'package:superlaundry/ui/screens/home_customer/mainmenu_viewmodel.dart';
@@ -26,6 +28,7 @@ import 'package:superlaundry/ui/screens/laundry_service/deliverymethod/viewDeliv
 import 'package:superlaundry/ui/screens/laundry_service/washingmachine/viewWashingMachine/washingmachine_viewmodel.dart';
 import 'package:superlaundry/ui/screens/manage_order/manageorder_viewmodel.dart';
 import 'package:superlaundry/ui/screens/order_history/orderhistory_viewmodel.dart';
+import 'package:superlaundry/ui/screens/view_review/view_review_viewmodel.dart';
 import '../services/laundryservice/clean_service.dart';
 import '../services/laundryservice/delivery_service.dart';
 import '../services/laundryservice/delivery_service_mock.dart';
@@ -126,6 +129,10 @@ void initializeServiceLocator() => ServiceLocator.init((locator) {
       locator.registerLazySingleton<ReportViewmodel>(() => ReportViewmodel());
       locator.registerLazySingleton<ReportService>(
           () => ReportServiceWithFirestore());
+      locator.registerLazySingleton<ViewReviewService>(
+          () => ViewReviewServiceWithFirestore());
+      locator.registerLazySingleton<ViewReviewViewModel>(
+          () => ViewReviewViewModel());
       locator.registerLazySingleton<PrintInvoiceViewModel>(
           () => PrintInvoiceViewModel());
       locator.registerLazySingleton<PrintInvoiceService>(

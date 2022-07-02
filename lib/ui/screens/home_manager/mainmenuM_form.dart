@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:superlaundry/ui/screens/laundry_service/laundryser_screen.dart';
 import 'package:superlaundry/ui/screens/change_status/change_status_screen.dart';
 import 'package:superlaundry/ui/screens/manage_order/manageorder_screen.dart';
+import 'package:superlaundry/ui/screens/view_review/view_review_screen.dart';
 import 'package:superlaundry/ui/screens/viewReport/overallReport/view_overall_report_screen.dart';
 
 class mainMenuMForm extends StatefulWidget {
@@ -85,6 +86,30 @@ class _mainMenuMForm extends State<mainMenuMForm> {
                         size: 70.0,
                       ),
                       Text("Laundry Service Order",
+                          style: new TextStyle(fontSize: 17.0),
+                          textAlign: TextAlign.center)
+                    ],
+                  ))),
+            ),
+            Card(
+              margin: EdgeInsets.all(0.0),
+              child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ViewReviewScreen()));
+                  },
+                  splashColor: Colors.green,
+                  child: Center(
+                      child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      Icon(
+                        Icons.home,
+                        size: 70.0,
+                      ),
+                      Text("View Customer Review",
                           style: new TextStyle(fontSize: 17.0),
                           textAlign: TextAlign.center)
                     ],
