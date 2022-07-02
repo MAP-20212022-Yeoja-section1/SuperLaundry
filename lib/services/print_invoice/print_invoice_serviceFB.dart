@@ -14,7 +14,6 @@ export 'package:open_file/open_file.dart';
 export 'package:path_provider/path_provider.dart';
 
 class PrintInvoiceServiceWithFireBase extends PrintInvoiceService {
-  @override
   Stream<List<OrdersModel>> readActiveOrders() {
     final FirebaseAuth auth = FirebaseAuth.instance;
     final User? user = auth.currentUser;
@@ -30,7 +29,6 @@ class PrintInvoiceServiceWithFireBase extends PrintInvoiceService {
             .toList());
   }
 
-  @override
   Future<File> saveDocument(String name, Document pdf) async {
     final bytes = await pdf.save();
 
@@ -41,13 +39,11 @@ class PrintInvoiceServiceWithFireBase extends PrintInvoiceService {
     return file;
   }
 
-  @override
   Future openFile(File file) async {
     final url = file.path;
     await OpenFile.open(url);
   }
 
-  @override
   Future<File> generate(Invoice invoice) async {
     final pdf = Document();
     pdf.addPage(MultiPage(
