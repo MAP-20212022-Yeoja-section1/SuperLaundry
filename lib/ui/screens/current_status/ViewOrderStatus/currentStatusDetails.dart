@@ -3,6 +3,7 @@ import 'package:map_mvvm/view.dart';
 import 'package:superlaundry/models/orders.dart';
 import 'package:superlaundry/ui/screens/current_status/current_status_screen.dart';
 import 'package:superlaundry/ui/screens/current_status/current_status_viewmodel.dart';
+import 'package:superlaundry/ui/screens/cust_review/cust_review_screen.dart';
 
 class CurrStatusDetails extends StatefulWidget {
   final OrdersModel post;
@@ -126,12 +127,24 @@ class CurrStatusDetailsState extends State<CurrStatusDetails> {
                                                     fontSize: 16,
                                                     fontWeight: FontWeight.bold,
                                                     color: Colors.black))
+                                          ] else if (widget.post.orderStatus ==
+                                              "COMPLETED") ...[
+                                            const Icon(
+                                              Icons.book_online,
+                                              size: 50,
+                                              color: Colors.black,
+                                            ),
+                                            Text("Your Order Completed",
+                                                style: TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.black))
                                           ] else if (widget.post.orderStatus !=
                                                   "REJECTED" &&
                                               widget.post.orderStatus !=
                                                   "ACCEPTED") ...[
                                             const Icon(
-                                              Icons.cabin,
+                                              Icons.book_online,
                                               size: 50,
                                               color: Colors.black,
                                             ),
@@ -198,6 +211,13 @@ class CurrStatusDetailsState extends State<CurrStatusDetails> {
                                               color: Colors.red,
                                             )
                                           ] else if (widget.post.orderStatus ==
+                                              "COMPLETED") ...[
+                                            const Icon(
+                                              Icons.cabin,
+                                              size: 50,
+                                              color: Colors.black,
+                                            )
+                                          ] else if (widget.post.orderStatus ==
                                                   "PICKED UP" ||
                                               widget.post.orderStatus ==
                                                   "DELIVERED") ...[
@@ -234,37 +254,72 @@ class CurrStatusDetailsState extends State<CurrStatusDetails> {
                                       title: Text('Delivery Status'),
                                       content: Column(
                                         children: [
-                                          if (widget.post.orderStatus == "PICKED UP" ||
+                                          if (widget.post.orderStatus ==
+                                                  "PICKED UP" ||
                                               widget.post.orderStatus ==
                                                   "DELIVERED") ...[
                                             const Icon(
-                                              Icons.drive_eta,
+                                              Icons.airport_shuttle,
                                               size: 50,
                                               color: Colors.black,
                                             ),
-                                            Text("On It's Way!"),
-                                          ] else if (widget.post.orderStatus !=
-                                                  "DELIVERED" &&
-                                              widget.post.orderStatus !=
-                                                  "PICKED UP" &&
-                                              widget.post.orderStatus !=
-                                                  "REJECTED") ...[
+                                            Text("DELIVERY DONE"),
+                                          ]
+                                          //else if (widget.post.orderStatus !=
+                                          //         "PICKED UP" ||
+                                          //     widget.post.orderStatus !=
+                                          //         "DELIVERED") ...[
+                                          //   const Icon(
+                                          //     Icons.airport_shuttle,
+                                          //     size: 50,
+                                          //     color: Colors.black,
+                                          //   ),
+                                          //   Text("Laundry In Progress")
+                                          // ]
+                                          //else if (widget.post.orderStatus !=
+                                          //     "DELIVERED") ...[
+                                          //   const Icon(
+                                          //     Icons.airport_shuttle,
+                                          //     size: 50,
+                                          //     color: Colors.black,
+                                          //   ),
+                                          //   // Text("Laundry Delivered")
+                                          // ]
+                                          else if (widget.post.orderStatus !=
+                                              "REJECTED") ...[
                                             const Icon(
-                                              Icons.home,
+                                              Icons.airport_shuttle,
                                               size: 50,
-                                              color: Colors.red,
+                                              color: Colors.black,
                                             ),
                                             Text("Laundry In Progress")
                                           ] else if (widget.post.orderStatus ==
                                               "REJECTED") ...[
                                             const Icon(
-                                              Icons.home,
+                                              Icons.airport_shuttle,
+                                              size: 50,
+                                              color: Colors.red,
+                                            ),
+                                          ] else if (widget.post.orderStatus !=
+                                                  "COMPLETED" &&
+                                              widget.post.orderStatus !=
+                                                  "REJECTED") ...[
+                                            const Icon(
+                                              Icons.airport_shuttle,
+                                              size: 50,
+                                              color: Colors.black,
+                                            ),
+                                            Text("Laundry In Progress")
+                                          ] else if (widget.post.orderStatus ==
+                                              "COMPLETED") ...[
+                                            const Icon(
+                                              Icons.airport_shuttle,
                                               size: 50,
                                               color: Colors.red,
                                             ),
                                           ] else ...[
                                             const Icon(
-                                              Icons.home,
+                                              Icons.airport_shuttle,
                                               size: 50,
                                               color: Colors.black,
                                             ),
@@ -290,7 +345,7 @@ class CurrStatusDetailsState extends State<CurrStatusDetails> {
                                           if (widget.post.orderStatus ==
                                               "COMPLETED") ...[
                                             const Icon(
-                                              Icons.cable,
+                                              Icons.add_task_rounded,
                                               size: 50,
                                               color: Colors.black,
                                             ),
@@ -303,9 +358,17 @@ class CurrStatusDetailsState extends State<CurrStatusDetails> {
                                                       255, 4, 107, 81),
                                                   fontWeight: FontWeight.bold),
                                             ),
+                                            ElevatedButton(
+                                                onPressed: () {
+                                                  Navigator.of(context).push(
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              CustReviewScreen()));
+                                                },
+                                                child: Text('Lets rate us!'))
                                           ] else if (widget.post.orderStatus ==
                                               "INCOMPLETE") ...[
-                                            const Icon(Icons.cable,
+                                            const Icon(Icons.add_task_rounded,
                                                 size: 50, color: Colors.red),
                                             Text(
                                               " YOUR ORDER STATUS IS INCOMPLETE! ",
@@ -318,7 +381,7 @@ class CurrStatusDetailsState extends State<CurrStatusDetails> {
                                           ] else if (widget.post.orderStatus ==
                                               "REJECTED") ...[
                                             const Icon(
-                                              Icons.cabin,
+                                              Icons.add_task_rounded,
                                               size: 50,
                                               color: Colors.red,
                                             ),
@@ -331,9 +394,9 @@ class CurrStatusDetailsState extends State<CurrStatusDetails> {
                                             ),
                                           ] else ...[
                                             const Icon(
-                                              Icons.cabin,
+                                              Icons.add_task_rounded,
                                               size: 50,
-                                              color: Colors.red,
+                                              color: Colors.black,
                                             ),
                                             Text("ORDER IN PROGRESS...WAITING",
                                                 style: TextStyle(
