@@ -6,8 +6,11 @@ import 'package:superlaundry/services/view_review/view_review_service.dart';
 class ViewReviewServiceWithFirestore extends ViewReviewService {
   @override
   Stream<List<ReviewsModel>> readAllReviews() {
-    return FirebaseFirestore.instance.collection('reviews').snapshots().map(
-        (snapshot) => snapshot.docs
+    return FirebaseFirestore.instance
+        .collection('reviews')
+        .orderBy('rating', descending: true)
+        .snapshots()
+        .map((snapshot) => snapshot.docs
             .map((doc) => ReviewsModel.fromJson(doc.data()))
             .toList());
   }
